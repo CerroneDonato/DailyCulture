@@ -1,9 +1,29 @@
-[
- "libro: I promessi sposi - Alessandro Manzoni",
- "poesia: Sonetti - John Donne",
- "quadro: I bari - Caravaggio",
- "musica: Suite per violoncello n. 1 in Sol maggiore - Johann Sebastian Bach",
- "parola: Boria",
- "parola: Ineluttabile",
- "parola: Anfibologico"
-]
+{
+ "vecchio": [
+  "libro: I promessi sposi - Alessandro Manzoni",
+  "poesia: Sonetti - John Donne",
+  "quadro: I bari - Caravaggio",
+  "musica: Suite per violoncello n. 1 in Sol maggiore - Johann Sebastian Bach",
+  "parola: Boria",
+  "parola: Ineluttabile",
+  "parola: Anfibologico"
+ ],
+ "letteratura": [
+  "Tozzi - Con gli occhi chiusi"
+ ],
+ "storia": [
+  "Biosphere 2 - Esperimento 1991"
+ ],
+ "arte": [
+  "Affreschi conventuali di Malinalco"
+ ],
+ "musica": [
+  "Skrjabin - Vers la flamme"
+ ],
+ "scienze": [
+  "Olbers - Paradosso cosmologico"
+ ],
+ "parole": [
+  "Retorica - Glossario filosofico"
+ ]
+}
