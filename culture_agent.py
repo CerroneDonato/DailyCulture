@@ -1,4 +1,8 @@
-"""Agente quotidiano di cultura generale: Gemini genera, Telegram consegna."""
+"""Agente quotidiano di cultura generale.
+
+Ogni giorno genera con Gemini sei approfondimenti (letteratura, storia, arte,
+musica, scienze, parole) e li manda su Telegram, un messaggio per categoria.
+"""
 
 import html
 import json
@@ -20,9 +24,10 @@ MODELS = (
     else ["gemini-3.1-flash-lite", "gemini-2.5-flash-lite", "gemini-2.5-flash"]
 )
 HISTORY_FILE = Path("history.json")
-HISTORY_KEEP = 150  # quante proposte passate ricordare
+HISTORY_KEEP = 60  # argomenti ricordati per categoria
 SEND_HOUR = 7  # ora locale (Milano) di invio
 TZ = ZoneInfo("Europe/Rome")
+PAUSE = 6  # secondi tra una categoria e l'altra (limiti di frequenza del piano free)
 
 EPOCHS = [
     "l'Antichità classica", "il Medioevo", "il Rinascimento", "il Seicento",
@@ -34,41 +39,137 @@ AREAS = [
     "America Latina", "Africa", "Medio Oriente", "India", "Cina", "Giappone",
     "Oceania",
 ]
+SCIENCE_FIELDS = [
+    "matematica", "fisica", "chimica", "biologia ed evoluzione", "astronomia e cosmologia",
+    "geologia e scienze della Terra", "storia della scienza", "teoria dell'informazione",
+    "storia dell'ingegneria e delle tecnologie", "neuroscienze", "ecologia",
+    "scienza dei materiali", "statistica e probabilità", "medicina e fisiologia",
+]
+WORD_KINDS = [
+    "latinismi e grecismi", "arabismi", "termini di mestieri e artigianato",
+    "arcaismi letterari", "parole di origine germanica", "termini marinareschi",
+    "parole scientifiche passate nell'uso comune", "voci dialettali entrate in italiano",
+    "parole dal francese o dallo spagnolo", "termini della filosofia e della retorica",
+]
 
-SYSTEM = """Sei un curatore di cultura generale per un lettore adulto, curioso e colto.
-Ogni giorno proponi cinque cose legate da un filo conduttore: un libro, una poesia,
-un quadro, un brano musicale e tre parole nuove. Scrivi in italiano, con tono
-sobrio e stimolante. Ogni "why" deve essere di 1-2 frasi concrete (contesto,
-perché vale la pena), senza retorica.
+NICHE = (
+    "Livello: il lettore è un ingegnere con ottima cultura generale. Evita il canone "
+    "scolastico e ciò che sa chiunque abbia fatto il liceo: scegli un argomento di "
+    "nicchia, anche poco noto, ma sul quale sei certo dei fatti."
+)
+POPULAR = (
+    "Livello: scegli un'opera o un autore riconoscibili ma non gli esempi più abusati; "
+    "l'approfondimento però resta alto, con dettagli tecnici e di contesto."
+)
 
-Regole:
-- Per la poesia riporta un estratto (max 4 versi) SOLO se l'autore è morto da più
-  di 70 anni; altrimenti lascia "excerpt" vuoto e commenta soltanto.
-- Le tre parole devono essere italiane, poco comuni ma non inventate, con
-  significato breve e una frase d'esempio.
-- Usa opere realmente esistenti. Se non sei sicuro, scegline un'altra.
+
+def era_area():
+    return f"epoca: {random.choice(EPOCHS)}; area geografica: {random.choice(AREAS)}"
+
+
+CATEGORIES = [
+    {
+        "key": "letteratura", "emoji": "📚", "label": "Letteratura",
+        "level": NICHE, "hint": era_area, "link": "wiki", "link_label": "Approfondisci",
+        "brief": (
+            "Proponi UN'opera letteraria (romanzo, racconto, saggio, raccolta di poesie, "
+            "poema) oppure un autore trascurato. Nei paragrafi: 1) autore e contesto in cui "
+            "nasce l'opera; 2) di cosa parla e qual è l'idea o la tesi centrale; 3) perché è "
+            "notevole (stile, innovazione, influenza); 4) a chi parla e da dove cominciare. "
+            "Se citi versi, al massimo 4 e solo di autori morti da oltre 70 anni."
+        ),
+    },
+    {
+        "key": "storia", "emoji": "🏛", "label": "Storia",
+        "level": NICHE, "hint": era_area, "link": "wiki", "link_label": "Approfondisci",
+        "brief": (
+            "Proponi UN episodio, processo o figura storica poco noti al grande pubblico "
+            "(non le grandi date da manuale). Nei paragrafi: 1) contesto; 2) cosa è successo, "
+            "con date e luoghi precisi; 3) cause e conseguenze; 4) perché è istruttivo o come "
+            "cambia il modo di leggere il periodo."
+        ),
+    },
+    {
+        "key": "arte", "emoji": "🎨", "label": "Arte",
+        "level": POPULAR, "hint": era_area, "link": "commons", "link_label": "Vedi l'opera",
+        "brief": (
+            "Proponi UN'opera d'arte visiva (pittura, scultura, architettura, fotografia, "
+            "incisione). Nei paragrafi: 1) autore e contesto; 2) descrizione dell'opera "
+            "(soggetto, composizione, tecnica, dove si trova); 3) come leggerla (simboli, "
+            "innovazioni); 4) perché conta e a quali altre opere si collega."
+        ),
+    },
+    {
+        "key": "musica", "emoji": "🎵", "label": "Musica",
+        "level": POPULAR, "hint": era_area, "link": "youtube", "link_label": "Ascolta",
+        "brief": (
+            "Proponi UN brano o un'opera musicale (qualsiasi genere: classica, jazz, rock, "
+            "elettronica, folk...). Nei paragrafi: 1) autore o ensemble e contesto; 2) com'è "
+            "fatto il brano (forma, armonia, ritmo, timbro) con dettagli tecnici; 3) cosa "
+            "ascoltare con attenzione e in quale punto; 4) influenza e una curiosità sulla "
+            "registrazione o versione consigliata."
+        ),
+    },
+    {
+        "key": "scienze", "emoji": "🔬", "label": "Scienze",
+        "level": NICHE,
+        "hint": lambda: f"ambito: {random.choice(SCIENCE_FIELDS)}",
+        "link": "wiki", "link_label": "Approfondisci",
+        "brief": (
+            "Proponi UN concetto, scoperta, esperimento o controversia scientifica. Il lettore "
+            "ha formazione tecnica: puoi usare formule e ordini di grandezza, ma spiega "
+            "l'intuizione, non solo il formalismo. Nei paragrafi: 1) il problema; 2) l'idea "
+            "chiave; 3) come funziona o come fu scoperta; 4) implicazioni, limiti o questioni "
+            "ancora aperte."
+        ),
+    },
+    {
+        "key": "parole", "emoji": "🔤", "label": "Parole",
+        "level": NICHE,
+        "hint": lambda: f"tipologia: {random.choice(WORD_KINDS)}",
+        "link": "treccani", "link_label": "Vocabolario Treccani",
+        "brief": (
+            "Proponi TRE parole italiane poco comuni (non inventate). Un paragrafo per "
+            "parola: la parola in apertura, significato preciso, etimologia (lingua d'origine "
+            "e forma originale solo se certe), sfumature d'uso, una frase d'esempio originale. "
+            "Un eventuale quarto paragrafo può collegare le tre parole, solo se c'è un legame "
+            "reale. Il campo \"title\" contiene le tre parole separate da virgole; il campo "
+            "\"search\" contiene la prima parola, una sola."
+        ),
+    },
+]
+
+SYSTEM = """Sei un curatore di cultura generale per un lettore adulto, ingegnere, colto e curioso.
+Scrivi in italiano, con tono sobrio e denso, senza retorica e senza elenchi puntati.
+
+Precisione prima di tutto: non inventare date, nomi, titoli o citazioni. Se non sei
+sicuro di un dettaglio, omettilo oppure scegli un altro argomento. Non riportare
+citazioni testuali lunghe di opere protette da diritti.
+
+Lunghezza: 4-5 paragrafi, circa 250-350 parole in totale (massimo 3500 caratteri).
 
 Rispondi SOLO con JSON valido, senza testo extra, con questo schema:
 {
-  "theme": "filo conduttore in poche parole",
-  "book": {"title": "", "author": "", "why": ""},
-  "poem": {"title": "", "author": "", "excerpt": "", "why": ""},
-  "painting": {"title": "", "artist": "", "year": "", "why": ""},
-  "music": {"title": "", "artist": "", "why": ""},
-  "words": [{"word": "", "meaning": "", "example": ""}]
+  "title": "argomento in poche parole",
+  "subtitle": "una riga che incuriosisce",
+  "paragraphs": ["paragrafo 1", "paragrafo 2"],
+  "key": "identificativo breve dell'argomento per lo storico (es. 'Autore - Titolo')",
+  "search": "query di ricerca per approfondire"
 }"""
 
 
 def load_history():
-    if HISTORY_FILE.exists():
-        return json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
-    return []
+    if not HISTORY_FILE.exists():
+        return {}
+    data = json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
+    if isinstance(data, list):  # vecchio formato, valido per tutte le categorie
+        return {"vecchio": data}
+    return data
 
 
 def save_history(history):
     HISTORY_FILE.write_text(
-        json.dumps(history[-HISTORY_KEEP:], ensure_ascii=False, indent=1),
-        encoding="utf-8",
+        json.dumps(history, ensure_ascii=False, indent=1), encoding="utf-8"
     )
 
 
@@ -91,17 +192,25 @@ def call_model(model, prompt):
     }
     headers = {"x-goog-api-key": os.environ["GEMINI_API_KEY"]}
     for attempt in range(4):
-        r = requests.post(url, headers=headers, json=body, timeout=60)
+        r = requests.post(url, headers=headers, json=body, timeout=90)
         if r.status_code in (429, 500, 503):
             time.sleep(15 * (attempt + 1))
             continue
         if r.status_code == 404:
             raise LookupError(model)
         r.raise_for_status()
-        text = r.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
-        text = text.removeprefix("```json").removeprefix("```").removesuffix("```")
-        return json.loads(text)
-    raise RuntimeError(f"Gemini ({model}) non risponde dopo 4 tentativi")
+        try:
+            parts = r.json()["candidates"][0]["content"]["parts"]
+            text = "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()
+            text = text.removeprefix("```json").removeprefix("```").removesuffix("```")
+            data = json.loads(text)
+            for field in ("title", "subtitle", "paragraphs", "key"):
+                if field not in data:
+                    raise KeyError(field)
+            return data
+        except (KeyError, IndexError, ValueError):
+            time.sleep(5)  # risposta malformata: riprovo
+    raise RuntimeError(f"Gemini ({model}) non ha dato una risposta valida")
 
 
 def call_gemini(prompt):
@@ -115,55 +224,44 @@ def call_gemini(prompt):
     raise RuntimeError(f"Nessun modello disponibile tra: {', '.join(MODELS)}")
 
 
-def build_prompt(history):
-    today = datetime.now(TZ).strftime("%A %d %B %Y")
-    epoch, area = random.choice(EPOCHS), random.choice(AREAS)
-    seen = "; ".join(history[-HISTORY_KEEP:]) or "nessuna"
+def build_prompt(cat, history):
+    today = datetime.now(TZ).strftime("%d/%m/%Y")
+    seen = (history.get(cat["key"], []) + history.get("vecchio", []))[-HISTORY_KEEP:]
+    seen_text = "; ".join(seen) or "nessuno"
     return (
-        f"Oggi è {today}. Scegli un filo conduttore e prepara le cinque proposte.\n"
-        f"Vincoli di varietà: almeno una proposta deve riguardare {epoch}; "
-        f"almeno una deve provenire da questa area: {area}.\n"
-        f"NON riproporre nulla di ciò che è già stato dato: {seen}"
+        f"Oggi è il {today}. Prepara il messaggio di oggi per la categoria "
+        f"«{cat['label']}».\n{cat['brief']}\n{cat['level']}\n"
+        f"Spunto di varietà (non vincolante se non trovi nulla di certo): {cat['hint']()}\n"
+        f"NON riproporre argomenti già dati: {seen_text}"
     )
 
 
-def q(*parts):
-    return urllib.parse.quote_plus(" ".join(parts))
+def make_link(cat, query):
+    kind = cat["link"]
+    if kind == "commons":
+        return "https://commons.wikimedia.org/w/index.php?search=" + urllib.parse.quote_plus(query)
+    if kind == "youtube":
+        return "https://www.youtube.com/results?search_query=" + urllib.parse.quote_plus(query)
+    if kind == "treccani":
+        word = (query.split() or [""])[0].lower()
+        return "https://www.treccani.it/vocabolario/ricerca/" + urllib.parse.quote(word) + "/"
+    return "https://it.wikipedia.org/w/index.php?search=" + urllib.parse.quote_plus(query)
 
 
-def format_message(d):
+def format_message(cat, d):
     e = html.escape
-    book, poem, art, mus = d["book"], d["poem"], d["painting"], d["music"]
-
-    art_link = "https://commons.wikimedia.org/w/index.php?search=" + q(art["title"], art["artist"])
-    mus_link = "https://www.youtube.com/results?search_query=" + q(mus["title"], mus["artist"])
-
-    lines = [
-        f"🗓 <b>{e(d['theme'])}</b>",
-        "",
-        f"📚 <b>Libro</b>: {e(book['title'])}, {e(book['author'])}",
-        e(book["why"]),
-        "",
-        f"🖋 <b>Poesia</b>: {e(poem['title'])}, {e(poem['author'])}",
-    ]
-    if poem.get("excerpt"):
-        lines.append(f"<i>{e(poem['excerpt'])}</i>")
-    lines += [
-        e(poem["why"]),
-        "",
-        f"🎨 <b>Quadro</b>: {e(art['title'])}, {e(art['artist'])} ({e(str(art['year']))})",
-        e(art["why"]),
-        f'<a href="{html.escape(art_link)}">Vedi l\'opera</a>',
-        "",
-        f"🎵 <b>Musica</b>: {e(mus['title'])}, {e(mus['artist'])}",
-        e(mus["why"]),
-        f'<a href="{html.escape(mus_link)}">Ascolta</a>',
-        "",
-        "🔤 <b>Parole nuove</b>",
-    ]
-    for w in d["words"]:
-        lines.append(f"• <b>{e(w['word'])}</b>: {e(w['meaning'])} <i>{e(w['example'])}</i>")
-    return "\n".join(lines)
+    link = make_link(cat, str(d.get("search") or d["title"]))
+    head = (
+        f"{cat['emoji']} <b>{cat['label'].upper()}</b>\n"
+        f"<b>{e(str(d['title']))}</b>\n<i>{e(str(d['subtitle']))}</i>"
+    )
+    tail = f'<a href="{e(link)}">{cat["link_label"]}</a>'
+    paras = [e(str(p)) for p in d["paragraphs"]]
+    while True:  # Telegram accetta al massimo 4096 caratteri
+        text = "\n\n".join([head] + paras + [tail])
+        if len(text) <= 4000 or len(paras) <= 1:
+            return text
+        paras.pop()
 
 
 def send_telegram(text):
@@ -187,17 +285,29 @@ def main():
         return 0
 
     history = load_history()
-    data = call_gemini(build_prompt(history))
-    send_telegram(format_message(data))
+    failures = []
+    for i, cat in enumerate(CATEGORIES):
+        if i:
+            time.sleep(PAUSE)
+        try:
+            data = call_gemini(build_prompt(cat, history))
+            send_telegram(format_message(cat, data))
+            entries = history.setdefault(cat["key"], [])
+            entries.append(str(data["key"]))
+            history[cat["key"]] = entries[-HISTORY_KEEP:]
+            print(f"OK: {cat['key']}")
+        except Exception as exc:  # una categoria che fallisce non blocca le altre
+            failures.append(cat["label"])
+            print(f"ERRORE su {cat['key']}: {exc}", file=sys.stderr)
 
-    history += [
-        f"libro: {data['book']['title']} - {data['book']['author']}",
-        f"poesia: {data['poem']['title']} - {data['poem']['author']}",
-        f"quadro: {data['painting']['title']} - {data['painting']['artist']}",
-        f"musica: {data['music']['title']} - {data['music']['artist']}",
-    ] + [f"parola: {w['word']}" for w in data["words"]]
     save_history(history)
-    return 0
+
+    if failures:
+        try:
+            send_telegram("⚠️ Oggi non sono riuscito a generare: " + ", ".join(failures))
+        except Exception as exc:
+            print(f"Impossibile avvisare su Telegram: {exc}", file=sys.stderr)
+    return 1 if len(failures) == len(CATEGORIES) else 0
 
 
 if __name__ == "__main__":
