@@ -1,0 +1,40 @@
+name: Cultura del giorno
+
+on:
+  schedule:
+    # Due orari UTC per coprire ora legale (05:17) e solare (06:17):
+    # lo script invia solo se a Milano sono le 7. Minuto :17 per evitare
+    # i ritardi dell'inizio ora, quando GitHub è più carico.
+    - cron: "17 5 * * *"
+    - cron: "17 6 * * *"
+  workflow_dispatch: # esecuzione manuale per i test (ignora il controllo dell'ora)
+
+permissions:
+  contents: write # serve per salvare history.json
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Genera e invia
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
+        run: python culture_agent.py
+
+      - name: Salva lo storico
+        run: |
+          git config user.name "culture-bot"
+          git config user.email "culture-bot@users.noreply.github.com"
+          git add history.json || true
+          git diff --cached --quiet || (git commit -m "Aggiorna storico" && git push)
