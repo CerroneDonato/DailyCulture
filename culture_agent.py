@@ -13,7 +13,12 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
+# Modelli provati in ordine: se uno risponde 404 (ritirato) si passa al successivo.
+MODELS = (
+    [os.environ["GEMINI_MODEL"]]
+    if os.getenv("GEMINI_MODEL")
+    else ["gemini-3.1-flash-lite", "gemini-2.5-flash-lite", "gemini-2.5-flash"]
+)
 HISTORY_FILE = Path("history.json")
 HISTORY_KEEP = 150  # quante proposte passate ricordare
 SEND_HOUR = 7  # ora locale (Milano) di invio
@@ -74,8 +79,8 @@ def should_send():
     return datetime.now(TZ).hour == SEND_HOUR
 
 
-def call_gemini(prompt):
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
+def call_model(model, prompt):
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
     body = {
         "systemInstruction": {"parts": [{"text": SYSTEM}]},
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
@@ -90,11 +95,24 @@ def call_gemini(prompt):
         if r.status_code in (429, 500, 503):
             time.sleep(15 * (attempt + 1))
             continue
+        if r.status_code == 404:
+            raise LookupError(model)
         r.raise_for_status()
         text = r.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
         text = text.removeprefix("```json").removeprefix("```").removesuffix("```")
         return json.loads(text)
-    raise RuntimeError("Gemini non risponde dopo 4 tentativi")
+    raise RuntimeError(f"Gemini ({model}) non risponde dopo 4 tentativi")
+
+
+def call_gemini(prompt):
+    for model in MODELS:
+        try:
+            data = call_model(model, prompt)
+            print(f"Modello usato: {model}")
+            return data
+        except LookupError:
+            print(f"Modello non trovato (404): {model}, provo il successivo")
+    raise RuntimeError(f"Nessun modello disponibile tra: {', '.join(MODELS)}")
 
 
 def build_prompt(history):
