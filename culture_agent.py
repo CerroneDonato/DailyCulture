@@ -25,7 +25,8 @@ MODELS = (
 )
 HISTORY_FILE = Path("history.json")
 HISTORY_KEEP = 60  # argomenti ricordati per categoria
-SEND_HOUR = 7  # ora locale (Milano) di invio
+SEND_HOUR = 7  # ora locale (Milano) da cui l'invio è ammesso
+SEND_UNTIL = 11  # ...fino a quest'ora esclusa (tollera i ritardi di GitHub)
 TZ = ZoneInfo("Europe/Rome")
 PAUSE = 6  # secondi tra una categoria e l'altra (limiti di frequenza del piano free)
 
@@ -173,11 +174,17 @@ def save_history(history):
     )
 
 
-def should_send():
-    """GitHub usa l'ora UTC: due cron coprono ora legale e solare, qui filtriamo."""
+def should_send(history):
+    """GitHub usa l'ora UTC e può ritardare: più cron, qui scegliamo quale vale.
+
+    Si invia se a Milano è dentro la finestra 7-11 e oggi non è ancora partito nulla.
+    """
     if os.getenv("FORCE"):
         return True
-    return datetime.now(TZ).hour == SEND_HOUR
+    now = datetime.now(TZ)
+    if not (SEND_HOUR <= now.hour < SEND_UNTIL):
+        return False
+    return history.get("_last_sent") != now.date().isoformat()
 
 
 def call_model(model, prompt):
@@ -280,11 +287,11 @@ def send_telegram(text):
 
 
 def main():
-    if not should_send():
-        print("Non è l'ora giusta (Milano), esco.")
+    history = load_history()
+    if not should_send(history):
+        print("Fuori dalla finestra di invio (Milano) oppure già inviato oggi, esco.")
         return 0
 
-    history = load_history()
     failures = []
     for i, cat in enumerate(CATEGORIES):
         if i:
@@ -300,6 +307,8 @@ def main():
             failures.append(cat["label"])
             print(f"ERRORE su {cat['key']}: {exc}", file=sys.stderr)
 
+    if len(failures) < len(CATEGORIES):
+        history["_last_sent"] = datetime.now(TZ).date().isoformat()
     save_history(history)
 
     if failures:
