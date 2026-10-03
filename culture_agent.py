@@ -303,16 +303,6 @@ def chat_id():
     return os.environ["TELEGRAM_CHAT_ID"]
 
 
-def esc(text):
-    """Escape per il testo HTML di Telegram (gli apostrofi restano com'è)."""
-    return html.escape(str(text), quote=False)
-
-
-def esc_attr(text):
-    """Escape per gli attributi (href)."""
-    return html.escape(str(text), quote=True).replace("&#x27;", "'")
-
-
 # ----------------------------------------------------------------------------
 # Stato (history.json)
 # ----------------------------------------------------------------------------
@@ -432,7 +422,6 @@ def call_gemini(prompt, system=SYSTEM, grounded=GROUNDING, required=CONTENT_FIEL
             except Exception as exc:  # senza ricerca, poi modello successivo
                 print(f"{model} (ricerca web: {use_search}) non riuscito: {exc}", file=sys.stderr)
     raise RuntimeError(f"Nessun modello disponibile tra: {', '.join(MODELS)}")
-
 
 def build_prompt(cat, state, today):
     log = state["log"]
@@ -568,7 +557,7 @@ def send_image(cat, query):
         if not found:
             return
         content, name = found
-        caption = f"{cat['emoji']} <b>{esc(name[:180])}</b>\n<i>Wikimedia Commons</i>"
+        caption = f"{cat['emoji']} <b>{html.escape(name[:180])}</b>\n<i>Wikimedia Commons</i>"
         tg("sendPhoto", {"chat_id": chat_id(), "caption": caption, "parse_mode": "HTML"},
            files={"photo": ("immagine.jpg", content)})
     except Exception as exc:
@@ -592,7 +581,7 @@ def make_link(cat, query):
 
 
 def format_message(cat, d, today, link):
-    e = esc
+    e = html.escape
     head = (
         f"{cat['emoji']} <b>{e(cat['label'].upper())}</b> · <i>{data_it(today, year=False)}</i>\n\n"
         f"<b>{e(str(d['title']))}</b>\n<i>{e(str(d['subtitle']))}</i>"
@@ -601,8 +590,8 @@ def format_message(cat, d, today, link):
     recap = f"<blockquote>📌 {e(str(d['recap']))}</blockquote>" if d.get("recap") else ""
     sources = ""
     if d.get("_sources"):
-        sources = "🔎 " + " · ".join(f'<a href="{esc_attr(u)}">{e(t)}</a>' for t, u in d["_sources"])
-    tail = f'👉 <a href="{esc_attr(link)}">{e(cat["link_label"])}</a>'
+        sources = "🔎 " + " · ".join(f'<a href="{e(u)}">{e(t)}</a>' for t, u in d["_sources"])
+    tail = f'👉 <a href="{e(link)}">{e(cat["link_label"])}</a>'
 
     def assemble():
         return "\n\n".join(x for x in [head, *paras, recap, sources, tail] if x)
@@ -646,7 +635,7 @@ def clean_questions(d):
 
 
 def format_review(questions, today, weekly):
-    e = esc
+    e = html.escape
     title = "QUIZ DELLA DOMENICA" if weekly else "RIPASSO"
     intro = ("Domande sulle letture della settimana." if weekly
              else "Domande su ciò che hai letto 1, 3, 7 e 14 giorni fa.")
@@ -731,7 +720,7 @@ def main():
     todays = CORE + [ROTATING[today.weekday()]]
     send_text(
         f"☀️ <b>Cultura del giorno</b>\n<i>{data_it(today)}</i>\n\n"
-        f"Tema della settimana: <b>{esc(week_theme(today))}</b>\n"
+        f"Tema della settimana: <b>{html.escape(week_theme(today))}</b>\n"
         "Oggi: " + ", ".join(c["label"] for c in todays) + " e un " +
         ("quiz" if weekly else "ripasso") + "."
     )
@@ -792,3 +781,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
