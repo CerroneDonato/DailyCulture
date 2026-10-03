@@ -1,42 +1,263 @@
 {
- "vecchio": [
-  "libro: I promessi sposi - Alessandro Manzoni",
-  "poesia: Sonetti - John Donne",
-  "quadro: I bari - Caravaggio",
-  "musica: Suite per violoncello n. 1 in Sol maggiore - Johann Sebastian Bach",
-  "parola: Boria",
-  "parola: Ineluttabile",
-  "parola: Anfibologico"
+ "_last_sent": "2026-10-03",
+ "_offset": 0,
+ "log": [
+  {
+   "id": "",
+   "date": "",
+   "cat": "",
+   "key": "libro: I promessi sposi - Alessandro Manzoni",
+   "title": "libro: I promessi sposi - Alessandro Manzoni",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "",
+   "key": "poesia: Sonetti - John Donne",
+   "title": "poesia: Sonetti - John Donne",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "",
+   "key": "quadro: I bari - Caravaggio",
+   "title": "quadro: I bari - Caravaggio",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "",
+   "key": "musica: Suite per violoncello n. 1 in Sol maggiore - Johann Sebastian Bach",
+   "title": "musica: Suite per violoncello n. 1 in Sol maggiore - Johann Sebastian Bach",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "",
+   "key": "parola: Boria",
+   "title": "parola: Boria",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "",
+   "key": "parola: Ineluttabile",
+   "title": "parola: Ineluttabile",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "",
+   "key": "parola: Anfibologico",
+   "title": "parola: Anfibologico",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "letteratura",
+   "key": "Tozzi - Con gli occhi chiusi",
+   "title": "Tozzi - Con gli occhi chiusi",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "letteratura",
+   "key": "Lem - Solaris",
+   "title": "Lem - Solaris",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "letteratura",
+   "key": "Šalamov - Racconti della Kolyma",
+   "title": "Šalamov - Racconti della Kolyma",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "storia",
+   "key": "Biosphere 2 - Esperimento 1991",
+   "title": "Biosphere 2 - Esperimento 1991",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "storia",
+   "key": "Lituania - Crociate del Nord XIV secolo",
+   "title": "Lituania - Crociate del Nord XIV secolo",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "storia",
+   "key": "Settecento - Terremoto di Lisbona 1755",
+   "title": "Settecento - Terremoto di Lisbona 1755",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "arte",
+   "key": "Affreschi conventuali di Malinalco",
+   "title": "Affreschi conventuali di Malinalco",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "arte",
+   "key": "Andrej Rublëv - Trinità",
+   "title": "Andrej Rublëv - Trinità",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "arte",
+   "key": "Kabakov - L'uomo che è volato nello spazio dal suo appartamento",
+   "title": "Kabakov - L'uomo che è volato nello spazio dal suo appartamento",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "musica",
+   "key": "Skrjabin - Vers la flamme",
+   "title": "Skrjabin - Vers la flamme",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "musica",
+   "key": "Dvořák - Quartetto Americano",
+   "title": "Dvořák - Quartetto Americano",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "musica",
+   "key": "Arvo Pärt - Tabula Rasa",
+   "title": "Arvo Pärt - Tabula Rasa",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "scienze",
+   "key": "Olbers - Paradosso cosmologico",
+   "title": "Olbers - Paradosso cosmologico",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "scienze",
+   "key": "Pauli - Principio di esclusione",
+   "title": "Pauli - Principio di esclusione",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "scienze",
+   "key": "Lovelock - Ipotesi di Gaia",
+   "title": "Lovelock - Ipotesi di Gaia",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "parole",
+   "key": "Retorica - Glossario filosofico",
+   "title": "Retorica - Glossario filosofico",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "parole",
+   "key": "Lessico - Scienza",
+   "title": "Lessico - Scienza",
+   "recap": ""
+  },
+  {
+   "id": "",
+   "date": "",
+   "cat": "parole",
+   "key": "Retorica - Glossario Analitico",
+   "title": "Retorica - Glossario Analitico",
+   "recap": ""
+  },
+  {
+   "id": "20261003-let",
+   "date": "2026-10-03",
+   "cat": "letteratura",
+   "key": "Hyde - The Godwits Fly",
+   "title": "Robin Hyde, L'isola dei fantasmi",
+   "recap": "Robin Hyde (1906-1939) ha esplorato con The Godwits Fly (1938) la crisi identitaria neozelandese. Il romanzo utilizza la migrazione delle pittime per analizzare il legame tra memoria storica e il senso del tempo in un contesto post-coloniale."
+  },
+  {
+   "id": "20261003-sto",
+   "date": "2026-10-03",
+   "cat": "storia",
+   "key": "Cina - Beijing Weather Modification 2008",
+   "title": "Il Progetto di Geoingegneria di Pechino 2008",
+   "recap": "Durante le Olimpiadi di Pechino dell'8 agosto 2008, le autorità cinesi hanno utilizzato razzi a base di ioduro d'argento per indurre piogge artificiali e prevenire precipitazioni sullo stadio principale. L'operazione rappresenta un momento chiave dell'investimento cinese nella geoingegneria, volto a trasformare le condizioni atmosferiche in una variabile gestibile dal potere centrale."
+  },
+  {
+   "id": "20261003-art",
+   "date": "2026-10-03",
+   "cat": "arte",
+   "key": "Repin - I battellieri del Volga",
+   "title": "I battellieri del Volga",
+   "recap": "Ilya Repin completò I battellieri del Volga nel 1873. L'opera ritrae undici uomini che trainano una chiatta ed è oggi conservata al Museo di Stato Russo di San Pietroburgo. Il dipinto è considerato il capolavoro del realismo sociale russo, simbolo della condizione umana negata dal peso inesorabile del lavoro manuale."
+  },
+  {
+   "id": "20261003-mus",
+   "date": "2026-10-03",
+   "cat": "musica",
+   "key": "Villa-Lobos - Bachianas Brasileiras n. 5",
+   "title": "Heitor Villa-Lobos, Bachianas Brasileiras n. 5",
+   "recap": "Le Bachianas Brasileiras n. 5 di Heitor Villa-Lobos sono state scritte tra il 1938 e il 1945 per soprano e ottetto di violoncelli. L'opera fonde la struttura contrappuntistica di Bach con melodie brasiliane, culminando nella celebre Aria. La direzione di riferimento rimane quella di Bidu Sayão con l'autore negli anni '40."
+  },
+  {
+   "id": "20261003-sci",
+   "date": "2026-10-03",
+   "cat": "scienze",
+   "key": "Ecologia - Fenologia e Disaccoppiamento",
+   "title": "La fenologia e il disaccoppiamento trofico",
+   "recap": "La fenologia analizza la correlazione tra cicli biologici e variazioni stagionali. Il riscaldamento globale causa un disaccoppiamento trofico quando il tempo di risposta di una specie, guidato dalla temperatura, non coincide più con quello di una fonte di sostentamento vincolata al fotoperiodo, minacciando la biodiversità."
+  },
+  {
+   "id": "20261003-par",
+   "date": "2026-10-03",
+   "cat": "parole",
+   "key": "Lessico - Nautica storica",
+   "title": "Brivido, Ghermire, Bordata",
+   "recap": "I termini analizzati, brivido, ghermire e bordata, descrivono la dinamica operativa navale. Il brivido indica l'instabilità istantanea causata dal vento, ghermire l'atto di presa violenta durante un abbordaggio, e la bordata la simultanea scarica di artiglieria di un lato della nave, sintetizzando la gestione del tempo critico in mare."
+  },
+  {
+   "id": "20261003-geo",
+   "date": "2026-10-03",
+   "cat": "geografia",
+   "key": "Geografia - Niue",
+   "title": "L'atollo di Niue",
+   "recap": "Niue è un atollo corallino sollevato situato nell'Oceano Pacifico, caratterizzato da un altopiano calcareo che raggiunge i 60 metri di altezza. Sorto circa 1,5 milioni di anni fa a causa di spinte tettoniche, il territorio manca di bacini interni, favorendo complessi sistemi di grotte carsiche. È un caso studio fondamentale per comprendere il sollevamento della litosfera oceanica."
+  }
  ],
- "letteratura": [
-  "Tozzi - Con gli occhi chiusi",
-  "Lem - Solaris",
-  "Šalamov - Racconti della Kolyma"
- ],
- "storia": [
-  "Biosphere 2 - Esperimento 1991",
-  "Lituania - Crociate del Nord XIV secolo",
-  "Settecento - Terremoto di Lisbona 1755"
- ],
- "arte": [
-  "Affreschi conventuali di Malinalco",
-  "Andrej Rublëv - Trinità",
-  "Kabakov - L'uomo che è volato nello spazio dal suo appartamento"
- ],
- "musica": [
-  "Skrjabin - Vers la flamme",
-  "Dvořák - Quartetto Americano",
-  "Arvo Pärt - Tabula Rasa"
- ],
- "scienze": [
-  "Olbers - Paradosso cosmologico",
-  "Pauli - Principio di esclusione",
-  "Lovelock - Ipotesi di Gaia"
- ],
- "parole": [
-  "Retorica - Glossario filosofico",
-  "Lessico - Scienza",
-  "Retorica - Glossario Analitico"
- ],
- "_last_sent": "2026-10-03"
+ "ratings": {}
 }
