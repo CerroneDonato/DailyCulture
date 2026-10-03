@@ -2,7 +2,7 @@ name: Cultura del giorno
 
 on:
   schedule:
-    # Più orari UTC per coprire ora legale/solare e i ritardi o le esecuzioni
+    # PiÃ¹ orari UTC per coprire ora legale/solare e i ritardi o le esecuzioni
     # saltate di GitHub. Lo script invia una sola volta al giorno, solo se a
     # Milano sono tra le 7 e le 11. Minuto :17 per evitare l'inizio ora.
     - cron: "17 5 * * *"
@@ -11,7 +11,7 @@ on:
   workflow_dispatch: # esecuzione manuale per i test (ignora il controllo dell'ora)
 
 permissions:
-  contents: write # serve per salvare history.json
+  contents: write # serve per salvare history.json e l'archivio
 
 concurrency:
   group: cultura-del-giorno
@@ -20,6 +20,7 @@ concurrency:
 jobs:
   send:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 
@@ -41,5 +42,5 @@ jobs:
         run: |
           git config user.name "culture-bot"
           git config user.email "culture-bot@users.noreply.github.com"
-          git add history.json || true
+          git add -A
           git diff --cached --quiet || (git commit -m "Aggiorna storico" && git pull --rebase && git push)
