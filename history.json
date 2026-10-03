@@ -206,57 +206,57 @@
    "id": "20261003-let",
    "date": "2026-10-03",
    "cat": "letteratura",
-   "key": "Hyde - The Godwits Fly",
-   "title": "Robin Hyde, L'isola dei fantasmi",
-   "recap": "Robin Hyde (1906-1939) ha esplorato con The Godwits Fly (1938) la crisi identitaria neozelandese. Il romanzo utilizza la migrazione delle pittime per analizzare il legame tra memoria storica e il senso del tempo in un contesto post-coloniale."
+   "key": "Manetone - Aegyptiaca",
+   "title": "La Storia dell'Egitto di Manetone",
+   "recap": "Manetone, sacerdote vissuto nel III secolo a.C. sotto Tolomeo II, ha scritto l'Aegyptiaca, l'opera che ha definito la suddivisione della storia egizia nelle trenta dinastie tuttora utilizzate dagli studiosi. Il suo lavoro ha convertito la tradizione cronologica dei templi in una sequenza storiografica lineare, rendendo misurabile il tempo millenario delle civiltà del Nilo."
   },
   {
    "id": "20261003-sto",
    "date": "2026-10-03",
    "cat": "storia",
-   "key": "Cina - Beijing Weather Modification 2008",
-   "title": "Il Progetto di Geoingegneria di Pechino 2008",
-   "recap": "Durante le Olimpiadi di Pechino dell'8 agosto 2008, le autorità cinesi hanno utilizzato razzi a base di ioduro d'argento per indurre piogge artificiali e prevenire precipitazioni sullo stadio principale. L'operazione rappresenta un momento chiave dell'investimento cinese nella geoingegneria, volto a trasformare le condizioni atmosferiche in una variabile gestibile dal potere centrale."
+   "key": "Iran - Qanat di Gonabad",
+   "title": "Il Progetto Qanat di Gonabad",
+   "recap": "Il Qanat di Gonabad, risalente all'epoca achemenide (VI-IV secolo a.C.), rappresenta un capolavoro di ingegneria idraulica in Iran. Con una rete di oltre 33 km, il sistema sfrutta la gravità per trasportare l'acqua falda verso l'esterno, rimanendo ancora oggi un'infrastruttura operativa essenziale per l'agricoltura locale."
   },
   {
    "id": "20261003-art",
    "date": "2026-10-03",
    "cat": "arte",
-   "key": "Repin - I battellieri del Volga",
-   "title": "I battellieri del Volga",
-   "recap": "Ilya Repin completò I battellieri del Volga nel 1873. L'opera ritrae undici uomini che trainano una chiatta ed è oggi conservata al Museo di Stato Russo di San Pietroburgo. Il dipinto è considerato il capolavoro del realismo sociale russo, simbolo della condizione umana negata dal peso inesorabile del lavoro manuale."
+   "key": "Hamdi Bey - La lezione di musica",
+   "title": "Osman Hamdi Bey e La lezione di musica",
+   "recap": "Osman Hamdi Bey (1842-1910) è stato il primo pittore turco a padroneggiare la tecnica accademica occidentale. La sua opera del 1881, 'La lezione di musica', utilizza un realismo minuzioso per nobilitare la cultura ottomana, sottraendola allo sguardo stereotipato del mercato europeo dell'epoca."
   },
   {
    "id": "20261003-mus",
    "date": "2026-10-03",
    "cat": "musica",
-   "key": "Villa-Lobos - Bachianas Brasileiras n. 5",
-   "title": "Heitor Villa-Lobos, Bachianas Brasileiras n. 5",
-   "recap": "Le Bachianas Brasileiras n. 5 di Heitor Villa-Lobos sono state scritte tra il 1938 e il 1945 per soprano e ottetto di violoncelli. L'opera fonde la struttura contrappuntistica di Bach con melodie brasiliane, culminando nella celebre Aria. La direzione di riferimento rimane quella di Bidu Sayão con l'autore negli anni '40."
+   "key": "Ginastera - Danzas argentinas",
+   "title": "Alberto Ginastera - Danzas argentinas",
+   "recap": "Composte nel 1937 dal ventunenne Alberto Ginastera, le Danzas argentinas uniscono il folklore argentino a un linguaggio pianistico moderno. Il ciclo è celebre soprattutto per la Danza del gaucho matrero, brano caratterizzato da bitonalità e ritmi sincopati. L'opera rappresenta un momento fondamentale nella musica colta latinoamericana del XX secolo."
   },
   {
    "id": "20261003-sci",
    "date": "2026-10-03",
    "cat": "scienze",
-   "key": "Ecologia - Fenologia e Disaccoppiamento",
-   "title": "La fenologia e il disaccoppiamento trofico",
-   "recap": "La fenologia analizza la correlazione tra cicli biologici e variazioni stagionali. Il riscaldamento globale causa un disaccoppiamento trofico quando il tempo di risposta di una specie, guidato dalla temperatura, non coincide più con quello di una fonte di sostentamento vincolata al fotoperiodo, minacciando la biodiversità."
+   "key": "Fisica - Effetto Zeno",
+   "title": "L'effetto Zeno quantistico",
+   "recap": "L'effetto Zeno quantistico descrive l'inibizione dell'evoluzione di un sistema fisico sottoposto a osservazioni frequenti. Formalmente, deriva dalla dipendenza quadratica della probabilità di transizione in tempi brevi. I fisici Misra e Sudarshan hanno teorizzato questo 'congelamento' dinamico nel 1977, dimostrando che la misura costante resetta il sistema impedendogli di compiere transizioni di stato."
   },
   {
    "id": "20261003-par",
    "date": "2026-10-03",
    "cat": "parole",
-   "key": "Lessico - Nautica storica",
-   "title": "Brivido, Ghermire, Bordata",
-   "recap": "I termini analizzati, brivido, ghermire e bordata, descrivono la dinamica operativa navale. Il brivido indica l'instabilità istantanea causata dal vento, ghermire l'atto di presa violenta durante un abbordaggio, e la bordata la simultanea scarica di artiglieria di un lato della nave, sintetizzando la gestione del tempo critico in mare."
+   "key": "Lessico - Arcaismi",
+   "title": "Aere, Diverbio, Mattutino",
+   "recap": "Aere (dal greco aḗr) rappresenta l'atmosfera con una connotazione poetica e solenne. Diverbio deriva dal latino verbium e indica una breve disputa dialettica. Mattutino, dal latino matutinus legato a Mater Matuta, qualifica temporalmente le attività che si svolgono nelle prime ore del giorno."
   },
   {
    "id": "20261003-geo",
    "date": "2026-10-03",
    "cat": "geografia",
-   "key": "Geografia - Niue",
-   "title": "L'atollo di Niue",
-   "recap": "Niue è un atollo corallino sollevato situato nell'Oceano Pacifico, caratterizzato da un altopiano calcareo che raggiunge i 60 metri di altezza. Sorto circa 1,5 milioni di anni fa a causa di spinte tettoniche, il territorio manca di bacini interni, favorendo complessi sistemi di grotte carsiche. È un caso studio fondamentale per comprendere il sollevamento della litosfera oceanica."
+   "key": "Geografia - Ouvea",
+   "title": "L'atollo di Ouvea e la depressione di Uvea",
+   "recap": "Ouvea è un atollo corallino situato nelle isole della Lealtà, in Nuova Caledonia. La sua struttura geologica, modellata durante il Pleistocene, ospita lenti di acqua dolce il cui equilibrio idrostatico è strettamente influenzato dalle maree e dai cambiamenti del livello marino globale."
   }
  ],
  "ratings": {}
