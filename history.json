@@ -259,44 +259,12 @@
    "recap": "Ouvea è un atollo corallino situato nelle isole della Lealtà, in Nuova Caledonia. La sua struttura geologica, modellata durante il Pleistocene, ospita lenti di acqua dolce il cui equilibrio idrostatico è strettamente influenzato dalle maree e dai cambiamenti del livello marino globale."
   },
   {
-   "id": "20261004-let",
-   "date": "2026-10-04",
-   "cat": "letteratura",
-   "key": "Filloy - Op Oloop",
-   "title": "La trama del tempo in Juan Filloy",
-   "recap": "Juan Filloy (1894-2002) fu un magistrato e scrittore argentino noto per la sua produzione vasta e rigorosa. Il romanzo Op Oloop del 1934 narra il fallimentare tentativo di un uomo di pianificare rigidamente ogni momento della propria giornata, esplorando la tensione tra controllo razionale e imprevedibilità del tempo."
-  },
-  {
-   "id": "20261004-sto",
-   "date": "2026-10-04",
-   "cat": "storia",
-   "key": "Ingegneria - MOSE Venezia",
-   "title": "Il Progetto MOSE e la salvaguardia di Venezia",
-   "recap": "Il MOSE è un sistema di barriere mobili collocate alle bocche di porto di Venezia, iniziato nel 2003. Composto da 78 paratoie, il sistema permette di isolare la laguna durante le maree superiori a 110 centimetri, proteggendo la città attraverso un controllo tecnologico del flusso marino."
-  },
-  {
-   "id": "20261004-art",
-   "date": "2026-10-04",
-   "cat": "arte",
-   "key": "Anish Kapoor - Descent into Limbo",
-   "title": "Anish Kapoor, Descent into Limbo",
-   "recap": "Anish Kapoor ha creato 'Descent into Limbo' nel 1992, situata permanentemente al Castello di Rivoli. L'opera utilizza una cavità scura assorbente che annulla i riferimenti visivi, invitando a una riflessione sul vuoto e sulla percezione spaziale che si distacca dalla tradizione scultorea classica."
-  },
-  {
    "id": "20261004-mus",
    "date": "2026-10-04",
    "cat": "musica",
    "key": "Monteverdi - Pianto della Madonna",
    "title": "L'arte del lamento: il Pianto della Madonna di Monteverdi",
    "recap": "Il Pianto della Madonna, inserito nella raccolta Selva morale e spirituale di Claudio Monteverdi del 1641, è una rielaborazione sacra del precedente Lamento d'Arianna. L'opera utilizza la tecnica del basso ostinato e un uso espressivo del cromatismo per tradurre la sofferenza umana in una riflessione teologica sulla caducità del tempo."
-  },
-  {
-   "id": "20261004-sci",
-   "date": "2026-10-04",
-   "cat": "scienze",
-   "key": "Waddington - Paesaggio Epigenetico",
-   "title": "L'ipotesi dell'orologio biologico di Waddington",
-   "recap": "Conrad Waddington ha introdotto nel 1940 il concetto di paesaggio epigenetico e canalizzazione per spiegare perché gli organismi sviluppino fenotipi stabili nonostante le perturbazioni. Il modello descrive lo sviluppo come una traiettoria vincolata in una topografia energetica, dove l'evoluzione agisce ottimizzando la robustezza del sistema biologico nel tempo."
   },
   {
    "id": "20261004-par",
@@ -307,12 +275,60 @@
    "recap": "Azimut, Nadir e Zenit provengono dall'arabo scientifico e definiscono la posizione di un punto nel cielo rispetto a un osservatore terrestre. L'azimut misura la direzione orizzontale, mentre zenit e nadir identificano l'asse verticale opposto. Questi parametri sono pilastri della geodesia e della meccanica celeste."
   },
   {
+   "id": "20261004-let",
+   "date": "2026-10-04",
+   "cat": "letteratura",
+   "key": "Krasicki - Favole e parabole",
+   "title": "Ignacy Krasicki e le Fables",
+   "recap": "Ignacy Krasicki, intellettuale polacco dell'Illuminismo, ha ridefinito la favola nel 1779 attraverso uno stile essenziale e cinico. Le sue opere analizzano la fragilità del tempo e le storture del potere con un rigore logico che ha elevato la letteratura polacca del XVIII secolo. È una lettura ideale per chi ricerca una critica sociale lucida e priva di sentimentalismi."
+  },
+  {
+   "id": "20261004-sto",
+   "date": "2026-10-04",
+   "cat": "storia",
+   "key": "Tupaia - Mappe Pacifico",
+   "title": "La navigazione di Tupaia",
+   "recap": "Nel 1769, il navigatore polinesiano Tupaia fornì a James Cook una mappa mentale di settantaquattro isole del Pacifico, dimostrando una capacità di orientamento avanzata basata su parametri astronomici e naturali. L'episodio rimane un caso fondamentale di incontro tra diversi paradigmi di rappresentazione dello spazio e del tempo di navigazione."
+  },
+  {
+   "id": "20261004-sci",
+   "date": "2026-10-04",
+   "cat": "scienze",
+   "key": "Maxwell - Il demone dell'entropia",
+   "title": "L'entropia di Maxwell",
+   "recap": "Proposto nel 1867 da Maxwell, il paradosso del demone metteva in dubbio la seconda legge della termodinamica. La risoluzione moderna, dovuta a Landauer, dimostra che il processo di cancellazione dell'informazione genera entropia, salvaguardando la freccia del tempo. Il costo energetico dell'elaborazione di un bit è pari a kB T ln 2."
+  },
+  {
    "id": "20261004-sag",
    "date": "2026-10-04",
    "cat": "saggio",
-   "key": "Harrison - Cronometro marino",
-   "title": "L'orologio di Harrison e la longitudine",
-   "recap": "Il Longitude Act del 1714 offrì una ricompensa per il calcolo della longitudine. John Harrison, tra il 1735 e il 1761, progettò quattro cronometri marini; l'H4 risolse il problema dimostrando che la meccanica di precisione poteva superare l'astronomia classica nella navigazione oceanica."
+   "key": "Fisica - Costante di struttura fine",
+   "title": "La stabilità della costante di struttura fine",
+   "recap": "La costante di struttura fine (alfa), circa 1/137, è un numero adimensionale cruciale per l'interazione elettromagnetica. Studi su quasar confermano la sua stabilità temporale su scala cosmologica, rendendola un pilastro invariante della fisica atomica. La sua precisione sperimentale, ottenuta con atomi di cesio, interroga la scienza sull'origine di tale valore fondamentale."
+  },
+  {
+   "id": "20261004-eco",
+   "date": "2026-10-04",
+   "cat": "economia",
+   "key": "Easterlin - Paradosso della felicità",
+   "title": "Il paradosso di Easterlin",
+   "recap": "Il paradosso di Easterlin, formulato nel 1974, dimostra che la felicità non cresce indefinitamente con il reddito. Il fenomeno si spiega con l'adattamento edonico e il confronto sociale, rendendo la ricerca di status una dinamica a somma zero che inficia il progresso materiale."
+  },
+  {
+   "id": "20261004-art",
+   "date": "2026-10-04",
+   "cat": "arte",
+   "key": "Filosseno di Eretria - Mosaico di Alessandro",
+   "title": "Il mosaico di Alessandro",
+   "recap": "Il Mosaico di Alessandro, datato al I secolo a.C. e rinvenuto nella Casa del Fauno a Pompei, è un capolavoro di opus vermiculatum che ritrae lo scontro tra Alessandro Magno e Dario III. Attraverso l'uso sapiente del colore e della prospettiva, l'opera trasforma una sconfitta storica in una meditazione sulla caducità del potere e sull'eternità dell'arte."
+  },
+  {
+   "id": "20261004-nat",
+   "date": "2026-10-04",
+   "cat": "natura",
+   "key": "Pinus longaeva - Longevità",
+   "title": "La longevità di Pinus longaeva",
+   "recap": "Il Pinus longaeva, situato nelle White Mountains, vive oltre 5000 anni grazie a un metabolismo lento e alla resina protettiva. Studiato da Edmund Schulman per la dendrocronologia, funge da pilastro per la datazione al carbonio-14."
   }
  ],
  "ratings": {}
