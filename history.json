@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-04",
+ "_last_sent": "2026-10-05",
  "_offset": 0,
  "log": [
   {
@@ -329,6 +329,62 @@
    "key": "Pinus longaeva - Longevità",
    "title": "La longevità di Pinus longaeva",
    "recap": "Il Pinus longaeva, situato nelle White Mountains, vive oltre 5000 anni grazie a un metabolismo lento e alla resina protettiva. Studiato da Edmund Schulman per la dendrocronologia, funge da pilastro per la datazione al carbonio-14."
+  },
+  {
+   "id": "20261005-let",
+   "date": "2026-10-05",
+   "cat": "letteratura",
+   "key": "Alaa al-Aswani - La casa di Yaqubian",
+   "title": "La casa di Yaqubian",
+   "recap": "Il romanzo di Alaa al-Aswani, pubblicato nel 2002, utilizza l'architettura di un palazzo del Cairo per analizzare le fratture sociali e politiche dell'Egitto contemporaneo. Attraverso una narrazione corale, l'autore mette a nudo i meccanismi del potere e la crisi della modernità laica in Medio Oriente."
+  },
+  {
+   "id": "20261005-sto",
+   "date": "2026-10-05",
+   "cat": "storia",
+   "key": "Mao Zedong - Campagna Quattro Pesti",
+   "title": "La Campagna contro i passeri",
+   "recap": "Nel 1958, Mao Zedong ordinò l'eliminazione dei passeri cinesi, ritenuti dannosi per l'agricoltura. La scomparsa del predatore naturale provocò un'infestazione di locuste che distrusse i raccolti, contribuendo alla Grande Carestia Cinese. L'evento rimane un caso studio fondamentale sul fallimento del controllo centralizzato in sistemi complessi."
+  },
+  {
+   "id": "20261005-sci",
+   "date": "2026-10-05",
+   "cat": "scienze",
+   "key": "Fowler - Pressione di degenerazione",
+   "title": "La stabilità della materia",
+   "recap": "La pressione di degenerazione elettronica, formalizzata da Fowler nel 1926, spiega come la meccanica quantistica impedisca il collasso delle nane bianche. Quando il Limite di Chandrasekhar viene superato, la gravità vince sulla degenerazione fermionica, segnando il confine tra la materia ordinaria e i collassi gravitazionali estremi."
+  },
+  {
+   "id": "20261005-ing",
+   "date": "2026-10-05",
+   "cat": "ingegneria",
+   "key": "Willcocks - Diga Assuan",
+   "title": "La deviazione del Nilo",
+   "recap": "Tra il 1898 e il 1902, Sir William Willcocks realizzò la prima diga di Assuan per regolarizzare il Nilo. La struttura richiese due successivi rialzi nel 1907 e 1929, evidenziando la difficoltà di prevedere la reale capacità necessaria per la gestione dei bacini idrici su larga scala."
+  },
+  {
+   "id": "20261005-par",
+   "date": "2026-10-05",
+   "cat": "parole",
+   "key": "Lessico - Misura e Stile",
+   "title": "Ammisurare, Conciofosse, Pastiche",
+   "recap": "Ammisurare indica la ricerca di proporzione e adattamento, conciofosse è un antico connettivo concessivo che denota rigore logico, e pastiche descrive una tecnica compositiva basata sull'imitazione stilistica consapevole. Questi termini riflettono la tensione tra la precisione tecnica e l'eleganza espressiva."
+  },
+  {
+   "id": "20261005-nat",
+   "date": "2026-10-05",
+   "cat": "natura",
+   "key": "Blakemore - Batteri Magnetotattici",
+   "title": "Il magnetismo magnetotattico",
+   "recap": "I batteri magnetotattici, scoperti da Richard P. Blakemore nel 1975, utilizzano magnetosomi intracellulari per orientarsi lungo il campo magnetico terrestre. Questa capacità di biomineralizzazione permette loro di ottimizzare la sopravvivenza in nicchie ecologiche specifiche e rappresenta un modello di studio cruciale per la geomicrobiologia."
+  },
+  {
+   "id": "20261005-art",
+   "date": "2026-10-05",
+   "cat": "arte",
+   "key": "Piero della Francesca - Flagellazione",
+   "title": "La Flagellazione di Cristo di Piero della Francesca",
+   "recap": "La Flagellazione di Piero della Francesca, databile intorno al 1450, è un capolavoro di geometria e prospettiva. Attraverso l'uso sapiente della tecnica a olio e tempera, l'artista esplora la misura come strumento di organizzazione razionale dello spazio, separando con rigore matematico la scena sacra da quella profana."
   }
  ],
  "ratings": {}
