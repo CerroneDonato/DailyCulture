@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-05",
+ "_last_sent": "2026-10-07",
  "_offset": 0,
  "log": [
   {
@@ -385,6 +385,54 @@
    "key": "Piero della Francesca - Flagellazione",
    "title": "La Flagellazione di Cristo di Piero della Francesca",
    "recap": "La Flagellazione di Piero della Francesca, databile intorno al 1450, è un capolavoro di geometria e prospettiva. Attraverso l'uso sapiente della tecnica a olio e tempera, l'artista esplora la misura come strumento di organizzazione razionale dello spazio, separando con rigore matematico la scena sacra da quella profana."
+  },
+  {
+   "id": "20261007-let",
+   "date": "2026-10-07",
+   "cat": "letteratura",
+   "key": "Erofeev - Mosca-Petuški",
+   "title": "Venedikt Erofeev e Mosca-Petuški",
+   "recap": "Venedikt Erofeev scrisse Mosca-Petuški nel 1969 come poema in prosa clandestino, diventato poi un pilastro del samizdat. Il testo narra il viaggio alcolico di Venja, trasformando il rigore tecnico della composizione di cocktail in una metafora della disperazione e della libertà individuale contro l'assurdo sovietico."
+  },
+  {
+   "id": "20261007-sto",
+   "date": "2026-10-07",
+   "cat": "storia",
+   "key": "India-Siddhanta-Astronomia",
+   "title": "Il canone del tempo in India",
+   "recap": "Tra il V e il VI secolo, l'astronomo Aryabhata e la scuola del Surya Siddhanta svilupparono modelli matematici per la misurazione dei cicli celesti, introducendo calcoli trigonometrici avanzati. Tali studi permisero una precisione astronomica di alto livello, influenzando successivamente l'astronomia araba e medievale, e testimoniano una rigorosa applicazione della matematica alla gestione del tempo."
+  },
+  {
+   "id": "20261007-sci",
+   "date": "2026-10-07",
+   "cat": "scienze",
+   "key": "Ostwald - Maturazione",
+   "title": "La cinetica di Ostwald",
+   "recap": "La maturazione di Ostwald è un processo spontaneo in cui le particelle più piccole si sciolgono a favore di quelle grandi per minimizzare l'energia libera superficiale. Questo meccanismo, descritto nel 1896, segue una cinetica di crescita basata sulla legge di Kelvin, influenzando profondamente la stabilità dei colloidi e la sintesi di nanomateriali."
+  },
+  {
+   "id": "20261007-fil",
+   "date": "2026-10-07",
+   "cat": "filosofia",
+   "key": "Pyatigorsky - Filosofia Riflessiva",
+   "title": "La semantica dei sistemi artificiali",
+   "recap": "Alexander Pyatigorsky (1929-2009) analizza la separazione tra coscienza e pensiero, sostenendo che l'osservazione del processo mentale richiede una distanza critica inaccessibile alle scienze empiriche. La sua opera invita a considerare il pensiero come un evento autonomo, essenziale per comprendere i limiti della logica formale nelle applicazioni moderne."
+  },
+  {
+   "id": "20261007-ant",
+   "date": "2026-10-07",
+   "cat": "archeologia",
+   "key": "Caral-Norte-Chico",
+   "title": "La Ruota di Caral",
+   "recap": "Caral, esplorata sistematicamente dal 1994, è la civiltà più antica delle Americhe. L'uso dei quipu e l'orientamento astronomico degli edifici indicano una cultura che elevò la misura del tempo e delle risorse a fondamento del proprio ordine sociale."
+  },
+  {
+   "id": "20261007-cin",
+   "date": "2026-10-07",
+   "cat": "cinema",
+   "key": "Wong Kar-wai - In the Mood for Love",
+   "title": "In the Mood for Love",
+   "recap": "Diretto da Wong Kar-wai nel 2000, In the Mood for Love esplora il legame platonico tra due vicini di casa a Hong Kong nel 1962. Il film è celebre per il suo stile ipnotico, caratterizzato dall'uso di ellissi narrative, inquadrature claustrofobiche e una colonna sonora iconica che sottolinea il tema della moderazione emotiva."
   }
  ],
  "ratings": {}
