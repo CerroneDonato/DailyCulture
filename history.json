@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-07",
+ "_last_sent": "2026-10-08",
  "_offset": 0,
  "log": [
   {
@@ -433,6 +433,62 @@
    "key": "Wong Kar-wai - In the Mood for Love",
    "title": "In the Mood for Love",
    "recap": "Diretto da Wong Kar-wai nel 2000, In the Mood for Love esplora il legame platonico tra due vicini di casa a Hong Kong nel 1962. Il film è celebre per il suo stile ipnotico, caratterizzato dall'uso di ellissi narrative, inquadrature claustrofobiche e una colonna sonora iconica che sottolinea il tema della moderazione emotiva."
+  },
+  {
+   "id": "20261008-let",
+   "date": "2026-10-08",
+   "cat": "letteratura",
+   "key": "Karel Čapek - R.U.R.",
+   "title": "Karel Čapek e la RUR",
+   "recap": "Karel Čapek pubblicò R.U.R. nel 1920, introducendo il termine robot nel lessico universale. L'opera anticipa i rischi sociali dell'automazione integrale, mettendo in guardia contro la sostituzione del lavoro umano con sistemi privi di coscienza morale."
+  },
+  {
+   "id": "20261008-sto",
+   "date": "2026-10-08",
+   "cat": "storia",
+   "key": "Sabei - Diga di Marib",
+   "title": "La diga di Marib",
+   "recap": "La diga di Marib, costruita dai Sabei intorno all'VIII secolo a.C. in Yemen, fu un'opera idraulica monumentale che permise l'irrigazione di migliaia di ettari in pieno deserto. Il suo cedimento definitivo nel VI secolo d.C. segnò il declino della civiltà dei Sabei, evidenziando la fragilità delle infrastrutture civili rispetto ai cicli geologici e climatici."
+  },
+  {
+   "id": "20261008-sci",
+   "date": "2026-10-08",
+   "cat": "scienze",
+   "key": "Chandrasekhar - Limite di massa",
+   "title": "La stabilità delle nane bianche",
+   "recap": "Il limite di Chandrasekhar, calcolato nel 1930 da Subrahmanyan Chandrasekhar, stabilisce il valore massimo di 1,44 masse solari per una nana bianca. Tale limite emerge dal bilanciamento tra gravità e pressione di degenerazione relativistica degli elettroni, risultando fondamentale per la classificazione delle esplosioni di supernovae di tipo Ia."
+  },
+  {
+   "id": "20261008-ing",
+   "date": "2026-10-08",
+   "cat": "ingegneria",
+   "key": "Gunter - Regolo 1624",
+   "title": "Il regolo di Gunter",
+   "recap": "Edmund Gunter, ispirato dai logaritmi di Napier, inventò nel 1624 la prima scala logaritmica lineare per semplificare i calcoli trigonometrici. Questa innovazione, poi perfezionata da William Oughtred con il regolo scorrevole, ha dominato la prassi ingegneristica per secoli. Il caso dimostra come la traduzione di astrazioni matematiche in strumenti fisici immediati sia la chiave fondamentale per il progresso tecnico."
+  },
+  {
+   "id": "20261008-par",
+   "date": "2026-10-08",
+   "cat": "parole",
+   "key": "Metrologia - Lessico tecnico",
+   "title": "Decimetro, Aforismo, Verniero",
+   "recap": "Il decimetro rappresenta la scala fondamentale del sistema metrico, il verniero è il dispositivo inventato da Pierre Vernier nel 1631 per raffinare la lettura delle misure, e l'aforisma costituisce l'equivalente logico della precisione, condensando il pensiero in un enunciato delimitato."
+  },
+  {
+   "id": "20261008-nat",
+   "date": "2026-10-08",
+   "cat": "natura",
+   "key": "Columba livia - Navigazione magnetica",
+   "title": "La navigazione dei Piccioni Viaggiatori",
+   "recap": "Il piccione viaggiatore utilizza una combinazione di navigazione basata su criptocromi retinici e magnetite per percepire il campo magnetico terrestre. Studi pionieristici di Wolfgang Wiltschko hanno confermato la capacità di questi uccelli di rilevare l'inclinazione magnetica con una precisione dello 0,05%, rendendoli un modello di studio fondamentale per l'etologia e la navigazione biologica."
+  },
+  {
+   "id": "20261008-geo",
+   "date": "2026-10-08",
+   "cat": "geografia",
+   "key": "Geografia - Danakil",
+   "title": "La depressione di Danakil",
+   "recap": "La depressione di Danakil, situata nel Triangolo di Afar in Etiopia, è una regione sotto il livello del mare dove convergono tre placche tettoniche. Il sito, caratterizzato da attività vulcanica e formazioni idrotermali estreme come Dallol, funge da laboratorio naturale per studiare la deriva dei continenti e i limiti biologici della vita in ambienti ipersalini e acidi."
   }
  ],
  "ratings": {}
