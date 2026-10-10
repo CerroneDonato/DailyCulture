@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-09",
+ "_last_sent": "2026-10-10",
  "_offset": 0,
  "log": [
   {
@@ -545,6 +545,54 @@
    "key": "Chartres - Cattedrale",
    "title": "La Cattedrale di Chartres",
    "recap": "La Cattedrale di Chartres, riedificata dopo il 1194, incarna il culmine del gotico classico attraverso l'uso innovativo di archi rampanti e volte a crociera. L'opera è un monumento alla geometria medievale, dove il rigore matematico delle proporzioni permette di elevare strutture verticali di inusitata leggerezza."
+  },
+  {
+   "id": "20261010-let",
+   "date": "2026-10-10",
+   "cat": "letteratura",
+   "key": "Zamjatin - Noi",
+   "title": "Evgenij Zamjatin e Noi",
+   "recap": "Scritto da Evgenij Zamjatin nel 1920, Noi è il prototipo del romanzo distopico moderno. Attraverso il diario del numero D-503, l'autore analizza il conflitto tra la rigidità matematica dello Stato Unico e la natura caotica dell'individuo."
+  },
+  {
+   "id": "20261010-sto",
+   "date": "2026-10-10",
+   "cat": "storia",
+   "key": "Pliska - Calendario bulgaro",
+   "title": "La misura del tempo nell'Impero bulgaro",
+   "recap": "Nel IX secolo, il Primo Impero bulgaro utilizzò il calendario di Pliska per gestire il tempo tramite una complessa struttura basata sul ciclo di dodici anni. Questo reperto dimostra l'esistenza di competenze astronomiche avanzate volte a risolvere il problema della misura temporale a scopi agricoli e amministrativi."
+  },
+  {
+   "id": "20261010-sci",
+   "date": "2026-10-10",
+   "cat": "scienze",
+   "key": "Landauer - Principio di cancellazione",
+   "title": "La soglia di Landauer",
+   "recap": "Il principio di Landauer, stabilito nel 1961, dimostra che cancellare un bit di informazione dissipa inevitabilmente energia pari a k_B T ln(2). Questo limite fondamentale segna il confine termodinamico tra elaborazione logica reversibile e irreversibile."
+  },
+  {
+   "id": "20261010-arc",
+   "date": "2026-10-10",
+   "cat": "architettura",
+   "key": "Toyo Ito - Mediatheque di Sendai",
+   "title": "Mediatheque di Sendai",
+   "recap": "Progettata da Toyo Ito e completata nel 2001, la Mediatheque di Sendai utilizza 13 tubi strutturali irregolari e piastre a nido d'ape per creare uno spazio fluido e trasparente. La struttura è protetta da un innovativo sistema di isolamento sismico che le ha permesso di resistere al sisma del 2011, confermandosi un capolavoro di ingegneria civile e architettura contemporanea."
+  },
+  {
+   "id": "20261010-cib",
+   "date": "2026-10-10",
+   "cat": "cibo",
+   "key": "Roma Antica - Garum",
+   "title": "Il Garum e la chimica dell'umami",
+   "recap": "Il Garum è una salsa di pesce fermentata dell'antichità, ottenuta tramite proteolisi enzimatica in salamoia. Il processo, gestito nelle cetariae romane, produce alti livelli di acido glutammico, creando un gusto umami che ancora oggi definisce molte cucine orientali."
+  },
+  {
+   "id": "20261010-fil",
+   "date": "2026-10-10",
+   "cat": "filosofia",
+   "key": "Gangesha Upadhyaya - Navya-Nyaya",
+   "title": "La Logica di Navya-Nyāya",
+   "recap": "Il sistema Navya-Nyāya, formalizzato da Gangesha Upadhyaya nel XII secolo, ha introdotto un rigore logico basato sulla scomposizione delle proprietà relazionali. Questo metodo, fondamentale per la filosofia indiana, offre una struttura analitica per la validazione della conoscenza paragonabile alla moderna logica simbolica."
   }
  ],
  "ratings": {}
