@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-10",
+ "_last_sent": "2026-10-11",
  "_offset": 0,
  "log": [
   {
@@ -593,6 +593,62 @@
    "key": "Gangesha Upadhyaya - Navya-Nyaya",
    "title": "La Logica di Navya-Nyāya",
    "recap": "Il sistema Navya-Nyāya, formalizzato da Gangesha Upadhyaya nel XII secolo, ha introdotto un rigore logico basato sulla scomposizione delle proprietà relazionali. Questo metodo, fondamentale per la filosofia indiana, offre una struttura analitica per la validazione della conoscenza paragonabile alla moderna logica simbolica."
+  },
+  {
+   "id": "20261011-let",
+   "date": "2026-10-11",
+   "cat": "letteratura",
+   "key": "Kržižanovskij - Narrativa",
+   "title": "Sigizmund Kržižanovskij e il ritorno dell'astratto",
+   "recap": "Sigizmund Kržižanovskij (1887-1950) è stato uno dei più visionari autori russi del primo Novecento, rimasto pressoché ignoto fino alla riscoperta dei suoi manoscritti negli anni Ottanta. Attraverso opere come Il quadrato dell'abitare e Memorie del futuro, ha indagato con rigore matematico la rottura tra lo spazio fisico e la percezione soggettiva, usando la letteratura come uno strumento di indagine metafisica contro il determinismo dell'epoca."
+  },
+  {
+   "id": "20261011-sto",
+   "date": "2026-10-11",
+   "cat": "storia",
+   "key": "Midhat Pasha - Legge Fondiaria 1858",
+   "title": "La misura del deserto",
+   "recap": "Nel 1858, l'Impero Ottomano emanò una nuova legge fondiaria per modernizzare la gestione del suolo. Midhat Pasha implementò il sistema tramite un catasto rigoroso tra il 1864 e il 1868, cercando di tradurre il possesso in proprietà legale ma finendo per favorire involontariamente l'accumulo di terre nelle mani delle élite locali."
+  },
+  {
+   "id": "20261011-sci",
+   "date": "2026-10-11",
+   "cat": "scienze",
+   "key": "Loschmidt - Paradosso dell'irreversibilità",
+   "title": "Il paradosso di Loschmidt",
+   "recap": "Il paradosso di Loschmidt, formulato nel 1876, mette in luce la tensione tra la reversibilità delle leggi dinamiche di Newton e l'irreversibilità imposta dalla termodinamica. La risoluzione risiede nella natura statistica dell'entropia, che rende il ritorno all'ordine un evento tecnicamente possibile ma statisticamente trascurabile."
+  },
+  {
+   "id": "20261011-sag",
+   "date": "2026-10-11",
+   "cat": "saggio",
+   "key": "Michelson-Morley - Interferometria",
+   "title": "La calibrazione dell'incerto",
+   "recap": "Nel 1887, Michelson e Morley tentarono di misurare l'etere utilizzando un interferometro di alta precisione. L'esperimento produsse un risultato nullo, dimostrando l'assenza del vento d'etere e spianando la strada alla relatività di Einstein. La loro esperienza resta il paradigma di come la misura precisa possa invalidare teorie consolidate."
+  },
+  {
+   "id": "20261011-eco",
+   "date": "2026-10-11",
+   "cat": "economia",
+   "key": "Pietro I - Riforma monetaria",
+   "title": "L'esperimento monetario di Pietro il Grande",
+   "recap": "Tra il 1700 e il 1725, Pietro il Grande riformò il sistema monetario russo introducendo la suddivisione decimale del rublo. Tale innovazione cercò di standardizzare il valore per fini bellici e fiscali, anticipando le moderne metriche contabili nonostante i limiti strutturali dell'economia imperiale."
+  },
+  {
+   "id": "20261011-mus",
+   "date": "2026-10-11",
+   "cat": "musica",
+   "key": "Ildegarda di Bingen - Ordo Virtutum",
+   "title": "Hildegard von Bingen, Ordo Virtutum",
+   "recap": "L'Ordo Virtutum di Ildegarda di Bingen, databile intorno al 1151, è un dramma liturgico che utilizza la monodia estrema per esplorare la lotta tra bene e male. L'opera distingue le virtù dal diavolo attraverso il contrasto tra il canto melodico e il rumore caotico, incarnando il concetto di misura come ordine divino."
+  },
+  {
+   "id": "20261011-geo",
+   "date": "2026-10-11",
+   "cat": "geografia",
+   "key": "India - Cratere di Lonar",
+   "title": "L'anomalia di Lonar",
+   "recap": "Il Cratere di Lonar, in India, è una depressione di 1,8 km formata 52.000 anni fa dall'impatto di un meteorite in un'area di basalto. La sua acqua è caratterizzata da un pH estremo e una salinità elevata, rendendolo un sito fondamentale per lo studio di microrganismi estremofili e della geologia d'impatto."
   }
  ],
  "ratings": {}
