@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-11",
+ "_last_sent": "2026-10-13",
  "_offset": 0,
  "log": [
   {
@@ -649,6 +649,62 @@
    "key": "India - Cratere di Lonar",
    "title": "L'anomalia di Lonar",
    "recap": "Il Cratere di Lonar, in India, è una depressione di 1,8 km formata 52.000 anni fa dall'impatto di un meteorite in un'area di basalto. La sua acqua è caratterizzata da un pH estremo e una salinità elevata, rendendolo un sito fondamentale per lo studio di microrganismi estremofili e della geologia d'impatto."
+  },
+  {
+   "id": "20261013-let",
+   "date": "2026-10-13",
+   "cat": "letteratura",
+   "key": "Shen Kuo - Mengxi Bitan",
+   "title": "Il cannocchiale di Shen Kuo",
+   "recap": "Shen Kuo (1031-1095) è stato un genio poliedrico della dinastia Song. Nel suo capolavoro, il Mengxi Bitan del 1088, descrive per la prima volta la declinazione magnetica della bussola e intuisce la formazione dei continenti tramite sedimentazione, segnando un punto di svolta fondamentale nella storia della scienza empirica."
+  },
+  {
+   "id": "20261013-sto",
+   "date": "2026-10-13",
+   "cat": "storia",
+   "key": "Banaba - Fosfati",
+   "title": "L'incidente di Banaba",
+   "recap": "Tra il 1900 e il 1979, l'isola di Banaba è stata quasi interamente scavata per estrarre fosfato ad alto grado. L'operazione, gestita dalla British Phosphate Commissioners, ha forzato la deportazione degli abitanti nativi sull'isola di Rabi, cancellando di fatto l'ecosistema e la cultura indigena originale."
+  },
+  {
+   "id": "20261013-sci",
+   "date": "2026-10-13",
+   "cat": "scienze",
+   "key": "Wright - Landscape adattativo",
+   "title": "L'orizzonte di Wright",
+   "recap": "Sewall Wright introdusse nel 1932 i paesaggi adattativi per spiegare come le popolazioni evolvono. La sfida è superare i minimi di fitness locali tramite la deriva genetica, una sorta di esplorazione stocastica dello spazio genotipico. Questo modello bilancia il rigido determinismo della selezione naturale con la necessità di una variabilità casuale."
+  },
+  {
+   "id": "20261013-mat",
+   "date": "2026-10-13",
+   "cat": "matematica",
+   "key": "Smale - Eversione della sfera",
+   "title": "Il paradosso di Smale",
+   "recap": "Nel 1957, Stephen Smale dimostrò che una sfera S² può essere rivoltata dall'interno all'esterno tramite un'omotopia regolare. Questo risultato fondamentale nella topologia differenziale sfida l'intuizione visiva, garantendo che l'operazione sia tecnicamente possibile senza creare pieghe o singolarità."
+  },
+  {
+   "id": "20261013-art",
+   "date": "2026-10-13",
+   "cat": "arte",
+   "key": "Colin McCahon - Northland Panels",
+   "title": "La pittura di Colin McCahon",
+   "recap": "Colin McCahon, esponente del modernismo neozelandese, ha ridefinito il linguaggio pittorico nel 1974 con l'opera Northland Panels. Attraverso l'uso del bianco e nero e l'integrazione di testo e astrazione, l'autore esplora il confine tra la spiritualità e la solitudine del paesaggio oceanico."
+  },
+  {
+   "id": "20261013-geo",
+   "date": "2026-10-13",
+   "cat": "geografia",
+   "key": "Egitto - Qattara",
+   "title": "La depressione di Qattara",
+   "recap": "La depressione di Qattara in Egitto è un enorme bacino endoreico che raggiunge i 133 metri sotto il livello del mare. Formata dall'erosione eolica durante il Pleistocene, la regione ha funto da barriera naturale insormontabile durante la Seconda Guerra Mondiale. Resta un sito di interesse per progetti mai attuati di ingegneria idroelettrica su scala massiva."
+  },
+  {
+   "id": "20261013-mus",
+   "date": "2026-10-13",
+   "cat": "musica",
+   "key": "Liu Tianhua - Liang Xiao",
+   "title": "Liu Tianhua e la modernizzazione dell'erhu",
+   "recap": "Liu Tianhua (1928) ha trasformato l'erhu da strumento popolare a voce solistica moderna con Liang Xiao. Il brano integra strutture compositive occidentali con la scala pentatonica, definendo il nuovo standard accademico della musica cinese del Novecento."
   }
  ],
  "ratings": {}
