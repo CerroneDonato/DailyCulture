@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-13",
+ "_last_sent": "2026-10-14",
  "_offset": 0,
  "log": [
   {
@@ -705,6 +705,54 @@
    "key": "Liu Tianhua - Liang Xiao",
    "title": "Liu Tianhua e la modernizzazione dell'erhu",
    "recap": "Liu Tianhua (1928) ha trasformato l'erhu da strumento popolare a voce solistica moderna con Liang Xiao. Il brano integra strutture compositive occidentali con la scala pentatonica, definendo il nuovo standard accademico della musica cinese del Novecento."
+  },
+  {
+   "id": "20261014-let",
+   "date": "2026-10-14",
+   "cat": "letteratura",
+   "key": "Nikitin - Viaggio oltre i tre mari",
+   "title": "Il Viaggio oltre il confine di Afanasij Nikitin",
+   "recap": "Afanasij Nikitin, mercante di Tver, scrisse tra il 1466 e il 1472 il 'Viaggio oltre i tre mari', il primo resoconto russo di un viaggio in India. L'opera si distingue per l'oggettività scientifica e la mancanza di pregiudizi religiosi, offrendo una preziosa testimonianza storica sull'Asia del XV secolo."
+  },
+  {
+   "id": "20261014-sto",
+   "date": "2026-10-14",
+   "cat": "storia",
+   "key": "Hasekura Tsunenaga - Missione Keicho",
+   "title": "La missione di Hasekura Tsunenaga",
+   "recap": "Tra il 1613 e il 1620, Hasekura Tsunenaga guidò una storica missione diplomatica giapponese in Europa a bordo del Date Maru. Nonostante l'accoglienza a Roma, il mutato clima politico giapponese verso il cristianesimo ne vanificò gli intenti commerciali, contribuendo alla definitiva chiusura del paese con il decreto Sakoku."
+  },
+  {
+   "id": "20261014-sci",
+   "date": "2026-10-14",
+   "cat": "scienze",
+   "key": "Mpemba - Paradosso termodinamico",
+   "title": "Il paradosso di Mpemba",
+   "recap": "Il paradosso di Mpemba, osservato nel 1963, indica che acqua calda può gelare prima di acqua fredda. Il fenomeno non viola la termodinamica ma deriva da effetti combinati di evaporazione, convezione accelerata e variazioni nella concentrazione di gas disciolti."
+  },
+  {
+   "id": "20261014-fil",
+   "date": "2026-10-14",
+   "cat": "filosofia",
+   "key": "Eubulide - Sorite",
+   "title": "Il paradosso del Sorite",
+   "recap": "Eubulide di Mileto, nel IV secolo a.C., formulò il paradosso del Sorite per dimostrare l'impossibilità logica di definire confini netti in serie quantitative. Il problema evidenzia come il linguaggio umano sia inadeguato a classificare la realtà quando questa varia per gradi impercettibili, ponendo sfide fondamentali alla logica classica e alla moderna teoria dell'informazione."
+  },
+  {
+   "id": "20261014-ant",
+   "date": "2026-10-14",
+   "cat": "archeologia",
+   "key": "Etiopia - Diplomazia Settecentesca",
+   "title": "La missione di Teodoro II",
+   "recap": "Le recenti analisi su documenti e reperti di corte a Gondar, risalenti al XVIII secolo, evidenziano una struttura statale etiope capace di gestire la diplomazia internazionale. L'uso di tecniche moderne di datazione conferma l'autonomia tecnica e politica del regno di Iyasu II, impegnato nel definire confini chiari contro l'espansionismo straniero."
+  },
+  {
+   "id": "20261014-arc",
+   "date": "2026-10-14",
+   "cat": "architettura",
+   "key": "Mick Pearce - Council House 2",
+   "title": "Council House 2",
+   "recap": "La Council House 2 di Melbourne, completata nel 2006, è un edificio pionieristico progettato da Mick Pearce per integrare sistemi passivi di ventilazione e raffreddamento radiante. Attraverso l'uso di turbine eoliche e masse termiche in calcestruzzo, ha ridefinito gli standard di efficienza energetica in ambiente urbano, ottenendo la prima certificazione 6 stelle Green Star in Australia."
   }
  ],
  "ratings": {}
