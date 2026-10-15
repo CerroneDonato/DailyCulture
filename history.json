@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-14",
+ "_last_sent": "2026-10-15",
  "_offset": 0,
  "log": [
   {
@@ -753,6 +753,62 @@
    "key": "Mick Pearce - Council House 2",
    "title": "Council House 2",
    "recap": "La Council House 2 di Melbourne, completata nel 2006, è un edificio pionieristico progettato da Mick Pearce per integrare sistemi passivi di ventilazione e raffreddamento radiante. Attraverso l'uso di turbine eoliche e masse termiche in calcestruzzo, ha ridefinito gli standard di efficienza energetica in ambiente urbano, ottenendo la prima certificazione 6 stelle Green Star in Australia."
+  },
+  {
+   "id": "20261015-let",
+   "date": "2026-10-15",
+   "cat": "letteratura",
+   "key": "Luciano di Samosata - Storia vera",
+   "title": "La Storia vera di Luciano di Samosata",
+   "recap": "Scritta nel II secolo d.C. da Luciano di Samosata, la Storia vera è un resoconto parodistico di un viaggio lunare. L'opera è considerata un precursore della fantascienza per il suo uso sistematico dell'invenzione fantastica, utilizzata con intento satirico per deridere le falsità dei filosofi e dei poeti antichi."
+  },
+  {
+   "id": "20261015-sto",
+   "date": "2026-10-15",
+   "cat": "storia",
+   "key": "Pace di Zsitvatorok - 1606",
+   "title": "La pace di Zsitvatorok",
+   "recap": "La pace di Zsitvatorok del 1606 sancì la fine della Lunga Guerra tra Asburgo e Ottomani. L'evento fu rivoluzionario perché il Sultano accettò il titolo imperiale del sovrano austriaco, sancendo la fine di una gerarchia unilaterale e definendo il confine come una linea legale tra potenze sovrane pari."
+  },
+  {
+   "id": "20261015-sci",
+   "date": "2026-10-15",
+   "cat": "scienze",
+   "key": "Eddington - Limite di luminosità",
+   "title": "La soglia di Eddington",
+   "recap": "Il Limite di Eddington (1926) segna il confine oltre il quale la pressione della luce vince la gravità. È un parametro fondamentale per calcolare la massa massima delle stelle e il tasso di accrescimento dei buchi neri, agendo come un termostato astrofisico che regola l'evoluzione delle strutture galattiche."
+  },
+  {
+   "id": "20261015-ing",
+   "date": "2026-10-15",
+   "cat": "ingegneria",
+   "key": "Cape Otway - Faro 1848",
+   "title": "Il faro di Cape Otway",
+   "recap": "Il faro di Cape Otway, completato nel 1848, fu una fondamentale opera di ingegneria civile volta a garantire la sicurezza marittima nello Stretto di Bass. Utilizzando arenaria locale e avanzate lenti di Fresnel, la struttura ha dimostrato l'efficacia di una progettazione adattiva in contesti geografici isolati."
+  },
+  {
+   "id": "20261015-par",
+   "date": "2026-10-15",
+   "cat": "parole",
+   "key": "Arcaismi - Confine",
+   "title": "Amnìa, Vèntre, Limine",
+   "recap": "I termini analizzati, Amnìa, Vèntre e Lìmine, descrivono il confine come esperienza cognitiva e spaziale. L'amnia ne segna l'oblio, il ventre l'oscurità profonda e il limine la soglia di transizione, in un gioco di rimandi tra etimologia classica e prospettiva moderna."
+  },
+  {
+   "id": "20261015-nat",
+   "date": "2026-10-15",
+   "cat": "natura",
+   "key": "Thiomargarita magnifica - Biologia",
+   "title": "Thiomargarita magnifica",
+   "recap": "La Thiomargarita magnifica, scoperta nel 2022 da Olivier Gros, è il batterio più grande conosciuto, superando i 2 centimetri di lunghezza. Grazie a un grande vacuolo centrale e alla compartimentazione del genoma in pepins, il batterio supera i limiti di diffusione cellulare, spostando il confine teorico tra procarioti ed eucarioti."
+  },
+  {
+   "id": "20261015-geo",
+   "date": "2026-10-15",
+   "cat": "geografia",
+   "key": "Giappone - Aogashima",
+   "title": "L'isola di Aogashima",
+   "recap": "Aogashima è una remota isola vulcanica nelle Izu, Giappone, formata da una doppia caldera dove vive una comunità di circa 160 persone. L'ultima eruzione significativa risale al 1785 e l'economia locale sfrutta attivamente l'energia geotermica del cratere centrale Maruyama."
   }
  ],
  "ratings": {}
