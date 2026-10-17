@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-15",
+ "_last_sent": "2026-10-17",
  "_offset": 0,
  "log": [
   {
@@ -809,6 +809,54 @@
    "key": "Giappone - Aogashima",
    "title": "L'isola di Aogashima",
    "recap": "Aogashima è una remota isola vulcanica nelle Izu, Giappone, formata da una doppia caldera dove vive una comunità di circa 160 persone. L'ultima eruzione significativa risale al 1785 e l'economia locale sfrutta attivamente l'energia geotermica del cratere centrale Maruyama."
+  },
+  {
+   "id": "20261017-let",
+   "date": "2026-10-17",
+   "cat": "letteratura",
+   "key": "Schulz - Le botteghe color cannella",
+   "title": "Bruno Schulz e Le botteghe color cannella",
+   "recap": "Bruno Schulz (1892-1942), insegnante e artista polacco di origine ebraica, ha pubblicato nel 1933 Le botteghe color cannella. Il libro descrive la metamorfosi continua della realtà quotidiana nella provincia galiziana, sfidando le barriere tra conscio e onirico attraverso una prosa densamente metaforica."
+  },
+  {
+   "id": "20261017-sto",
+   "date": "2026-10-17",
+   "cat": "storia",
+   "key": "Sahel - Great Green Wall",
+   "title": "La barriera verde del Sahel",
+   "recap": "La Great Green Wall, lanciata nel 2007, è un progetto continentale volto a contrastare la desertificazione del Sahel attraverso tecniche di riforestazione e rigenerazione naturale. L'iniziativa dimostra il passaggio da una visione rigida di confine a una gestione ecosistemica dinamica gestita dalle comunità locali."
+  },
+  {
+   "id": "20261017-sci",
+   "date": "2026-10-17",
+   "cat": "scienze",
+   "key": "Ehrlich - Barriera emato-encefalica",
+   "title": "La barriera emato-encefalica",
+   "recap": "La barriera emato-encefalica, scoperta da Paul Ehrlich nel 1885, protegge il cervello isolandolo biochimicamente dal circolo sistemico tramite giunzioni serrate. Questo limite fisico, essenziale per l'omeostasi neurale, costituisce un ostacolo insormontabile per la maggior parte dei trattamenti farmacologici moderni."
+  },
+  {
+   "id": "20261017-geo",
+   "date": "2026-10-17",
+   "cat": "geografia",
+   "key": "Cina - Turpan",
+   "title": "La depressione di Turpan",
+   "recap": "La depressione di Turpan, situata nello Xinjiang a 154 metri sotto il livello del mare, è una conca tettonica tra le più calde al mondo. La sua sopravvivenza è legata al Karez, un antico sistema di canali sotterranei che sfrutta l'acqua dei monti Tian Shan, fondamentale per il transito lungo l'antica Via della Seta."
+  },
+  {
+   "id": "20261017-ant",
+   "date": "2026-10-17",
+   "cat": "archeologia",
+   "key": "Beloozero - Archeologia Russia",
+   "title": "La fortezza di Beloozero",
+   "recap": "Beloozero, situata nell'attuale oblast di Vologda, rappresenta un punto focale per comprendere l'espansione medievale verso il nord russo tra il X e l'XI secolo. Grazie all'analisi dendrocronologica, gli studiosi hanno ricostruito un sistema difensivo e commerciale complesso, essenziale per la logistica del tributo nella Rus' medievale."
+  },
+  {
+   "id": "20261017-fil",
+   "date": "2026-10-17",
+   "cat": "filosofia",
+   "key": "Viveiros de Castro - Prospettivismo",
+   "title": "La soggettività decentrata di Eduardo Viveiros de Castro",
+   "recap": "Eduardo Viveiros de Castro propone il prospettivismo amerindio, una visione in cui la natura è una sola mentre le culture sono molteplici, ma invertendo la gerarchia classica. La realtà è definita dal punto di vista del corpo, sfidando il dualismo occidentale e offrendo strumenti inediti per riflettere sull'ecologia nell'Antropocene."
   }
  ],
  "ratings": {}
