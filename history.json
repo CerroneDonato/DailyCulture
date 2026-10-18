@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-17",
+ "_last_sent": "2026-10-18",
  "_offset": 0,
  "log": [
   {
@@ -857,6 +857,62 @@
    "key": "Viveiros de Castro - Prospettivismo",
    "title": "La soggettività decentrata di Eduardo Viveiros de Castro",
    "recap": "Eduardo Viveiros de Castro propone il prospettivismo amerindio, una visione in cui la natura è una sola mentre le culture sono molteplici, ma invertendo la gerarchia classica. La realtà è definita dal punto di vista del corpo, sfidando il dualismo occidentale e offrendo strumenti inediti per riflettere sull'ecologia nell'Antropocene."
+  },
+  {
+   "id": "20261018-let",
+   "date": "2026-10-18",
+   "cat": "letteratura",
+   "key": "Thomas Browne - Il giardino di Ciro",
+   "title": "Thomas Browne e il giardino di Ciro",
+   "recap": "Thomas Browne, medico inglese, pubblicò nel 1658 il saggio Il giardino di Ciro, un'opera che esplora la ricorrenza del quinconce nella natura e nell'arte. Il testo fonde rigorosa osservazione botanica e speculazione metafisica, anticipando concetti di ordine geometrico e ripetizione strutturale che affascinano ancora oggi gli scienziati."
+  },
+  {
+   "id": "20261018-sto",
+   "date": "2026-10-18",
+   "cat": "storia",
+   "key": "Lope de Aguirre - Ribellione Amazzonia",
+   "title": "La spedizione di Lope de Aguirre",
+   "recap": "Lope de Aguirre guidò una sanguinosa rivolta tra il 1560 e il 1561, trasformando una spedizione alla ricerca di El Dorado in una secessione contro Filippo II. Attraversò l'Amazzonia per sfidare l'autorità imperiale, venendo infine ucciso a Barquisimeto."
+  },
+  {
+   "id": "20261018-sci",
+   "date": "2026-10-18",
+   "cat": "scienze",
+   "key": "Hawking - Paradosso informazione",
+   "title": "Il paradosso dell'informazione di Hawking",
+   "recap": "Il paradosso di Hawking del 1976 evidenzia l'incompatibilità tra l'evaporazione termica dei buchi neri e la conservazione dell'informazione quantistica. Se il buco nero svanisce, l'informazione iniziale sembra svanire con esso, sfidando l'unitarietà della fisica. La soluzione richiede una riconciliazione tra la relatività generale e la meccanica quantistica, ancora oggi oggetto di intensa ricerca."
+  },
+  {
+   "id": "20261018-sag",
+   "date": "2026-10-18",
+   "cat": "saggio",
+   "key": "Landauer - Limite termodinamico",
+   "title": "Il paradosso del confine di Landauer",
+   "recap": "Nel 1961, Rolf Landauer ha introdotto il principio che lega la cancellazione di un bit alla produzione di calore, fissando il limite di Landauer come barriera energetica fondamentale. Questo confine termodinamico impone che ogni operazione di reset logico sia intrinsecamente dissipativa, influenzando il futuro della microelettronica e del calcolo reversibile."
+  },
+  {
+   "id": "20261018-eco",
+   "date": "2026-10-18",
+   "cat": "economia",
+   "key": "Giappone - Stagnazione secolare",
+   "title": "La trappola dei saggi bancari",
+   "recap": "Il Giappone, dal 1990, è diventato il laboratorio globale dell'economia della stagnazione. La combinazione tra declino demografico e eccesso di risparmio ha reso inefficaci gli strumenti monetari tradizionali, costringendo il Paese a confrontarsi con una deflazione persistente e la necessità di riconsiderare il modello di sviluppo."
+  },
+  {
+   "id": "20261018-art",
+   "date": "2026-10-18",
+   "cat": "arte",
+   "key": "Walters - Poho",
+   "title": "L'orizzonte di Gordon Walters",
+   "recap": "Gordon Walters, esponente del modernismo neozelandese, ha ridefinito il linguaggio visivo del secondo Novecento integrando il koru Maori in strutture geometriche rigorose. Le sue opere del 1966, come Poho, utilizzano il contrasto bianco-nero per esplorare i confini della percezione ottica, dialogando direttamente con le correnti dell'Op Art europea."
+  },
+  {
+   "id": "20261018-nat",
+   "date": "2026-10-18",
+   "cat": "natura",
+   "key": "Myxococcus xanthus - Biologia sociale",
+   "title": "Myxococcus xanthus",
+   "recap": "Myxococcus xanthus è un batterio del suolo capace di caccia coordinata e differenziazione in spore multicellulari. Attraverso il quorum sensing e il movimento a scivolamento, queste colonie superano il limite dell'individualità biologica per ottimizzare la sopravvivenza in ambienti ostili."
   }
  ],
  "ratings": {}
