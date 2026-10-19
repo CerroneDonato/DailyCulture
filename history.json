@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-18",
+ "_last_sent": "2026-10-19",
  "_offset": 0,
  "log": [
   {
@@ -913,6 +913,62 @@
    "key": "Myxococcus xanthus - Biologia sociale",
    "title": "Myxococcus xanthus",
    "recap": "Myxococcus xanthus è un batterio del suolo capace di caccia coordinata e differenziazione in spore multicellulari. Attraverso il quorum sensing e il movimento a scivolamento, queste colonie superano il limite dell'individualità biologica per ottimizzare la sopravvivenza in ambienti ostili."
+  },
+  {
+   "id": "20261019-let",
+   "date": "2026-10-19",
+   "cat": "letteratura",
+   "key": "Keri Hulme - La gente del mare",
+   "title": "Keri Hulme, La gente del mare",
+   "recap": "Keri Hulme ha riscritto le coordinate del romanzo oceanico con La gente del mare nel 1984. Attraverso una prosa stratificata, l'autrice esplora le conseguenze del trauma e dell'identità imposta in una Nuova Zelanda ancestrale e selvaggia."
+  },
+  {
+   "id": "20261019-sto",
+   "date": "2026-10-19",
+   "cat": "storia",
+   "key": "Bardas Sclero - Arcadiopoli 970",
+   "title": "La Crisi di Eraclea del 970",
+   "recap": "Nel 970, il generale bizantino Bardas Sclero sconfisse l'esercito di Svjatoslav I di Kiev ad Arcadiopoli. L'errore tattico dei Rus' di sottovalutare la difesa bizantina determinò la fine delle ambizioni danubiane di Kiev e consolidò il controllo imperiale sulla penisola balcanica."
+  },
+  {
+   "id": "20261019-sci",
+   "date": "2026-10-19",
+   "cat": "scienze",
+   "key": "Borel - Paradosso del caso",
+   "title": "Il paradosso di Borel",
+   "recap": "Emile Borel ha dimostrato che, su scale temporali immense, eventi statisticamente improbabili diventano inevitabili. Il paradosso evidenzia il fallimento dell'intuizione umana nel gestire la soglia di probabilità 10^-150, oltre la quale ogni evento è considerato fisicamente impossibile."
+  },
+  {
+   "id": "20261019-ing",
+   "date": "2026-10-19",
+   "cat": "ingegneria",
+   "key": "Tacoma Narrows - Ponte 1940",
+   "title": "Il collasso del ponte di Tacoma Narrows",
+   "recap": "Il ponte di Tacoma Narrows crollò nel 1940 a causa di un flutter aeroelastico innescato da venti moderati. L'evento dimostrò che la leggerezza estrema, senza un'adeguata analisi dinamica e torsionale, rende le strutture vulnerabili a fenomeni di risonanza distruttiva. Il disastro impose un cambio radicale nelle normative di progettazione di grandi ponti sospesi a livello mondiale."
+  },
+  {
+   "id": "20261019-par",
+   "date": "2026-10-19",
+   "cat": "parole",
+   "key": "Linguistica - Errori",
+   "title": "Bévue, Fiasco, Quiproquo",
+   "recap": "La bévue è un errore di valutazione, il quiproquo uno scambio di significati o identità, e il fiasco l'esito disastroso di un'azione. Tutti e tre illustrano le fragilità dei processi decisionali."
+  },
+  {
+   "id": "20261019-nat",
+   "date": "2026-10-19",
+   "cat": "natura",
+   "key": "Armillaria ostoyae - Biologia estesa",
+   "title": "Armillaria ostoyae, l'organismo esteso",
+   "recap": "L'Armillaria ostoyae è un fungo saprotrofo che in Oregon ha raggiunto dimensioni di quasi 10 km quadrati. Scoperto grazie a un'indagine genetica che ha corretto la tesi di focolai multipli, è uno degli organismi viventi più estesi e longevi sulla Terra, agendo come elemento fondamentale per il riciclo del carbonio nelle foreste."
+  },
+  {
+   "id": "20261019-art",
+   "date": "2026-10-19",
+   "cat": "arte",
+   "key": "Antonello da Messina - San Girolamo nello studio",
+   "title": "La prospettiva di Antonello da Messina",
+   "recap": "Antonello da Messina realizza intorno al 1475 questo capolavoro a olio, oggi conservato a Londra. L'opera fonde la precisione analitica dei fiamminghi con la sintesi prospettica italiana, creando uno spazio di studio che celebra l'ordine intellettuale e la luce come strumenti di verità."
   }
  ],
  "ratings": {}
