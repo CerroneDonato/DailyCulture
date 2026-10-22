@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-19",
+ "_last_sent": "2026-10-22",
  "_offset": 0,
  "log": [
   {
@@ -969,6 +969,62 @@
    "key": "Antonello da Messina - San Girolamo nello studio",
    "title": "La prospettiva di Antonello da Messina",
    "recap": "Antonello da Messina realizza intorno al 1475 questo capolavoro a olio, oggi conservato a Londra. L'opera fonde la precisione analitica dei fiamminghi con la sintesi prospettica italiana, creando uno spazio di studio che celebra l'ordine intellettuale e la luce come strumenti di verità."
+  },
+  {
+   "id": "20261022-let",
+   "date": "2026-10-22",
+   "cat": "letteratura",
+   "key": "Sancho - The Letters",
+   "title": "Ignatius Sancho e il Settecento britannico",
+   "recap": "Ignatius Sancho (1729-1780) è stato un intellettuale britannico di origine africana che, tramite il suo epistolario, ha sfidato le strutture razziali dell'Illuminismo. La sua opera rappresenta un esempio pionieristico di rivendicazione intellettuale attraverso la scrittura, influenzata dallo stile di Laurence Sterne."
+  },
+  {
+   "id": "20261022-sto",
+   "date": "2026-10-22",
+   "cat": "storia",
+   "key": "Ursúa-Aguirre-Amazonia",
+   "title": "La spedizione di Pedro de Ursúa",
+   "recap": "Nel 1560, Pedro de Ursúa guidò una spedizione alla ricerca di El Dorado nel Rio delle Amazzoni. Il progetto fallì a causa delle ostilità ambientali, portando all'ammutinamento di Lope de Aguirre, che si ribellò alla corona spagnola fino alla sua sconfitta nel 1561. L'evento esemplifica il fallimento delle ambizioni coloniali europee dinanzi alla complessità del territorio amazzonico."
+  },
+  {
+   "id": "20261022-sci",
+   "date": "2026-10-22",
+   "cat": "scienze",
+   "key": "Chandrasekhar - Limite di stabilità",
+   "title": "La stabilità della materia degenere",
+   "recap": "Il limite di Chandrasekhar (1,44 masse solari) rappresenta la soglia oltre la quale la pressione di degenerazione elettronica fallisce contro la gravità. Definita nel 1930, fu inizialmente rigettata da figure autorevoli come Eddington, dimostrando come anche nella scienza la resistenza al cambiamento di paradigma possa frenare l'avanzamento tecnologico."
+  },
+  {
+   "id": "20261022-ing",
+   "date": "2026-10-22",
+   "cat": "ingegneria",
+   "key": "Volgograd - Ponte",
+   "title": "Il collasso del ponte di Volgograd",
+   "recap": "Il ponte di Volgograd ha subito oscillazioni ampie nel 2010 a causa del flutter aeroelastico innescato da venti costanti. L'analisi ha rivelato una lacuna nelle simulazioni dinamiche aerodinamiche, risolta successivamente con l'integrazione di smorzatori di massa per neutralizzare le frequenze di risonanza."
+  },
+  {
+   "id": "20261022-par",
+   "date": "2026-10-22",
+   "cat": "parole",
+   "key": "Lessico - Logica dell'errore",
+   "title": "Aporìa, Svarione, Paralogismo",
+   "recap": "L'aporia definisce una contraddizione logica insolubile, il paralogismo un errore di ragionamento compiuto in buona fede, mentre lo svarione è un macroscopico errore di distrazione. Questi termini categorizzano le diverse facce della fallibilità umana nell'ambito del pensiero logico e della prassi operativa."
+  },
+  {
+   "id": "20261022-nat",
+   "date": "2026-10-22",
+   "cat": "natura",
+   "key": "Deinococcus radiodurans - Radioresistenza",
+   "title": "Deinococcus radiodurans",
+   "recap": "Il Deinococcus radiodurans, scoperto nel 1956, sopravvive a radiazioni fino a 15.000 Gray grazie a sofisticati sistemi di riparazione del DNA. Il suo genoma viene ricomposto dopo la frammentazione, un processo adattivo nato originariamente per contrastare il disseccamento ambientale."
+  },
+  {
+   "id": "20261022-geo",
+   "date": "2026-10-22",
+   "cat": "geografia",
+   "key": "Qaidam - Qinghai",
+   "title": "La conca di Qaidam",
+   "recap": "La conca di Qaidam è un vasto bacino endoreico situato a 2.800 metri di quota nel Qinghai. La sua evoluzione geologica, legata alla tettonica tibetana, ne fa un archivio sedimentario profondo oltre 10 km e un analogo terrestre fondamentale per lo studio dei depositi evaporitici marziani."
   }
  ],
  "ratings": {}
