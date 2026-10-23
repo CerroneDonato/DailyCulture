@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-22",
+ "_last_sent": "2026-10-23",
  "_offset": 0,
  "log": [
   {
@@ -1025,6 +1025,62 @@
    "key": "Qaidam - Qinghai",
    "title": "La conca di Qaidam",
    "recap": "La conca di Qaidam è un vasto bacino endoreico situato a 2.800 metri di quota nel Qinghai. La sua evoluzione geologica, legata alla tettonica tibetana, ne fa un archivio sedimentario profondo oltre 10 km e un analogo terrestre fondamentale per lo studio dei depositi evaporitici marziani."
+  },
+  {
+   "id": "20261023-let",
+   "date": "2026-10-23",
+   "cat": "letteratura",
+   "key": "Tagore - Gora",
+   "title": "Il dilemma di Gora",
+   "recap": "Gora (1910) è un romanzo di Rabindranath Tagore che mette in discussione i dogmi del nazionalismo e della casta. Attraverso la crisi d'identità del protagonista, il libro esplora il superamento del pregiudizio a favore di un umanesimo universale."
+  },
+  {
+   "id": "20261023-sto",
+   "date": "2026-10-23",
+   "cat": "storia",
+   "key": "Cina - Diga di Banqiao",
+   "title": "Il collasso della Diga di Banqiao",
+   "recap": "Nell'agosto 1975, il cedimento della diga di Banqiao, in Cina, causò la morte di oltre 170.000 persone a seguito dell'impatto del tifone Nina. Il disastro fu il risultato di una progettazione inadeguata, che ignorò i moniti dell'esperto Chen Xing e sottovalutò la portata dei flussi estremi. L'incidente rimase occultato dal regime cinese per decenni, impedendo lo studio scientifico dell'errore tecnico commesso."
+  },
+  {
+   "id": "20261023-sci",
+   "date": "2026-10-23",
+   "cat": "scienze",
+   "key": "Lehmann - Discontinuità nucleo",
+   "title": "La discontinuità di Lehmann",
+   "recap": "Inge Lehmann dimostrò nel 1936 che il nucleo terrestre non è interamente liquido. Analizzando le onde sismiche P, identificò una discontinuità che rivela la presenza di un nucleo interno solido, risolvendo il paradosso delle zone d'ombra sismiche."
+  },
+  {
+   "id": "20261023-mat",
+   "date": "2026-10-23",
+   "cat": "matematica",
+   "key": "Simpson - Paradosso",
+   "title": "Il paradosso di Simpson",
+   "recap": "Il paradosso di Simpson dimostra che la direzione di una tendenza statistica può invertirsi aggregando dati eterogenei. Identificato formalmente nel 1951, sottolinea l'importanza critica delle variabili latenti nell'inferenza causale e nell'analisi dei big data."
+  },
+  {
+   "id": "20261023-mus",
+   "date": "2026-10-23",
+   "cat": "musica",
+   "key": "Grainger - Folk Music",
+   "title": "Percy Grainger e la Folk Song Suite",
+   "recap": "Percy Grainger, pioniere australiano nato nel 1882, ha rivoluzionato l'orchestrazione dei primi anni del Novecento trasformando il folklore in una materia plastica e modernista. Il suo approccio al contrappunto e al ritmo, evidente in opere come Mock Morris del 1905, rimane un punto di riferimento tecnico essenziale per la musica contemporanea per fiati."
+  },
+  {
+   "id": "20261023-cib",
+   "date": "2026-10-23",
+   "cat": "cibo",
+   "key": "Narezushi - Evoluzione tecnica",
+   "title": "Narezushi: l'antenato fermentato",
+   "recap": "Il Narezushi è il precursore del sushi, basato sulla fermentazione lattica del pesce in riso per abbassare il pH. L'abbreviazione dei tempi di fermentazione tra il XIV e il XVII secolo ha trasformato una tecnica di conservazione in un pilastro della cucina nipponica."
+  },
+  {
+   "id": "20261023-arc",
+   "date": "2026-10-23",
+   "cat": "architettura",
+   "key": "Ashikaga Yoshimitsu - Kinkaku-ji",
+   "title": "Padiglione d'Oro di Kyoto",
+   "recap": "Il Kinkaku-ji, eretto da Ashikaga Yoshimitsu nel 1397, è un edificio in legno rivestito d'oro che fonde tre stili architettonici distinti. Dopo l'incendio del 1950, la ricostruzione del 1955 ha preservato le tecniche costruttive tradizionali giapponesi, garantendo la sopravvivenza di un simbolo mondiale dello Zen."
   }
  ],
  "ratings": {}
