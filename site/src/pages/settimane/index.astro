@@ -29,7 +29,7 @@ const weeks = await Promise.all(
         </div>
         <div class="week-covers">
           {covers.map((a) => (
-            <ArticleVisual image={a.image} category={a.category} title={a.title} ratio="1 / 1" />
+            <ArticleVisual image={a.image} category={a.category} title={a.title} frame="thumb" />
           ))}
         </div>
       </a>

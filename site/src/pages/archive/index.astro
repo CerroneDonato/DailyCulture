@@ -31,7 +31,7 @@ for (const entry of issues) {
       <div class="grid grid-3">
         {entries.map(({ issue, cover }) => (
           <a href={`/archive/${issue.slug}/`} class="edition">
-            <ArticleVisual image={cover.image} category={cover.category} title={cover.title} ratio="16 / 9" />
+            <ArticleVisual image={cover.image} category={cover.category} title={cover.title} frame="wide" />
             <div class="edition-body">
               <span class="meta">N. {issue.number}{issue.theme && <> · {issue.theme}</>}</span>
               <h3>{formatLongDate(issue.date)}</h3>

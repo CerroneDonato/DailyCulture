@@ -1,218 +1,269 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ArticleCard from "../../components/ArticleCard.astro";
-import ArticleVisual from "../../components/ArticleVisual.astro";
-import { formatLongDate, getArticles, getIssues, type Article } from "../../lib/archive";
-import { getArticleImage, withImages } from "../../lib/images";
+import Story from "../../components/Story.astro";
+import { getArticles, getIssues, type Article } from "../../lib/archive";
+import { withImages } from "../../lib/images";
 
 export async function getStaticPaths() {
   return getArticles().map((article) => ({ params: { slug: article.slug }, props: { article } }));
 }
 
 const { article } = Astro.props as { article: Article };
-const image = await getArticleImage(article);
-const issue = getIssues().find((i) => i.slug === article.issueSlug);
-const sameIssue = await withImages((issue?.articles ?? []).filter((a) => a.slug !== article.slug));
-const [first, ...restParagraphs] = article.paragraphs;
-const isWords = article.category.key === "parole";
+const issue = getIssues().find((item) => item.slug === article.issueSlug);
+const edition = await withImages(issue?.articles?.length ? issue.articles : [article]);
+const index = Math.max(0, edition.findIndex((item) => item.slug === article.slug));
+const current = edition[index];
+const previous = edition[index - 1];
+const following = edition[index + 1];
 ---
 
 <BaseLayout
-  pageTitle={`${article.title} · DailyCulture`}
-  description={article.subtitle || article.excerpt}
-  image={image?.src}
-  activeSection={article.category.key}
+  pageTitle={`${current.title} · DailyCulture`}
+  description={current.subtitle || current.excerpt}
+  image={current.image?.src}
+  activeSection={current.category.key}
 >
-  <article class="story" style={`--cat:${article.category.color}`}>
-    <header class="story-head">
-      <a href={`/sezioni/${article.category.key}/`} class="kicker">{article.category.emoji} {article.category.label}</a>
-      <h1>{article.title}</h1>
-      {article.subtitle && <p class="story-sub">{article.subtitle}</p>}
-      <p class="meta story-meta">
-        <a href={`/archive/${article.issueSlug}/`}>{formatLongDate(article.date)}</a>
-        <span>·</span>
-        <span>{article.readingMinutes} min di lettura</span>
-        {article.theme && (<><span>·</span><span>Tema: <em>{article.theme}</em></span></>)}
-        {article.liked && <span class="badge-liked">Il preferito</span>}
-      </p>
-    </header>
-
-    {!isWords && (
-      <div class="story-hero">
-        <ArticleVisual image={image} category={article.category} title={article.title} ratio="16 / 9" eager caption />
+  <div
+    class="edition-reader"
+    data-start={index}
+    data-count={edition.length}
+    style={`--i:${index};--n:${edition.length}`}
+  >
+    <div class="reader-bar">
+      <a class="reader-back" href={`/archive/${current.issueSlug}/`} aria-label="Torna all’edizione">←</a>
+      <div class="reader-now">
+        <span class="reader-section" style={`--cat:${current.category.color}`}>{current.category.emoji} {current.category.short}</span>
+        <span class="reader-count">{index + 1} di {edition.length}</span>
       </div>
-    )}
-
-    <div class="story-layout">
-      <div class="story-body">
-        {isWords ? (
-          <div class="words">
-            {article.paragraphs.map((p) => (
-              <section class="word">
-                {p.h && <h2>{p.h}</h2>}
-                <p set:html={p.html} />
-              </section>
-            ))}
-          </div>
-        ) : (
-          <>
-            {first && (
-              <>
-                {first.h && <h2>{first.h}</h2>}
-                <p class="dropcap" set:html={first.html} />
-              </>
-            )}
-            {restParagraphs.map((p, i) => (
-              <>
-                {p.h && <h2>{p.h}</h2>}
-                <p set:html={p.html} />
-                {i === 0 && article.recap && restParagraphs.length > 2 && (
-                  <blockquote class="pullquote">{article.recap.split(/(?<=\.)\s/)[0]}</blockquote>
-                )}
-              </>
-            ))}
-          </>
-        )}
-
-        {article.challenge && (
-          <aside class="challenge">
-            <span class="kicker">🧩 Prova tu</span>
-            <p>{article.challenge}</p>
-            {article.solution && (
-              <details>
-                <summary>Mostra la soluzione</summary>
-                <p>{article.solution}</p>
-              </details>
-            )}
-          </aside>
-        )}
-
-        {(article.link || article.sources.length > 0) && (
-          <div class="story-links">
-            {article.link && (
-              <a href={article.link.url} class="button" rel="noopener" target="_blank">{article.link.label} ↗</a>
-            )}
-            {article.sources.length > 0 && (
-              <ul class="sources">
-                {article.sources.map((s) => (
-                  <li>Fonte: <a href={s.url} rel="noopener" target="_blank">{s.label}</a></li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
+      <span class="reader-hint">{following ? `poi ${following.category.short}` : "fine"}</span>
+      <div class="reader-dots" aria-hidden="true">
+        {edition.map((item, dot) => (
+          <span class:list={["dot", { on: dot === index }]} style={`--cat:${item.category.color}`} />
+        ))}
       </div>
-
-      <aside class="story-aside">
-        {article.facts.length > 0 && (
-          <div class="factbox">
-            <h3>La scheda</h3>
-            <dl>
-              {article.facts.map((f) => (
-                <>
-                  <dt>{f.k}</dt>
-                  <dd>{f.v}</dd>
-                </>
-              ))}
-            </dl>
-          </div>
-        )}
-        {article.recap && (
-          <div class="recap">
-            <h3>📌 Da ricordare</h3>
-            <p>{article.recap}</p>
-          </div>
-        )}
-      </aside>
     </div>
-  </article>
 
-  {sameIssue.length > 0 && (
-    <section>
-      <div class="section-title">
-        <h2>Nella stessa edizione</h2>
-        <a href={`/archive/${article.issueSlug}/`}>Sfoglia l’edizione →</a>
+    <div class="reader-viewport">
+      <div class="reader-track">
+        {edition.map((item, position) => (
+          <div
+            class:list={["reader-slide", { "is-current": position === index }]}
+            data-url={`/articoli/${item.slug}/`}
+            data-title={`${item.title} · DailyCulture`}
+            data-section={`${item.category.emoji} ${item.category.short}`}
+            data-hint={edition[position + 1] ? `poi ${edition[position + 1].category.short}` : "fine"}
+            data-cat={item.category.color}
+          >
+            <Story article={item} />
+          </div>
+        ))}
       </div>
-      <div class="grid grid-4">
-        {sameIssue.map((a) => <ArticleCard article={a} />)}
-      </div>
-    </section>
-  )}
+    </div>
+  </div>
 
+  <nav class="edition-pager" aria-label="Articoli dell’edizione">
+    {previous ? (
+      <a class="pager-link" href={`/articoli/${previous.slug}/`}>
+        <span>← Precedente</span>
+        <strong>{previous.category.short}</strong>
+        {previous.title}
+      </a>
+    ) : <span />}
+    <a class="pager-edition" href={`/archive/${current.issueSlug}/`}>Edizione</a>
+    {following ? (
+      <a class="pager-link next" href={`/articoli/${following.slug}/`}>
+        <span>Successivo →</span>
+        <strong>{following.category.short}</strong>
+        {following.title}
+      </a>
+    ) : <span />}
+  </nav>
 </BaseLayout>
 
+<script>
+  const reader = document.querySelector<HTMLElement>(".edition-reader");
+  const track = reader?.querySelector<HTMLElement>(".reader-track");
+  const slides = track ? [...track.querySelectorAll<HTMLElement>(".reader-slide")] : [];
+  const narrow = window.matchMedia("(max-width: 800px)");
+
+  function apply(index: number, updateUrl: boolean) {
+    if (!reader || !track || !slides.length) return;
+    const next = Math.max(0, Math.min(slides.length - 1, index));
+    reader.style.setProperty("--i", String(next));
+    slides.forEach((slide, position) => slide.classList.toggle("is-current", position === next));
+    const slide = slides[next];
+    const section = document.querySelector<HTMLElement>(".reader-section");
+    const count = document.querySelector<HTMLElement>(".reader-count");
+    const hint = document.querySelector<HTMLElement>(".reader-hint");
+    if (section) {
+      section.textContent = slide.dataset.section || "";
+      section.style.setProperty("--cat", slide.dataset.cat || "");
+    }
+    if (count) count.textContent = `${next + 1} di ${slides.length}`;
+    if (hint) hint.textContent = slide.dataset.hint || "";
+    document.querySelectorAll(".reader-dots .dot").forEach((dot, position) => {
+      dot.classList.toggle("on", position === next);
+    });
+    if (updateUrl && slide.dataset.url && location.pathname !== slide.dataset.url) {
+      history.replaceState(null, "", slide.dataset.url);
+      if (slide.dataset.title) document.title = slide.dataset.title;
+    }
+  }
+
+  if (reader && track && slides.length && narrow.matches) {
+    apply(Number(reader.dataset.start || 0), false);
+    let startX = 0;
+    let startY = 0;
+    let deltaX = 0;
+    let deltaY = 0;
+
+    reader.addEventListener("touchstart", (event) => {
+      const touch = event.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+      deltaX = 0;
+      deltaY = 0;
+    }, { passive: true });
+
+    reader.addEventListener("touchmove", (event) => {
+      const touch = event.touches[0];
+      deltaX = touch.clientX - startX;
+      deltaY = touch.clientY - startY;
+    }, { passive: true });
+
+    reader.addEventListener("touchend", () => {
+      if (Math.abs(deltaX) < 56 || Math.abs(deltaX) < Math.abs(deltaY) * 1.15) return;
+      const current = Number(reader.style.getPropertyValue("--i")) || 0;
+      const target = current + (deltaX < 0 ? 1 : -1);
+      if (target < 0 || target >= slides.length) return;
+      slides[target].scrollTop = 0;
+      apply(target, true);
+    });
+  }
+</script>
+
 <style>
-  .story-head { max-width: 52rem; margin: 1rem auto 2rem; text-align: center; }
-  .story-head h1 { font-size: clamp(2.3rem, 5.5vw, 4.2rem); line-height: 1.04; margin: 0.7rem 0 0.9rem; letter-spacing: -0.01em; }
-  .story-sub { font-size: clamp(1.15rem, 2vw, 1.45rem); font-style: italic; color: var(--ink-2); margin: 0 0 1.1rem; line-height: 1.4; }
-  .story-meta { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.5rem; text-transform: capitalize; }
-  .story-meta em { text-transform: none; font-family: var(--serif); font-size: 0.85rem; }
-  .story-meta a:hover { text-decoration: underline; }
+  .edition-reader { --i: 0; --n: 1; }
 
-  .story-hero { max-width: 64rem; margin: 0 auto 2.5rem; }
+  .reader-bar { display: none; }
 
-  .story-layout {
+  .edition-pager {
     display: grid;
-    grid-template-columns: minmax(0, 42rem) minmax(0, 18rem);
-    justify-content: center;
-    gap: 3.5rem;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: start;
+    margin-top: 2.5rem;
+    padding-top: 1.2rem;
+    border-top: 3px double var(--ink);
+  }
+  .pager-link, .pager-edition {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-height: 44px;
+    font-family: var(--sans);
+  }
+  .pager-link span, .pager-edition { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .pager-link strong { font-family: var(--serif-display); font-size: 1.15rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+  .pager-link { color: var(--ink-2); font-size: 0.92rem; }
+  .pager-link.next { text-align: right; align-items: flex-end; }
+  .pager-edition { align-self: center; justify-content: center; }
+  .pager-link:hover strong { color: var(--accent); }
+
+  @media (max-width: 800px) {
+    :global(body:has(.edition-reader)) {
+      overflow: hidden;
+      height: 100dvh;
+    }
+    :global(body:has(.edition-reader) .topbar),
+    :global(body:has(.edition-reader) .masthead),
+    :global(body:has(.edition-reader) .sections),
+    :global(body:has(.edition-reader) .site-footer) { display: none; }
+    :global(body:has(.edition-reader) main.wrap) {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0;
+      height: 100dvh;
+    }
+
+    .edition-pager { display: none; }
+
+    .edition-reader {
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background: var(--paper);
+    }
+    .reader-bar {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      grid-template-areas: "back now hint" "dots dots dots";
+      align-items: center;
+      gap: 0.35rem 0.6rem;
+      padding: calc(0.35rem + env(safe-area-inset-top)) 0.7rem 0.45rem;
+      background: var(--ink);
+      color: #f6f1e7;
+      z-index: 5;
+    }
+    .reader-back {
+      grid-area: back;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.4rem;
+    }
+    .reader-now { grid-area: now; display: flex; flex-direction: column; min-width: 0; }
+    .reader-section {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .reader-count { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #b7ad9e; }
+    .reader-hint {
+      grid-area: hint;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #f0b9a8;
+      text-align: right;
+    }
+    .reader-dots { grid-area: dots; display: flex; justify-content: center; gap: 0.35rem; }
+    .dot { width: 7px; height: 7px; border-radius: 99px; background: #4a463f; }
+    .dot.on { background: var(--cat, #f0b9a8); transform: scale(1.25); }
+
+    .reader-viewport { flex: 1; min-height: 0; overflow: hidden; }
+    .reader-track {
+      display: flex;
+      width: calc(var(--n) * 100%);
+      height: 100%;
+      transform: translateX(calc(var(--i) * -100% / var(--n)));
+      transition: transform 0.28s ease;
+    }
+    .reader-slide {
+      flex: none;
+      width: calc(100% / var(--n));
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
+      touch-action: pan-y;
+      padding: 0.8rem 1.05rem calc(1.4rem + env(safe-area-inset-bottom));
+      -webkit-overflow-scrolling: touch;
+    }
   }
 
-  .story-body { font-size: 1.12rem; line-height: 1.75; }
-  .story-body h2 { font-size: 1.45rem; margin: 2.2rem 0 0.6rem; }
-  .story-body h2:first-child { margin-top: 0; }
-  .story-body p { margin: 0 0 1.2rem; }
-  .story-body :global(strong) { font-weight: 600; background: linear-gradient(transparent 62%, color-mix(in srgb, var(--cat) 18%, transparent) 62%); }
-  .dropcap::first-letter {
-    float: left;
-    font-family: var(--serif-display);
-    font-weight: 900;
-    font-size: 4.6rem;
-    line-height: 0.82;
-    padding: 0.35rem 0.6rem 0 0;
-    color: var(--cat);
-  }
-
-  .pullquote {
-    margin: 2rem 0;
-    padding: 1.2rem 0;
-    border-top: 3px solid var(--cat);
-    border-bottom: 1px solid var(--rule);
-    font-family: var(--serif-display);
-    font-style: italic;
-    font-weight: 600;
-    font-size: 1.55rem;
-    line-height: 1.3;
-  }
-
-  .words { display: flex; flex-direction: column; gap: 1.6rem; }
-  .word { border-left: 4px solid var(--cat); padding-left: 1.4rem; }
-  .word h2 { font-size: 2.2rem; margin: 0 0 0.4rem !important; font-style: italic; }
-
-  .challenge { background: var(--card); border: 1px solid var(--rule); border-top: 4px solid var(--cat); padding: 1.3rem 1.5rem; margin: 2rem 0; }
-  .challenge p { margin: 0.6rem 0; }
-  .challenge summary { cursor: pointer; font-family: var(--sans); font-size: 0.82rem; font-weight: 600; color: var(--accent); }
-  .challenge details p { background: var(--paper-2); padding: 0.8rem 1rem; margin-top: 0.8rem; font-size: 1rem; }
-
-  .story-links { display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid var(--rule); padding-top: 1.5rem; margin-top: 2rem; }
-  .story-links .button { align-self: flex-start; }
-  .sources { margin: 0; padding: 0; list-style: none; font-family: var(--sans); font-size: 0.8rem; color: var(--muted); }
-  .sources a { color: var(--ink); text-decoration: underline; }
-
-  .story-aside { display: flex; flex-direction: column; gap: 1.5rem; }
-  .factbox, .recap { position: sticky; top: 4.5rem; }
-  .factbox { border-top: 4px solid var(--cat); background: var(--card); padding: 1.2rem 1.3rem; border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-  .factbox h3, .recap h3 { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.9rem; }
-  .factbox dl { margin: 0; }
-  .factbox dt { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-  .factbox dd { margin: 0.1rem 0 0.8rem; font-weight: 600; line-height: 1.35; }
-  .factbox dd:last-child { margin-bottom: 0; }
-  .recap { position: static; background: var(--ink); color: var(--paper); padding: 1.3rem; }
-  .recap p { margin: 0; font-size: 0.98rem; line-height: 1.55; }
-
-  @media (max-width: 1000px) {
-    .story-layout { grid-template-columns: 1fr; gap: 2rem; }
-    .story-aside { order: -1; }
-    .factbox { position: static; }
+  @media (min-width: 801px) {
+    .reader-track { display: block; }
+    .reader-slide { display: none; }
+    .reader-slide.is-current { display: block; }
   }
 </style>
