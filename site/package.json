@@ -1,0 +1,14 @@
+{
+  "name": "dailyculture-public-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.12.0",
+    "marked": "^12.0.1"
+  }
+}

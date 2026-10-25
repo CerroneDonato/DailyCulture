@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { formatArchiveDate, getLatestEntries, getHistoryMeta, getWeeklySummaries } from "../lib/archive";
+
+const history = getHistoryMeta();
+const items = getLatestEntries(6);
+const weekly = getWeeklySummaries().slice(0, 4);
+const totalEntries = Array.isArray(history.log) ? history.log.filter((entry) => entry.date).length : 0;
+const lastSent = history._last_sent ? formatArchiveDate(history._last_sent) : "Non disponibile";
+---
+
+<BaseLayout
+  pageTitle="DailyCulture"
+  description="Archivio pubblico di approfondimenti culturali di DailyCulture."
+>
+  <section class="hero">
+    <p class="eyebrow">DailyCulture</p>
+    <h1>Un archivio vivo di cultura generale</h1>
+    <p>
+      Un catalogo pubblico basato sulle schede giornaliere, sulle settimane tematiche e sulla
+      cronologia dell’archivio originario del progetto.
+    </p>
+    <div class="hero-metrics">
+      <div>
+        <strong>{totalEntries}</strong>
+        <span>approfondimenti</span>
+      </div>
+      <div>
+        <strong>{items.length}</strong>
+        <span>in evidenza</span>
+      </div>
+      <div>
+        <strong>{lastSent}</strong>
+        <span>ultimo aggiornamento</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="/archive/" class="button primary">Esplora l’archivio</a>
+      <a href="/settimane/" class="button secondary">Settimane tematiche</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>Ultimi aggiornamenti</h2>
+      <a href="/archive/">Vedi tutto</a>
+    </div>
+
+    <div class="card-grid">
+      {items.map((item) => (
+        <article class="card">
+          <span class="muted">{formatArchiveDate(item.date)}</span>
+          <h3>{item.title}</h3>
+          <p>{item.excerpt}</p>
+          <a href={`/archive/${item.slug}`}>Leggi l’articolo</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>Settimane tematiche</h2>
+      <a href="/settimane/">Tutte le settimane</a>
+    </div>
+
+    <ul class="list-stack">
+      {weekly.map((entry) => (
+        <li>
+          <a href={`/settimane/${entry.slug}`}>{entry.label}</a>
+          <p>{entry.excerpt}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getWeeklySummaries } from "../lib/archive";
+
+const weeks = getWeeklySummaries();
+---
+
+<BaseLayout pageTitle="Settimane • DailyCulture" description="Riassunti settimanali del progetto DailyCulture.">
+  <section class="page-header">
+    <p class="eyebrow">Settimane</p>
+    <h1>Temi e panorami settimanali</h1>
+  </section>
+
+  <ul class="archive-list">
+    {weeks.map((entry) => (
+      <li>
+        <a href={`/settimane/${entry.slug}`}>{entry.label}</a>
+        <span>{entry.excerpt}</span>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

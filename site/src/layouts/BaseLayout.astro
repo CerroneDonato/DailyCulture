@@ -1,0 +1,292 @@
+---
+const { pageTitle = "DailyCulture", description = "Archivio pubblico di DailyCulture." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav>
+        <a href="/" class="brand">DailyCulture</a>
+        <div class="nav-links">
+          <a href="/archive/">Archivio</a>
+          <a href="/settimane/">Settimane</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>DailyCulture • archivio pubblico</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #f7f4ee;
+    --panel: #ffffff;
+    --paper: #f1eadf;
+    --text: #1b1b1b;
+    --muted: #5a584d;
+    --accent: #945b2c;
+    --accent-strong: #6b3d19;
+    --line: rgba(32, 24, 18, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", sans-serif;
+    line-height: 1.6;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f8f3ee 0%, #f4efe9 100%);
+  }
+
+  a {
+    color: var(--accent-strong);
+    text-decoration: none;
+  }
+
+  a:hover { text-decoration: underline; }
+
+  main {
+    width: min(1100px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+  }
+
+  .site-header {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  nav {
+    width: min(1100px, calc(100% - 2rem));
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 4rem;
+  }
+
+  .brand {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding: 1rem 0 2rem;
+    text-align: center;
+    color: var(--muted);
+  }
+
+  .hero,
+  .page-header,
+  .article,
+  .card,
+  .archive-list li {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 12px 36px rgba(40, 33, 29, 0.05);
+  }
+
+  .hero,
+  .page-header,
+  .article {
+    padding: 2rem;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-size: 0.76rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+  }
+
+  h1, h2, h3 {
+    line-height: 1.2;
+    margin-top: 0;
+  }
+
+  h1 { font-size: clamp(2.2rem, 3vw, 3rem); margin-bottom: 0.8rem; }
+  h2 { font-size: clamp(1.5rem, 2vw, 2rem); margin-bottom: 1rem; }
+
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero-metrics div {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  .hero-metrics strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .hero-metrics span,
+  .muted {
+    color: var(--muted);
+  }
+
+  .hero-actions,
+  .article-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-weight: 600;
+  }
+
+  .button.primary {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  .button.secondary {
+    background: var(--panel);
+    color: var(--text);
+  }
+
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0 1rem;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .card h3 {
+    margin: 0.4rem 0 0.6rem;
+    font-size: 1.2rem;
+  }
+
+  .card p,
+  .archive-list li span,
+  .list-stack p {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .list-stack {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .list-stack li,
+  .archive-list li {
+    padding: 1rem 1.1rem;
+    list-style: none;
+  }
+
+  .archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .archive-list li {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .markdown-body {
+    margin-top: 1.5rem;
+    font-size: 1.05rem;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4 {
+    margin-top: 2rem;
+  }
+
+  .markdown-body p,
+  .markdown-body li {
+    color: #222;
+  }
+
+  .markdown-body blockquote {
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: var(--muted);
+  }
+
+  .markdown-body ul,
+  .markdown-body ol {
+    padding-left: 1.2rem;
+  }
+
+  @media (max-width: 680px) {
+    .hero-metrics {
+      grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

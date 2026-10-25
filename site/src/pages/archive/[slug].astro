@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getArchiveEntries } from "../../lib/archive";
+
+export async function getStaticPaths() {
+  return getArchiveEntries().map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<BaseLayout pageTitle={`${entry.title} • DailyCulture`} description={entry.excerpt}>
+  <article class="article">
+    <p class="eyebrow">{entry.date} · {entry.theme}</p>
+    <h1>{entry.title}</h1>
+    <div class="markdown-body" set:html={entry.html}></div>
+    <div class="article-actions">
+      <a href="/archive/">Torna all’archivio</a>
+      <a href="/">Homepage</a>
+    </div>
+  </article>
+</BaseLayout>

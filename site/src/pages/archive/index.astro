@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { formatArchiveDate, getArchiveEntries, getWeeklySummaries } from "../lib/archive";
+
+const entries = getArchiveEntries().sort((a, b) => b.date.localeCompare(a.date));
+const weekly = getWeeklySummaries();
+const grouped = entries.reduce((acc, item) => {
+  const group = acc[item.year] ?? [];
+  group.push(item);
+  acc[item.year] = group;
+  return acc;
+}, {});
+const years = Object.keys(grouped).sort((a, b) => Number(b) - Number(a));
+---
+
+<BaseLayout pageTitle="Archivio • DailyCulture" description="Archivio completo dei contenuti di DailyCulture.">
+  <section class="page-header">
+    <p class="eyebrow">Archivio</p>
+    <h1>Raccolta completa</h1>
+  </section>
+
+  {years.map((year) => (
+    <section>
+      <div class="section-heading">
+        <h2>{year}</h2>
+      </div>
+      <ul class="archive-list">
+        {grouped[year].map((item) => (
+          <li>
+            <a href={`/archive/${item.slug}`}>{item.title}</a>
+            <span>{formatArchiveDate(item.date)} · {item.theme}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <section>
+    <div class="section-heading">
+      <h2>Settimane</h2>
+    </div>
+    <ul class="archive-list">
+      {weekly.map((entry) => (
+        <li>
+          <a href={`/settimane/${entry.slug}`}>{entry.label}</a>
+          <span>{entry.excerpt}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
