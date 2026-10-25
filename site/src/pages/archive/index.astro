@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { formatArchiveDate, getArchiveEntries, getWeeklySummaries } from "../lib/archive";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formatArchiveDate, getArchiveEntries, getWeeklySummaries } from "../../lib/archive";
 
 const entries = getArchiveEntries().sort((a, b) => b.date.localeCompare(a.date));
 const weekly = getWeeklySummaries();
