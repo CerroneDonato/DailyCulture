@@ -1,25 +1,82 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getArchiveEntries } from "../../lib/archive";
+import ArticleCard from "../../components/ArticleCard.astro";
+import Quiz from "../../components/Quiz.astro";
+import { formatLongDate, getIssues, type Issue } from "../../lib/archive";
+import { withImages } from "../../lib/images";
 
 export async function getStaticPaths() {
-  return getArchiveEntries().map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
+  const issues = getIssues();
+  return issues.map((issue, i) => ({
+    params: { slug: issue.slug },
+    props: { issue, newer: issues[i - 1] ?? null, older: issues[i + 1] ?? null },
   }));
 }
 
-const { entry } = Astro.props;
+const { issue, newer, older } = Astro.props as { issue: Issue; newer: Issue | null; older: Issue | null };
+const articles = await withImages(issue.articles);
+const leadIndex = Math.max(0, articles.findIndex((a) => a.image && a.category.key !== "parole"));
+const lead = articles[leadIndex];
+const rest = articles.filter((_, i) => i !== leadIndex);
 ---
 
-<BaseLayout pageTitle={`${entry.title} • DailyCulture`} description={entry.excerpt}>
-  <article class="article">
-    <p class="eyebrow">{entry.date} · {entry.theme}</p>
-    <h1>{entry.title}</h1>
-    <div class="markdown-body" set:html={entry.html}></div>
-    <div class="article-actions">
-      <a href="/archive/">Torna all’archivio</a>
-      <a href="/">Homepage</a>
-    </div>
-  </article>
+<BaseLayout
+  pageTitle={`Edizione del ${formatLongDate(issue.date)} · DailyCulture`}
+  description={`${articles.map((a) => a.title).join(" · ")}`}
+  image={lead?.image?.src}
+>
+  <header class="page-head edition-head">
+    <span class="kicker">Edizione n. {issue.number}</span>
+    <h1>{formatLongDate(issue.date)}</h1>
+    {issue.theme && <p>Tema della settimana: <em>{issue.theme}</em> · {articles.length} approfondimenti</p>}
+  </header>
+
+  {lead && (
+    <section class="edition-lead">
+      <ArticleCard article={lead} variant="lead" eager />
+    </section>
+  )}
+
+  <section class="grid grid-3 edition-grid">
+    {rest.map((a) => <ArticleCard article={a} />)}
+  </section>
+
+  {issue.quiz.length > 0 && (
+    <section id="quiz" class="edition-quiz">
+      <div class="section-title">
+        <h2>🧠 {issue.quizTitle}</h2>
+      </div>
+      <p class="quiz-intro">Domande su ciò che hai letto nei giorni scorsi. Clicca per vedere la risposta.</p>
+      <Quiz items={issue.quiz} />
+    </section>
+  )}
+
+  <nav class="pager">
+    {older ? <a href={`/archive/${older.slug}/`}>← {formatLongDate(older.date)}</a> : <span />}
+    <a href="/archive/">Tutte le edizioni</a>
+    {newer ? <a href={`/archive/${newer.slug}/`}>{formatLongDate(newer.date)} →</a> : <span />}
+  </nav>
 </BaseLayout>
+
+<style>
+  .edition-head { text-align: center; }
+  .edition-head h1 { text-transform: capitalize; }
+  .edition-head p { margin: 0 auto; }
+  .edition-lead { max-width: 60rem; margin: 0 auto 2.5rem; }
+  .edition-grid { padding-top: 2rem; border-top: 1px solid var(--rule); }
+  .edition-quiz { max-width: 46rem; margin: 0 auto; }
+  .quiz-intro { color: var(--muted); font-style: italic; margin-top: -0.6rem; }
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3.5rem;
+    padding-top: 1.2rem;
+    border-top: 3px double var(--ink);
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  .pager a:hover { color: var(--accent); }
+</style>

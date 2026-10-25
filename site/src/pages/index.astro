@@ -1,76 +1,192 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { formatArchiveDate, getLatestEntries, getHistoryMeta, getWeeklySummaries } from "../lib/archive";
+import ArticleCard from "../components/ArticleCard.astro";
+import Quiz from "../components/Quiz.astro";
+import { formatLongDate, getArticles, getIssues, getUsedCategories } from "../lib/archive";
+import { withImages } from "../lib/images";
 
-const history = getHistoryMeta();
-const items = getLatestEntries(6);
-const weekly = getWeeklySummaries().slice(0, 4);
-const totalEntries = Array.isArray(history.log) ? history.log.filter((entry) => entry.date).length : 0;
-const lastSent = history._last_sent ? formatArchiveDate(history._last_sent) : "Non disponibile";
+const issues = getIssues();
+const latest = issues[0];
+const previous = issues.slice(1, 6);
+
+const today = latest ? await withImages(latest.articles) : [];
+const leadIndex = Math.max(0, today.findIndex((a) => a.image && a.category.key !== "parole"));
+const lead = today[leadIndex];
+const others = today.filter((_, i) => i !== leadIndex);
+const words = others.find((a) => a.category.key === "parole");
+const side = others.filter((a) => a !== words).slice(0, 4);
+const rest = others.filter((a) => a !== words && !side.includes(a));
+
+const stats = [
+  { n: issues.length, label: "edizioni" },
+  { n: getArticles().length, label: "approfondimenti" },
+  { n: getUsedCategories().length, label: "sezioni" },
+];
 ---
 
-<BaseLayout
-  pageTitle="DailyCulture"
-  description="Archivio pubblico di approfondimenti culturali di DailyCulture."
->
-  <section class="hero">
-    <p class="eyebrow">DailyCulture</p>
-    <h1>Un archivio vivo di cultura generale</h1>
-    <p>
-      Un catalogo pubblico basato sulle schede giornaliere, sulle settimane tematiche e sulla
-      cronologia dell’archivio originario del progetto.
-    </p>
-    <div class="hero-metrics">
-      <div>
-        <strong>{totalEntries}</strong>
-        <span>approfondimenti</span>
+<BaseLayout pageTitle="DailyCulture · il quotidiano della curiosità">
+  {!latest && <p>Nessuna edizione disponibile.</p>}
+
+  {latest && lead && (
+    <>
+      <section class="front">
+        <div class="front-lead">
+          <ArticleCard article={lead} variant="lead" eager />
+        </div>
+
+        <aside class="front-side">
+          <h2 class="side-title">In questa edizione</h2>
+          <div class="side-list">
+            {side.map((a) => <ArticleCard article={a} variant="compact" />)}
+          </div>
+          <a href={`/archive/${latest.slug}/`} class="button">Sfoglia l’edizione completa →</a>
+        </aside>
+      </section>
+
+      {rest.length > 0 && (
+        <section class="grid grid-3 front-rest">
+          {rest.map((a) => <ArticleCard article={a} />)}
+        </section>
+      )}
+
+      <section class="boxes">
+        <div class="box box-theme">
+          <span class="kicker">🧭 Tema della settimana</span>
+          <p class="theme-word">{latest.theme}</p>
+          <p class="box-note">
+            Un filo conduttore lega, quando possibile, gli articoli della settimana.
+          </p>
+          <a href="/settimane/" class="box-link">Le settimane a tema →</a>
+        </div>
+
+        {words && (
+          <div class="box box-words" style={`--cat:${words.category.color}`}>
+            <span class="kicker">🔤 Le parole del giorno</span>
+            <ul>
+              {words.paragraphs.filter((p) => p.h).slice(0, 3).map((p) => (
+                <li>
+                  <strong>{p.h}</strong>
+                  <span>{p.text.split(/(?<=[.;])\s/)[0]}</span>
+                </li>
+              ))}
+            </ul>
+            <a href={`/articoli/${words.slug}/`} class="box-link">Etimologie ed esempi →</a>
+          </div>
+        )}
+
+        {latest.quiz.length > 0 && (
+          <div class="box box-quiz">
+            <span class="kicker">🧠 {latest.quizTitle}</span>
+            <Quiz items={latest.quiz.slice(0, 3)} compact />
+            <a href={`/archive/${latest.slug}/#quiz`} class="box-link">Tutte le domande →</a>
+          </div>
+        )}
+      </section>
+    </>
+  )}
+
+  {previous.length > 0 && (
+    <section class="archive-index">
+      <div class="section-title">
+        <h2>Edizioni precedenti</h2>
+        <a href="/archive/">Tutte le edizioni →</a>
       </div>
+      <p class="archive-note">Indice dell’archivio. Le notizie di oggi non tornano nelle edizioni successive.</p>
+      <ol>
+        {previous.map((issue) => (
+          <li>
+            <a href={`/archive/${issue.slug}/`}>
+              <span class="meta">N. {issue.number}</span>
+              <strong>{formatLongDate(issue.date)}</strong>
+              <span>{issue.theme}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  <section class="stats">
+    {stats.map((s) => (
       <div>
-        <strong>{items.length}</strong>
-        <span>in evidenza</span>
+        <strong>{s.n}</strong>
+        <span>{s.label}</span>
       </div>
-      <div>
-        <strong>{lastSent}</strong>
-        <span>ultimo aggiornamento</span>
-      </div>
-    </div>
-    <div class="hero-actions">
-      <a href="/archive/" class="button primary">Esplora l’archivio</a>
-      <a href="/settimane/" class="button secondary">Settimane tematiche</a>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-heading">
-      <h2>Ultimi aggiornamenti</h2>
-      <a href="/archive/">Vedi tutto</a>
-    </div>
-
-    <div class="card-grid">
-      {items.map((item) => (
-        <article class="card">
-          <span class="muted">{formatArchiveDate(item.date)}</span>
-          <h3>{item.title}</h3>
-          <p>{item.excerpt}</p>
-          <a href={`/archive/${item.slug}`}>Leggi l’articolo</a>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section>
-    <div class="section-heading">
-      <h2>Settimane tematiche</h2>
-      <a href="/settimane/">Tutte le settimane</a>
-    </div>
-
-    <ul class="list-stack">
-      {weekly.map((entry) => (
-        <li>
-          <a href={`/settimane/${entry.slug}`}>{entry.label}</a>
-          <p>{entry.excerpt}</p>
-        </li>
-      ))}
-    </ul>
+    ))}
   </section>
 </BaseLayout>
+
+<style>
+  .front {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+    gap: 2.25rem;
+    padding-bottom: 2.25rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .front-side { border-left: 1px solid var(--rule); padding-left: 2rem; display: flex; flex-direction: column; gap: 1.2rem; }
+  .side-title {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.4rem;
+  }
+  .side-list { display: flex; flex-direction: column; gap: 1.1rem; }
+  .side-list > :global(*) { padding-bottom: 1.1rem; border-bottom: 1px solid var(--rule); }
+  .front-side .button { align-self: flex-start; }
+
+  .front-rest { padding: 2.25rem 0; border-bottom: 1px solid var(--rule); }
+
+  .boxes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .box { background: var(--card); border: 1px solid var(--rule); padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+  .box-theme { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .box-theme .kicker { color: #f0b9a8; }
+  .theme-word { font-family: var(--serif-display); font-style: italic; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; margin: 0.3rem 0; }
+  .box-note { margin: 0; color: #cfc6b6; font-size: 0.95rem; }
+  .box-link { margin-top: auto; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; color: var(--accent); }
+  .box-theme .box-link { color: #f0b9a8; }
+  .box-link:hover { text-decoration: underline; }
+  .box-words ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+  .box-words li { display: flex; flex-direction: column; }
+  .box-words strong { font-family: var(--serif-display); font-size: 1.35rem; }
+  .box-words span { font-size: 0.92rem; color: var(--ink-2); line-height: 1.45; }
+
+  .archive-note { margin: -0.4rem 0 1rem; color: var(--muted); font-style: italic; }
+  .archive-index ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .archive-index li { border-bottom: 1px solid var(--rule); }
+  .archive-index a {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.85rem 0;
+  }
+  .archive-index strong { font-family: var(--serif-display); font-size: 1.25rem; text-transform: capitalize; }
+  .archive-index a:hover strong { color: var(--accent); }
+  .archive-index a > span:last-child { font-style: italic; color: var(--ink-2); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    margin-top: 3.5rem;
+    text-align: center;
+  }
+  .stats div { padding: 1.4rem 0; display: flex; flex-direction: column; }
+  .stats div + div { border-left: 1px solid var(--rule); }
+  .stats strong { font-family: var(--serif-display); font-size: 2.6rem; line-height: 1; }
+  .stats span { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
+
+  @media (max-width: 1000px) {
+    .front { grid-template-columns: 1fr; }
+    .front-side { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1.5rem; }
+    .boxes { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .archive-index a { grid-template-columns: 3.2rem 1fr; }
+    .archive-index a > span:last-child { grid-column: 2; }
+  }
+</style>

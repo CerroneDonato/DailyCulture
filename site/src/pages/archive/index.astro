@@ -1,51 +1,67 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { formatArchiveDate, getArchiveEntries, getWeeklySummaries } from "../../lib/archive";
+import ArticleVisual from "../../components/ArticleVisual.astro";
+import { formatArchiveDate, formatLongDate, getIssues } from "../../lib/archive";
+import { withImages } from "../../lib/images";
 
-const entries = getArchiveEntries().sort((a, b) => b.date.localeCompare(a.date));
-const weekly = getWeeklySummaries();
-const grouped = entries.reduce((acc, item) => {
-  const group = acc[item.year] ?? [];
-  group.push(item);
-  acc[item.year] = group;
-  return acc;
-}, {});
-const years = Object.keys(grouped).sort((a, b) => Number(b) - Number(a));
+const issues = await Promise.all(
+  getIssues().map(async (issue) => {
+    const articles = await withImages(issue.articles);
+    return { issue, cover: articles.find((a) => a.image && a.category.key !== "parole") ?? articles[0] };
+  }),
+);
+
+const byMonth = new Map<string, typeof issues>();
+for (const entry of issues) {
+  const month = formatArchiveDate(entry.issue.date, { day: undefined });
+  byMonth.set(month, [...(byMonth.get(month) ?? []), entry]);
+}
 ---
 
-<BaseLayout pageTitle="Archivio • DailyCulture" description="Archivio completo dei contenuti di DailyCulture.">
-  <section class="page-header">
-    <p class="eyebrow">Archivio</p>
-    <h1>Raccolta completa</h1>
-  </section>
+<BaseLayout pageTitle="Tutte le edizioni · DailyCulture" description="L’archivio completo delle edizioni di DailyCulture.">
+  <header class="page-head">
+    <span class="kicker">Archivio</span>
+    <h1>Tutte le edizioni</h1>
+    <p>{issues.length} giornate, ognuna con sette approfondimenti e un quiz per ripassare.</p>
+  </header>
 
-  {years.map((year) => (
+  {[...byMonth].map(([month, entries]) => (
     <section>
-      <div class="section-heading">
-        <h2>{year}</h2>
-      </div>
-      <ul class="archive-list">
-        {grouped[year].map((item) => (
-          <li>
-            <a href={`/archive/${item.slug}`}>{item.title}</a>
-            <span>{formatArchiveDate(item.date)} · {item.theme}</span>
-          </li>
+      <div class="section-title"><h2 class="month">{month}</h2></div>
+      <div class="grid grid-3">
+        {entries.map(({ issue, cover }) => (
+          <a href={`/archive/${issue.slug}/`} class="edition">
+            <ArticleVisual image={cover.image} category={cover.category} title={cover.title} ratio="16 / 9" />
+            <div class="edition-body">
+              <span class="meta">N. {issue.number}{issue.theme && <> · {issue.theme}</>}</span>
+              <h3>{formatLongDate(issue.date)}</h3>
+              <ul>
+                {issue.articles.map((a) => (
+                  <li style={`--cat:${a.category.color}`}><span>{a.category.short}</span> {a.title}</li>
+                ))}
+              </ul>
+            </div>
+          </a>
         ))}
-      </ul>
+      </div>
     </section>
   ))}
-
-  <section>
-    <div class="section-heading">
-      <h2>Settimane</h2>
-    </div>
-    <ul class="archive-list">
-      {weekly.map((entry) => (
-        <li>
-          <a href={`/settimane/${entry.slug}`}>{entry.label}</a>
-          <span>{entry.excerpt}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
 </BaseLayout>
+
+<style>
+  .month { text-transform: capitalize; }
+  .edition { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--rule); transition: box-shadow 0.2s, transform 0.2s; }
+  .edition:hover { box-shadow: 0 14px 30px rgba(20, 20, 20, 0.08); transform: translateY(-2px); }
+  .edition-body { padding: 1.1rem 1.25rem 1.3rem; }
+  .edition h3 { font-size: 1.35rem; margin: 0.3rem 0 0.7rem; text-transform: capitalize; }
+  .edition ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.92rem; line-height: 1.35; }
+  .edition li span {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cat);
+    margin-right: 0.25rem;
+  }
+</style>

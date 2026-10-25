@@ -1,22 +1,56 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getWeeklySummaries } from "../../lib/archive";
+import ArticleVisual from "../../components/ArticleVisual.astro";
+import { getWeeks } from "../../lib/archive";
+import { withImages } from "../../lib/images";
 
-const weeks = getWeeklySummaries();
+const weeks = await Promise.all(
+  getWeeks().map(async (week) => {
+    const articles = week.issues.flatMap((i) => i.articles);
+    const covers = (await withImages(articles)).filter((a) => a.image).slice(0, 3);
+    return { week, count: articles.length, covers };
+  }),
+);
 ---
 
-<BaseLayout pageTitle="Settimane • DailyCulture" description="Riassunti settimanali del progetto DailyCulture.">
-  <section class="page-header">
-    <p class="eyebrow">Settimane</p>
-    <h1>Temi e panorami settimanali</h1>
-  </section>
+<BaseLayout pageTitle="Le settimane · DailyCulture" description="Le settimane a tema di DailyCulture.">
+  <header class="page-head">
+    <span class="kicker">Settimane</span>
+    <h1>Una parola, sette giorni</h1>
+    <p>Ogni settimana ha un tema che, quando il legame è naturale, attraversa gli articoli.</p>
+  </header>
 
-  <ul class="archive-list">
-    {weeks.map((entry) => (
-      <li>
-        <a href={`/settimane/${entry.slug}`}>{entry.label}</a>
-        <span>{entry.excerpt}</span>
-      </li>
+  <div class="weeks">
+    {weeks.map(({ week, count, covers }) => (
+      <a href={`/settimane/${week.slug}/`} class="week">
+        <div class="week-text">
+          <span class="meta">{week.label} · {week.issues.length} edizioni · {count} articoli</span>
+          <h2>{week.theme || week.label}</h2>
+        </div>
+        <div class="week-covers">
+          {covers.map((a) => (
+            <ArticleVisual image={a.image} category={a.category} title={a.title} ratio="1 / 1" />
+          ))}
+        </div>
+      </a>
     ))}
-  </ul>
+  </div>
 </BaseLayout>
+
+<style>
+  .weeks { display: flex; flex-direction: column; }
+  .week {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .week h2 { font-size: clamp(2.4rem, 5vw, 4rem); font-style: italic; margin-top: 0.4rem; transition: color 0.2s; }
+  .week:hover h2 { color: var(--accent); }
+  .week-covers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
+  @media (max-width: 700px) {
+    .week { grid-template-columns: 1fr; gap: 1rem; }
+  }
+</style>

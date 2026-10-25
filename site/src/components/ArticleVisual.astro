@@ -1,0 +1,81 @@
+---
+import type { Category } from "../lib/archive";
+import type { ArticleImage } from "../lib/images";
+
+interface Props {
+  image: ArticleImage | null;
+  category: Category;
+  title: string;
+  ratio?: string;
+  eager?: boolean;
+  caption?: boolean;
+}
+
+const { image, category, title, ratio = "3 / 2", eager = false, caption = false } = Astro.props;
+---
+
+<figure class="visual" style={`--ratio:${ratio};--cat:${category.color}`}>
+  {image ? (
+    <img
+      src={image.src}
+      alt={title}
+      width={image.width}
+      height={image.height}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      referrerpolicy="no-referrer"
+    />
+  ) : (
+    <div class="placeholder" aria-hidden="true">
+      <span class="placeholder-emoji">{category.emoji}</span>
+      <span class="placeholder-label">{category.short}</span>
+    </div>
+  )}
+  {caption && image && (
+    <figcaption>
+      Foto: <a href={image.creditUrl} rel="noopener" target="_blank">{image.credit}</a>
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .visual { margin: 0; }
+  .visual img,
+  .placeholder {
+    width: 100%;
+    aspect-ratio: var(--ratio);
+    object-fit: cover;
+    background: var(--paper-2);
+  }
+  .visual img { filter: saturate(0.92) contrast(1.02); transition: transform 0.6s ease, filter 0.3s; }
+  .placeholder {
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    color: #fff;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.18), transparent 45%),
+      repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0 2px, transparent 2px 14px),
+      linear-gradient(140deg, var(--cat), color-mix(in srgb, var(--cat) 55%, #000));
+  }
+  .placeholder-emoji { font-size: clamp(2.4rem, 6vw, 4.5rem); filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.3)); }
+  .placeholder-label {
+    position: absolute;
+    left: 0.9rem;
+    bottom: 0.7rem;
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    opacity: 0.85;
+  }
+  figcaption {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    color: var(--muted);
+    padding-top: 0.45rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.45rem;
+  }
+  figcaption a:hover { text-decoration: underline; }
+</style>

@@ -12,6 +12,7 @@ import random
 import re
 import sys
 import time
+import unicodedata
 import urllib.parse
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -117,24 +118,24 @@ def era_area(today=None):
 # Categorie fisse (weekday assente) e categorie a rotazione (weekday 0=lunedì ... 6=domenica).
 CATEGORIES = [
     {
-        "key": "letteratura", "id": "let", "emoji": "📚", "label": "Letteratura",
+        "key": "letteratura", "id": "let", "emoji": "📚", "label": "Letteratura", "image": True,
         "level": NICHE, "hint": era_area, "link": "wiki", "link_label": "Approfondisci",
         "brief": (
             "Proponi UN'opera letteraria (romanzo, racconto, saggio, raccolta di poesie, "
             "poema) oppure un autore trascurato. Nei paragrafi: 1) autore e contesto in cui "
             "nasce l'opera; 2) di cosa parla e qual è l'idea o la tesi centrale; 3) perché è "
             "notevole (stile, innovazione, influenza); 4) a chi parla e da dove cominciare. "
-            "Se citi versi, al massimo 4 e solo di autori morti da oltre 70 anni."
+            "Se citi versi, al massimo 4 e solo di autori morti da oltre 70 anni." + IMAGE_NOTE
         ),
     },
     {
-        "key": "storia", "id": "sto", "emoji": "🏛", "label": "Storia",
+        "key": "storia", "id": "sto", "emoji": "🏛", "label": "Storia", "image": True,
         "level": NICHE, "hint": era_area, "link": "wiki", "link_label": "Approfondisci",
         "brief": (
             "Proponi UN episodio, processo o figura storica poco noti al grande pubblico "
             "(non le grandi date da manuale). Nei paragrafi: 1) contesto; 2) cosa è successo, "
             "con date e luoghi precisi; 3) cause e conseguenze; 4) perché è istruttivo o come "
-            "cambia il modo di leggere il periodo."
+            "cambia il modo di leggere il periodo." + IMAGE_NOTE
         ),
     },
     {
@@ -148,18 +149,18 @@ CATEGORIES = [
         ),
     },
     {
-        "key": "musica", "id": "mus", "emoji": "🎵", "label": "Musica",
+        "key": "musica", "id": "mus", "emoji": "🎵", "label": "Musica", "image": True,
         "level": POPULAR, "hint": era_area, "link": "youtube", "link_label": "Ascolta",
         "brief": (
             "Proponi UN brano o un'opera musicale (qualsiasi genere: classica, jazz, rock, "
             "elettronica, folk...). Nei paragrafi: 1) autore o ensemble e contesto; 2) com'è "
             "fatto il brano (forma, armonia, ritmo, timbro) con dettagli tecnici; 3) cosa "
             "ascoltare con attenzione e in quale punto; 4) influenza e una curiosità sulla "
-            "registrazione o versione consigliata."
+            "registrazione o versione consigliata." + IMAGE_NOTE
         ),
     },
     {
-        "key": "scienze", "id": "sci", "emoji": "🔬", "label": "Scienze",
+        "key": "scienze", "id": "sci", "emoji": "🔬", "label": "Scienze", "image": True,
         "level": NICHE, "hint": lambda today: f"ambito: {SCIENCE_BY_WEEKDAY[today.weekday()]}",
         "link": "wiki", "link_label": "Approfondisci",
         "brief": (
@@ -167,7 +168,7 @@ CATEGORIES = [
             "ha formazione tecnica: puoi usare formule e ordini di grandezza, ma spiega "
             "l'intuizione, non solo il formalismo. Nei paragrafi: 1) il problema; 2) l'idea "
             "chiave; 3) come funziona o come fu scoperta; 4) implicazioni, limiti o questioni "
-            "ancora aperte."
+            "ancora aperte." + IMAGE_NOTE
         ),
     },
     {
@@ -196,13 +197,14 @@ CATEGORIES = [
         ),
     },
     {
-        "key": "cinema", "id": "cin", "emoji": "🎬", "label": "Cinema",
+        "key": "cinema", "id": "cin", "emoji": "🎬", "label": "Cinema", "image": True,
         "level": POPULAR, "hint": era_area, "link": "wiki", "link_label": "Approfondisci",
         "brief": (
             "Proponi UN film (anche non anglofono, muto, documentario o d'animazione). Nei "
             "paragrafi: 1) regista e contesto di produzione; 2) la trama in breve, senza "
             "rivelare il finale; 3) le scelte formali (inquadrature, montaggio, suono) che lo "
             "rendono notevole; 4) l'influenza e dove inserirlo in un percorso di visione."
+            + IMAGE_NOTE
         ),
     },
     {
@@ -699,7 +701,8 @@ def fetch_commons_image(query):
     params = {
         "action": "query", "format": "json", "generator": "search",
         "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": 8,
-        "prop": "imageinfo", "iiprop": "url|size|mime", "iiurlwidth": 1280,
+        "prop": "imageinfo", "iiprop": "url|size|mime|extmetadata", "iiurlwidth": 1280,
+        "iiextmetadatafilter": "Artist|LicenseShortName",
     }
     r = requests.get("https://commons.wikimedia.org/w/api.php", params=params,
                      headers=headers, timeout=30)
@@ -723,44 +726,78 @@ def fetch_commons_image(query):
         img.raise_for_status()
         if len(img.content) < 9_000_000:
             name = re.sub(r"^File:|\.[A-Za-z]{3,4}$", "", title)
-            return img.content, name, title
+            return img.content, name, title, image_meta(title, info)
     return None
+
+
+def strip_tags(text):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", html.unescape(str(text or "")))).strip()
+
+
+def image_meta(file_title, info):
+    """Riferimento stabile all'immagine per l'archivio: URL Special:FilePath e crediti brevi."""
+    meta = info.get("extmetadata") or {}
+    artist = strip_tags((meta.get("Artist") or {}).get("value"))[:60]
+    license_ = strip_tags((meta.get("LicenseShortName") or {}).get("value"))[:30]
+    file_name = re.sub(r"^File:", "", file_title).replace(" ", "_")
+    return {
+        "title": file_title,
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/"
+               + urllib.parse.quote(file_name) + "?width=1280",
+        "credit": " · ".join(x for x in [artist, license_, "Wikimedia Commons"] if x),
+    }
 
 
 def send_image(cat, query):
-    """Foto dell'opera/luogo prima del testo; restituisce il titolo del file su Commons.
+    """Foto dell'opera/luogo prima del testo; restituisce i dati dell'immagine trovata su Commons.
 
-    Qualsiasi problema = nessuna foto (None).
+    Se l'invio a Telegram fallisce i dati restano validi per l'archivio. Nessuna immagine = None.
     """
     try:
         found = fetch_commons_image(query)
-        if not found:
-            return None
-        content, name, file_title = found
+    except Exception as exc:
+        print(f"Immagine non trovata: {exc}", file=sys.stderr)
+        return None
+    if not found:
+        return None
+    content, name, _, meta = found
+    try:
         caption = f"{cat['emoji']} <b>{esc(name[:180])}</b>\n<i>Wikimedia Commons</i>"
         tg("sendPhoto", {"chat_id": chat_id(), "caption": caption, "parse_mode": "HTML"},
            files={"photo": ("immagine.jpg", content)})
-        return file_title
     except Exception as exc:
         print(f"Immagine non inviata: {exc}", file=sys.stderr)
-    return None
+    return meta
 
 
 # ----------------------------------------------------------------------------
 # Formattazione dei messaggi
 # ----------------------------------------------------------------------------
 
+def fold(text):
+    """Minuscole senza accenti, per confrontare titoli in lingue diverse."""
+    return "".join(c for c in unicodedata.normalize("NFD", str(text).lower())
+                   if unicodedata.category(c) != "Mn")
+
+
 def tokens_of(text):
-    return {t for t in re.findall(r"\w{4,}", str(text).lower())}
+    return {t for t in re.findall(r"\w{4,}", fold(text))}
+
+
+def enough(hits, n):
+    """Almeno metà dei termini, e tutti se sono uno o due."""
+    return n > 0 and hits >= max((n + 1) // 2, min(n, 2))
 
 
 def relevant(query, title):
-    """Almeno metà dei termini della query compare nel titolo trovato."""
-    q = tokens_of(query)
-    if not q:
+    """Il titolo trovato parla dello stesso argomento della query, in entrambe le direzioni:
+    i termini della query compaiono nel titolo e il titolo non aggiunge soprattutto altro
+    (evita che "dilemma" porti a una pagina su Evangelion)."""
+    q, t = tokens_of(query), tokens_of(title)
+    folded_title, folded_query = fold(title), fold(query)
+    if not enough(sum(1 for w in q if w in folded_title), len(q)):
         return False
-    hits = sum(1 for t in q if t in title.lower())
-    return hits >= max(1, (len(q) + 1) // 2)
+    return sum(1 for w in t if w in folded_query) >= (len(t) + 1) // 2
 
 
 def wiki_article(queries):
@@ -1079,6 +1116,10 @@ def send_quiz(questions, today, weekly):
 
 def entry_markdown(cat, d, link, label=None):
     lines = [f"## {cat['emoji']} {cat['label']}: {d['title']}", "", f"*{d['subtitle']}*", ""]
+    image = d.get("_image")
+    if image and image.get("url"):
+        alt = re.sub(r"[\[\]\n]", " ", image.get("credit") or "Wikimedia Commons").strip()
+        lines += [f"![{alt}]({image['url']})", ""]
     for k, v in d.get("facts", []):
         lines.append(f"- **{k}:** {v}")
     if d.get("facts"):
@@ -1160,11 +1201,12 @@ def main():
             if needs_search and not data.get("_sources"):
                 raise RuntimeError("nessuna fonte web: il risultato non è verificabile")
             entry_id = f"{today:%Y%m%d}-{cat['id']}"
-            image_title = None
+            image = None
             if cat.get("image") and data.get("image_query"):
-                image_title = send_image(cat, str(data["image_query"]))
+                image = send_image(cat, str(data["image_query"]))
+            data["_image"] = image
             data["_sources"] = resolve_sources(data.get("_sources", []))
-            link, link_label = resolve_link(cat, data, image_title)
+            link, link_label = resolve_link(cat, data, image["title"] if image else None)
             send_card(cat, format_message(cat, data, today), entry_id, link, link_label)
             entry = {
                 "id": entry_id, "date": today.isoformat(), "cat": cat["key"],

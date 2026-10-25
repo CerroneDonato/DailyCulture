@@ -1,25 +1,47 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getWeeklySummaries } from "../../lib/archive";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { formatLongDate, getWeeks, type Week } from "../../lib/archive";
+import { withImages } from "../../lib/images";
 
 export async function getStaticPaths() {
-  return getWeeklySummaries().map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  return getWeeks().map((week) => ({ params: { slug: week.slug }, props: { week } }));
 }
 
-const { entry } = Astro.props;
+const { week } = Astro.props as { week: Week };
+const days = await Promise.all(
+  [...week.issues]
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .map(async (issue) => ({ issue, articles: await withImages(issue.articles) })),
+);
 ---
 
-<BaseLayout pageTitle={`${entry.label} • DailyCulture`} description={entry.excerpt}>
-  <article class="article">
-    <p class="eyebrow">Settimana tematica</p>
-    <h1>{entry.label}</h1>
-    <div class="markdown-body" set:html={entry.html}></div>
-    <div class="article-actions">
-      <a href="/settimane/">Torna alle settimane</a>
-      <a href="/">Homepage</a>
-    </div>
-  </article>
+<BaseLayout
+  pageTitle={`${week.theme || week.label} · DailyCulture`}
+  description={`${week.label}: tema «${week.theme}».`}
+>
+  <header class="page-head week-head">
+    <span class="kicker">{week.label}</span>
+    <h1>{week.theme || week.label}</h1>
+    <p>{days.length} edizioni · {days.reduce((n, d) => n + d.articles.length, 0)} articoli</p>
+  </header>
+
+  {days.map(({ issue, articles }) => (
+    <section>
+      <div class="section-title">
+        <h2 class="day">{formatLongDate(issue.date)}</h2>
+        <a href={`/archive/${issue.slug}/`}>Sfoglia l’edizione →</a>
+      </div>
+      <div class="grid grid-4">
+        {articles.map((a) => <ArticleCard article={a} />)}
+      </div>
+    </section>
+  ))}
 </BaseLayout>
+
+<style>
+  .week-head { text-align: center; }
+  .week-head h1 { font-style: italic; font-size: clamp(3rem, 8vw, 6rem); }
+  .week-head p { margin: 0 auto; }
+  .day { text-transform: capitalize; }
+</style>

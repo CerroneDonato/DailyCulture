@@ -1,5 +1,23 @@
 ---
-const { pageTitle = "DailyCulture", description = "Archivio pubblico di DailyCulture." } = Astro.props;
+import { formatLongDate, getIssues, getUsedCategories } from "../lib/archive";
+
+interface Props {
+  pageTitle?: string;
+  description?: string;
+  image?: string;
+  activeSection?: string;
+}
+
+const {
+  pageTitle = "DailyCulture",
+  description = "Il quotidiano di cultura generale: letteratura, storia, scienza, arte e molto altro, ogni mattina.",
+  image,
+  activeSection = "",
+} = Astro.props;
+
+const latest = getIssues()[0];
+const sections = getUsedCategories();
+const path = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -8,285 +26,266 @@ const { pageTitle = "DailyCulture", description = "Archivio pubblico di DailyCul
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="article" />
+    {image && <meta property="og:image" content={image} />}
+    <meta name="theme-color" content="#f6f1e7" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23141414'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='%23f6f1e7' font-family='Georgia,serif' font-weight='700'>D</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@500;600;700&display=swap"
+    />
     <title>{pageTitle}</title>
   </head>
   <body>
-    <header class="site-header">
-      <nav>
-        <a href="/" class="brand">DailyCulture</a>
-        <div class="nav-links">
-          <a href="/archive/">Archivio</a>
-          <a href="/settimane/">Settimane</a>
-        </div>
-      </nav>
+    <div class="topbar">
+      <div class="wrap topbar-inner">
+        <span class="topbar-date">{latest ? formatLongDate(latest.date) : ""}</span>
+        <span class="topbar-theme">{latest?.theme && <>Tema della settimana: <em>{latest.theme}</em></>}</span>
+        <span class="topbar-edition">{latest && <>Edizione n. {latest.number}</>}</span>
+      </div>
+    </div>
+
+    <header class="masthead">
+      <div class="wrap">
+        <a href="/" class="masthead-title">Daily<span>Culture</span></a>
+        <p class="masthead-motto">Il quotidiano della curiosità · cultura generale, ogni mattina alle sette</p>
+      </div>
     </header>
-    <main>
+
+    <nav class="sections" aria-label="Sezioni">
+      <div class="wrap sections-inner">
+        <a href="/" class:list={{ active: path === "/" }}>Prima pagina</a>
+        {sections.map((c) => (
+          <a href={`/sezioni/${c.key}/`} class:list={{ active: activeSection === c.key }} style={`--cat:${c.color}`}>
+            {c.short}
+          </a>
+        ))}
+        <a href="/archive/" class:list={["sections-extra", { active: path.startsWith("/archive") }]}>Edizioni</a>
+        <a href="/settimane/" class:list={["sections-extra", { active: path.startsWith("/settimane") }]}>Settimane</a>
+      </div>
+    </nav>
+
+    <main class="wrap">
       <slot />
     </main>
+
     <footer class="site-footer">
-      <p>DailyCulture • archivio pubblico</p>
+      <div class="wrap footer-inner">
+        <div>
+          <a href="/" class="footer-brand">Daily<span>Culture</span></a>
+          <p>
+            Ogni mattina un agente scrive sette approfondimenti su argomenti di nicchia, verifica i fatti
+            con la ricerca web e li invia su Telegram. Questo è l’archivio pubblico.
+          </p>
+        </div>
+        <div class="footer-links">
+          <strong>Sezioni</strong>
+          <div class="footer-cats">
+            {sections.map((c) => <a href={`/sezioni/${c.key}/`}>{c.emoji} {c.short}</a>)}
+          </div>
+        </div>
+        <div class="footer-links">
+          <strong>Archivio</strong>
+          <a href="/archive/">Tutte le edizioni</a>
+          <a href="/settimane/">Le settimane a tema</a>
+          <a href="https://github.com/CerroneDonato/DailyCulture">Il progetto su GitHub</a>
+        </div>
+      </div>
+      <p class="footer-note wrap">
+        Testi generati con Gemini e verificati con la ricerca Google. Immagini da Wikipedia e Wikimedia Commons,
+        con i rispettivi autori e licenze indicati nelle didascalie.
+      </p>
     </footer>
   </body>
 </html>
 
 <style is:global>
   :root {
-    --bg: #f7f4ee;
-    --panel: #ffffff;
-    --paper: #f1eadf;
-    --text: #1b1b1b;
-    --muted: #5a584d;
-    --accent: #945b2c;
-    --accent-strong: #6b3d19;
-    --line: rgba(32, 24, 18, 0.12);
+    --paper: #f6f1e7;
+    --paper-2: #efe7d8;
+    --card: #fffdf8;
+    --ink: #141414;
+    --ink-2: #3a3631;
+    --muted: #6f675c;
+    --rule: #d9cfbd;
+    --rule-strong: #141414;
+    --accent: #b3261e;
+    --serif-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: Inter, "Segoe UI", system-ui, sans-serif;
+    --wrap: 1240px;
   }
 
   * { box-sizing: border-box; }
 
   html {
-    background: var(--bg);
-    color: var(--text);
-    font-family: Inter, "Segoe UI", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: linear-gradient(180deg, #f8f3ee 0%, #f4efe9 100%);
+  body { margin: 0; min-height: 100vh; }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { max-width: 100%; display: block; }
+
+  .wrap { width: min(var(--wrap), calc(100% - 2.5rem)); margin: 0 auto; }
+
+  h1, h2, h3, h4 { font-family: var(--serif-display); line-height: 1.12; margin: 0; font-weight: 800; }
+
+  /* Testata */
+  .topbar {
+    background: var(--ink);
+    color: #e9e2d3;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .topbar-inner { display: flex; justify-content: space-between; gap: 1rem; padding: 0.45rem 0; }
+  .topbar-theme em { font-family: var(--serif); text-transform: none; letter-spacing: 0; font-size: 0.85rem; color: #fff; }
+
+  .masthead { text-align: center; padding: 1.6rem 0 1.1rem; border-bottom: 1px solid var(--rule-strong); }
+  .masthead-title {
+    font-family: var(--serif-display);
+    font-weight: 900;
+    font-size: clamp(2.8rem, 8vw, 5.6rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .masthead-title span, .footer-brand span { font-style: italic; font-weight: 600; color: var(--accent); }
+  .masthead-motto {
+    margin: 0.6rem 0 0;
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
 
-  a {
-    color: var(--accent-strong);
-    text-decoration: none;
-  }
-
-  a:hover { text-decoration: underline; }
-
-  main {
-    width: min(1100px, calc(100% - 2rem));
-    margin: 0 auto;
-    padding: 2rem 0 4rem;
-  }
-
-  .site-header {
-    background: rgba(255,255,255,0.72);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
+  .sections {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 20;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 3px double var(--rule-strong);
   }
-
-  nav {
-    width: min(1100px, calc(100% - 2rem));
-    margin: 0 auto;
+  .sections-inner {
     display: flex;
+    gap: 0.2rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .sections-inner::-webkit-scrollbar { display: none; }
+  .sections-inner a {
+    white-space: nowrap;
+    padding: 0.75rem 0.7rem;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    color: var(--ink-2);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .sections-inner a:hover { color: var(--cat, var(--accent)); }
+  .sections-inner a.active { color: var(--cat, var(--accent)); border-bottom-color: var(--cat, var(--accent)); }
+  .sections-extra:first-of-type { margin-left: auto; }
+
+  main.wrap { padding: 2rem 0 4rem; }
+
+  /* Elementi comuni */
+  .kicker {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    min-height: 4rem;
-  }
-
-  .brand {
+    gap: 0.35rem;
+    font-family: var(--sans);
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text);
+    color: var(--cat, var(--accent));
   }
-
-  .nav-links {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .site-footer {
-    border-top: 1px solid var(--line);
-    padding: 1rem 0 2rem;
-    text-align: center;
-    color: var(--muted);
-  }
-
-  .hero,
-  .page-header,
-  .article,
-  .card,
-  .archive-list li {
-    background: rgba(255,255,255,0.6);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    box-shadow: 0 12px 36px rgba(40, 33, 29, 0.05);
-  }
-
-  .hero,
-  .page-header,
-  .article {
-    padding: 2rem;
-  }
-
-  .eyebrow {
-    text-transform: uppercase;
+  .meta { font-family: var(--sans); font-size: 0.74rem; color: var(--muted); letter-spacing: 0.02em; }
+  .badge-liked {
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
-    color: var(--accent);
-    font-size: 0.76rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.15rem 0.45rem;
+    border-radius: 2px;
   }
 
-  h1, h2, h3 {
-    line-height: 1.2;
-    margin-top: 0;
-  }
-
-  h1 { font-size: clamp(2.2rem, 3vw, 3rem); margin-bottom: 0.8rem; }
-  h2 { font-size: clamp(1.5rem, 2vw, 2rem); margin-bottom: 1rem; }
-
-  .hero-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-
-  .hero-metrics div {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 1rem;
-  }
-
-  .hero-metrics strong {
-    display: block;
-    font-size: 1.2rem;
-    margin-bottom: 0.2rem;
-  }
-
-  .hero-metrics span,
-  .muted {
-    color: var(--muted);
-  }
-
-  .hero-actions,
-  .article-actions {
+  .section-title {
     display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-top: 1.5rem;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 3px solid var(--ink);
+    padding-top: 0.6rem;
+    margin: 3rem 0 1.4rem;
   }
+  .section-title h2 { font-size: 1.6rem; }
+  .section-title a { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; color: var(--accent); }
+  .section-title a:hover { text-decoration: underline; }
+
+  .page-head { border-bottom: 1px solid var(--rule); padding-bottom: 1.6rem; margin-bottom: 2rem; }
+  .page-head h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin: 0.4rem 0 0.6rem; }
+  .page-head p { margin: 0; color: var(--ink-2); font-size: 1.15rem; max-width: 46rem; }
+
+  .grid { display: grid; gap: 2rem 1.75rem; }
+  .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
   .button {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 0.8rem 1.2rem;
-    border-radius: 999px;
-    border: 1px solid var(--line);
+    gap: 0.4rem;
+    font-family: var(--sans);
+    font-size: 0.8rem;
     font-weight: 600;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .button:hover { background: var(--ink); color: var(--paper); }
+
+  /* Piè di pagina */
+  .site-footer { background: var(--ink); color: #cfc6b6; margin-top: 2rem; padding: 3rem 0 1.5rem; }
+  .footer-inner { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 2.5rem; }
+  .footer-brand { font-family: var(--serif-display); font-weight: 900; font-size: 2rem; color: #fff; }
+  .site-footer p { font-size: 0.92rem; max-width: 30rem; }
+  .footer-links { display: flex; flex-direction: column; gap: 0.35rem; font-family: var(--sans); font-size: 0.82rem; }
+  .footer-links strong { color: #fff; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; margin-bottom: 0.3rem; }
+  .footer-links a:hover { color: #fff; }
+  .footer-cats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.35rem 1rem; }
+  .footer-note { border-top: 1px solid #333; margin-top: 2.5rem; padding-top: 1rem; font-family: var(--sans); font-size: 0.72rem !important; max-width: none !important; color: #8f877a; }
+
+  @media (max-width: 1000px) {
+    .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
   }
 
-  .button.primary {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
-  }
-
-  .button.secondary {
-    background: var(--panel);
-    color: var(--text);
-  }
-
-  .section-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    margin: 2.5rem 0 1rem;
-  }
-
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-  }
-
-  .card {
-    padding: 1.25rem;
-  }
-
-  .card h3 {
-    margin: 0.4rem 0 0.6rem;
-    font-size: 1.2rem;
-  }
-
-  .card p,
-  .archive-list li span,
-  .list-stack p {
-    color: var(--muted);
-    margin: 0;
-  }
-
-  .list-stack {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 1rem;
-  }
-
-  .list-stack li,
-  .archive-list li {
-    padding: 1rem 1.1rem;
-    list-style: none;
-  }
-
-  .archive-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 1rem;
-  }
-
-  .archive-list li {
-    display: grid;
-    gap: 0.35rem;
-  }
-
-  .markdown-body {
-    margin-top: 1.5rem;
-    font-size: 1.05rem;
-  }
-
-  .markdown-body h2,
-  .markdown-body h3,
-  .markdown-body h4 {
-    margin-top: 2rem;
-  }
-
-  .markdown-body p,
-  .markdown-body li {
-    color: #222;
-  }
-
-  .markdown-body blockquote {
-    border-left: 4px solid var(--accent);
-    padding-left: 1rem;
-    margin: 1.5rem 0;
-    color: var(--muted);
-  }
-
-  .markdown-body ul,
-  .markdown-body ol {
-    padding-left: 1.2rem;
-  }
-
-  @media (max-width: 680px) {
-    .hero-metrics {
-      grid-template-columns: 1fr;
-    }
-
-    .section-heading {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+  @media (max-width: 640px) {
+    html { font-size: 16px; }
+    .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .topbar-theme, .topbar-edition { display: none; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .sections-extra:first-of-type { margin-left: 0; }
   }
 </style>

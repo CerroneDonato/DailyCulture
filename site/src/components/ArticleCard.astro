@@ -1,0 +1,66 @@
+---
+import ArticleVisual from "./ArticleVisual.astro";
+import { formatArchiveDate, type Article } from "../lib/archive";
+import type { ArticleImage } from "../lib/images";
+
+interface Props {
+  article: Article & { image: ArticleImage | null };
+  variant?: "lead" | "standard" | "compact" | "text";
+  showDate?: boolean;
+  eager?: boolean;
+}
+
+const { article, variant = "standard", showDate = false, eager = false } = Astro.props;
+const href = `/articoli/${article.slug}/`;
+const date = formatArchiveDate(article.date, { year: undefined });
+---
+
+<article class:list={["card", `card-${variant}`]} style={`--cat:${article.category.color}`}>
+  {variant !== "text" && (
+    <a href={href} class="card-media" tabindex="-1" aria-hidden="true">
+      <ArticleVisual
+        image={article.image}
+        category={article.category}
+        title={article.title}
+        ratio={variant === "lead" ? "16 / 10" : variant === "compact" ? "1 / 1" : "3 / 2"}
+        eager={eager}
+      />
+    </a>
+  )}
+  <div class="card-body">
+    <div class="card-top">
+      <a href={`/sezioni/${article.category.key}/`} class="kicker">{article.category.emoji} {article.category.short}</a>
+      {article.liked && <span class="badge-liked">Il preferito</span>}
+    </div>
+    <h3><a href={href}>{article.title}</a></h3>
+    {variant !== "compact" && article.subtitle && <p class="card-sub">{article.subtitle}</p>}
+    {(variant === "lead" || variant === "text") && <p class="card-excerpt">{article.excerpt}</p>}
+    <p class="meta">
+      {showDate && <>{date} · </>}{article.readingMinutes} min di lettura
+    </p>
+  </div>
+</article>
+
+<style>
+  .card { display: flex; flex-direction: column; gap: 0.85rem; min-width: 0; }
+  .card-media { display: block; overflow: hidden; }
+  .card:hover :global(img) { transform: scale(1.035); filter: saturate(1.05); }
+  .card-top { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .card h3 { font-size: 1.32rem; margin: 0.35rem 0 0.4rem; }
+  .card h3 a { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size 0.25s; }
+  .card:hover h3 a { background-size: 100% 1px; }
+  .card-sub { margin: 0 0 0.5rem; font-style: italic; color: var(--ink-2); font-size: 1rem; line-height: 1.45; }
+  .card-excerpt { margin: 0 0 0.6rem; color: var(--ink-2); }
+  .meta { margin: 0; }
+
+  .card-lead h3 { font-size: clamp(2rem, 3.6vw, 3.1rem); line-height: 1.05; margin-top: 0.5rem; }
+  .card-lead .card-sub { font-size: 1.25rem; }
+  .card-lead .card-excerpt { font-size: 1.05rem; }
+
+  .card-compact { flex-direction: row; align-items: flex-start; gap: 0.9rem; }
+  .card-compact .card-media { flex: 0 0 92px; }
+  .card-compact h3 { font-size: 1.05rem; margin: 0.2rem 0 0.3rem; }
+
+  .card-text h3 { font-size: 1.25rem; }
+  .card-text .card-excerpt { font-size: 0.95rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+</style>

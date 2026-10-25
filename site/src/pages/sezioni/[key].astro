@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { getArticlesByCategory, getUsedCategories, type Category } from "../../lib/archive";
+import { withImages } from "../../lib/images";
+
+export async function getStaticPaths() {
+  return getUsedCategories().map((category) => ({ params: { key: category.key }, props: { category } }));
+}
+
+const { category } = Astro.props as { category: Category };
+const articles = await withImages(getArticlesByCategory(category.key));
+const [lead, ...rest] = articles;
+---
+
+<BaseLayout
+  pageTitle={`${category.label} · DailyCulture`}
+  description={`Tutti gli approfondimenti della sezione ${category.label}.`}
+  activeSection={category.key}
+>
+  <header class="page-head section-head" style={`--cat:${category.color}`}>
+    <span class="kicker">Sezione</span>
+    <h1>{category.emoji} {category.label}</h1>
+    <p>{articles.length} {articles.length === 1 ? "approfondimento" : "approfondimenti"} in archivio.</p>
+  </header>
+
+  {lead && (
+    <section class="section-lead">
+      <ArticleCard article={lead} variant="lead" showDate eager />
+    </section>
+  )}
+
+  <section class="grid grid-3">
+    {rest.map((a) => <ArticleCard article={a} showDate />)}
+  </section>
+</BaseLayout>
+
+<style>
+  .section-head { border-bottom: 4px solid var(--cat); }
+  .section-head h1 { color: var(--cat); }
+  .section-lead { max-width: 60rem; margin: 0 auto 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+</style>

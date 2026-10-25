@@ -1,0 +1,47 @@
+---
+import type { QuizItem } from "../lib/archive";
+
+interface Props {
+  items: QuizItem[];
+  compact?: boolean;
+}
+
+const { items, compact = false } = Astro.props;
+---
+
+<ol class:list={["quiz", { compact }]}>
+  {items.map((item) => (
+    <li>
+      <details>
+        <summary>{item.q}</summary>
+        {item.a && <p>{item.a}</p>}
+      </details>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .quiz { margin: 0; padding: 0; list-style: none; counter-reset: q; display: flex; flex-direction: column; gap: 0.7rem; }
+  .quiz li { counter-increment: q; border-bottom: 1px solid var(--rule); padding-bottom: 0.7rem; }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1.8rem 1fr auto;
+    gap: 0.4rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: counter(q); font-family: var(--serif-display); font-weight: 900; font-size: 1.3rem; color: var(--accent); line-height: 1.1; }
+  summary::after { content: "+"; font-family: var(--sans); color: var(--muted); font-weight: 700; }
+  details[open] summary::after { content: "–"; }
+  details p {
+    margin: 0.5rem 0 0 2.2rem;
+    padding: 0.6rem 0.8rem;
+    background: var(--paper-2);
+    border-left: 3px solid var(--accent);
+    font-size: 0.95rem;
+  }
+  .compact summary { font-size: 0.95rem; }
+</style>
