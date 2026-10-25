@@ -37,6 +37,14 @@ export type ArchiveItem = {
   source: string;
 };
 
+function readTextSafe(filePath: string): string | null {
+  try {
+    return fs.readFileSync(filePath, "utf-8");
+  } catch {
+    return null;
+  }
+}
+
 function listMarkdownFiles(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
 
@@ -61,16 +69,45 @@ function stripMarkdown(input: string): string {
     .trim();
 }
 
+function makeUniqueSlug(baseSlug: string, used: Set<string>): string {
+  let slug = baseSlug;
+  let counter = 1;
+
+  while (used.has(slug)) {
+    slug = `${baseSlug}-${counter}`;
+    counter += 1;
+  }
+
+  used.add(slug);
+  return slug;
+}
+
 export function getHistoryMeta(): HistoryState {
   const filePath = path.join(projectRoot, "history.json");
-  return JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  const raw = readTextSafe(filePath);
+
+  if (!raw) {
+    return { _last_sent: "", _offset: 0, log: [] };
+  }
+
+  try {
+    return JSON.parse(raw) as HistoryState;
+  } catch {
+    return { _last_sent: "", _offset: 0, log: [] };
+  }
 }
 
 export function getArchiveEntries(): ArchiveItem[] {
-  const files = listMarkdownFiles(path.join(archiveRoot, "2026"));
+  const dailyRoot = path.join(archiveRoot, "2026");
+  if (!fs.existsSync(dailyRoot)) return [];
 
-  return files.map((filePath) => {
-    const source = fs.readFileSync(filePath, "utf-8");
+  const files = listMarkdownFiles(dailyRoot);
+  const usedSlugs = new Set<string>();
+
+  return files.flatMap((filePath) => {
+    const source = readTextSafe(filePath);
+    if (!source) return [];
+
     const baseName = path.basename(filePath, ".md");
     const titleMatch = source.match(/^#\s+(.+)$/m);
     const title = titleMatch ? titleMatch[1].trim() : baseName;
@@ -83,9 +120,10 @@ export function getArchiveEntries(): ArchiveItem[] {
 
     const date = baseName;
     const year = Number(baseName.slice(0, 4));
+    const slug = makeUniqueSlug(baseName, usedSlugs);
 
-    return {
-      slug: baseName,
+    return [{
+      slug,
       filePath,
       title,
       date,
@@ -95,28 +133,35 @@ export function getArchiveEntries(): ArchiveItem[] {
       body,
       html: marked.parse(body, { breaks: true }),
       source: filePath.replace(projectRoot + path.sep, ""),
-    };
+    }];
   });
 }
 
 export function getWeeklySummaries() {
-  const files = listMarkdownFiles(path.join(archiveRoot, "settimane"));
+  const weeklyRoot = path.join(archiveRoot, "settimane");
+  if (!fs.existsSync(weeklyRoot)) return [];
 
-  return files.map((filePath) => {
-    const source = fs.readFileSync(filePath, "utf-8");
+  const files = listMarkdownFiles(weeklyRoot);
+  const usedSlugs = new Set<string>();
+
+  return files.flatMap((filePath) => {
+    const source = readTextSafe(filePath);
+    if (!source) return [];
+
     const baseName = path.basename(filePath, ".md");
     const match = source.match(/^#\s+Settimana\s+(\d{4}-W\d{2})/m);
     const label = match ? match[1] : baseName;
     const excerpt = stripMarkdown(source).slice(0, 220);
+    const slug = makeUniqueSlug(baseName, usedSlugs);
 
-    return {
-      slug: baseName,
+    return [{
+      slug,
       filePath,
       label,
       excerpt,
       html: marked.parse(source, { breaks: true }),
       source: filePath.replace(projectRoot + path.sep, ""),
-    };
+    }];
   });
 }
 
@@ -127,7 +172,10 @@ export function getLatestEntries(limit = 6) {
 }
 
 export function formatArchiveDate(dateString: string): string {
-  const [year, month, day] = dateString.split("-").map(Number);
+  const dateParts = dateString.split("-").map(Number);
+  if (dateParts.length !== 3 || dateParts.some(Number.isNaN)) return dateString;
+
+  const [year, month, day] = dateParts;
   const date = new Date(Date.UTC(year, month - 1, day));
   const formatter = new Intl.DateTimeFormat("it-IT", {
     day: "2-digit",
