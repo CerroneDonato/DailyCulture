@@ -36,12 +36,20 @@ const following = edition[index + 1];
         <span class="reader-count">{index + 1} di {edition.length}</span>
       </div>
       <span class="reader-hint">{following ? `poi ${following.category.short}` : "fine"}</span>
-      <div class="reader-dots" aria-hidden="true">
+      <div class="reader-dots">
         {edition.map((item, dot) => (
-          <span class:list={["dot", { on: dot === index }]} style={`--cat:${item.category.color}`} />
+          <button
+            type="button"
+            class:list={["dot", { on: dot === index }]}
+            style={`--cat:${item.category.color}`}
+            data-go={dot}
+            aria-label={`${item.category.short}: ${item.title}`}
+          />
         ))}
       </div>
     </div>
+
+    <div class="swipe-hint" aria-hidden="true">Scorri per il prossimo articolo <span>→</span></div>
 
     <div class="reader-viewport">
       <div class="reader-track">
@@ -82,14 +90,15 @@ const following = edition[index + 1];
 
 <script>
   const reader = document.querySelector<HTMLElement>(".edition-reader");
-  const track = reader?.querySelector<HTMLElement>(".reader-track");
-  const slides = track ? [...track.querySelectorAll<HTMLElement>(".reader-slide")] : [];
+  const viewport = reader?.querySelector<HTMLElement>(".reader-viewport");
+  const slides = viewport ? [...viewport.querySelectorAll<HTMLElement>(".reader-slide")] : [];
   const narrow = window.matchMedia("(max-width: 800px)");
+  let currentIndex = Number(reader?.dataset.start || 0);
 
   function apply(index: number, updateUrl: boolean) {
-    if (!reader || !track || !slides.length) return;
+    if (!reader || !slides.length) return;
     const next = Math.max(0, Math.min(slides.length - 1, index));
-    reader.style.setProperty("--i", String(next));
+    currentIndex = next;
     slides.forEach((slide, position) => slide.classList.toggle("is-current", position === next));
     const slide = slides[next];
     const section = document.querySelector<HTMLElement>(".reader-section");
@@ -110,35 +119,45 @@ const following = edition[index + 1];
     }
   }
 
-  if (reader && track && slides.length && narrow.matches) {
-    apply(Number(reader.dataset.start || 0), false);
-    let startX = 0;
-    let startY = 0;
-    let deltaX = 0;
-    let deltaY = 0;
+  function jumpTo(index: number) {
+    if (!viewport) return;
+    viewport.style.scrollBehavior = "auto";
+    viewport.scrollLeft = index * viewport.clientWidth;
+    viewport.style.scrollBehavior = "";
+  }
 
-    reader.addEventListener("touchstart", (event) => {
-      const touch = event.touches[0];
-      startX = touch.clientX;
-      startY = touch.clientY;
-      deltaX = 0;
-      deltaY = 0;
+  if (reader && viewport && slides.length > 1) {
+    reader.classList.add("is-ready");
+    if (narrow.matches) requestAnimationFrame(() => jumpTo(currentIndex));
+
+    let settle = 0;
+    viewport.addEventListener("scroll", () => {
+      if (!narrow.matches) return;
+      clearTimeout(settle);
+      settle = window.setTimeout(() => {
+        const index = Math.round(viewport.scrollLeft / viewport.clientWidth);
+        if (index !== currentIndex) {
+          apply(index, true);
+          localStorage.setItem("dc-swiped", "1");
+          reader.classList.remove("show-hint");
+        }
+      }, 90);
     }, { passive: true });
 
-    reader.addEventListener("touchmove", (event) => {
-      const touch = event.touches[0];
-      deltaX = touch.clientX - startX;
-      deltaY = touch.clientY - startY;
-    }, { passive: true });
-
-    reader.addEventListener("touchend", () => {
-      if (Math.abs(deltaX) < 56 || Math.abs(deltaX) < Math.abs(deltaY) * 1.15) return;
-      const current = Number(reader.style.getPropertyValue("--i")) || 0;
-      const target = current + (deltaX < 0 ? 1 : -1);
-      if (target < 0 || target >= slides.length) return;
-      slides[target].scrollTop = 0;
-      apply(target, true);
+    reader.querySelectorAll<HTMLElement>("[data-go]").forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const index = Number(dot.dataset.go);
+        if (narrow.matches) viewport.scrollTo({ left: index * viewport.clientWidth, behavior: "smooth" });
+        else location.href = slides[index].dataset.url || location.href;
+      });
     });
+
+    window.addEventListener("resize", () => { if (narrow.matches) jumpTo(currentIndex); });
+
+    if (narrow.matches && !localStorage.getItem("dc-swiped") && currentIndex < slides.length - 1) {
+      reader.classList.add("show-hint");
+      window.setTimeout(() => reader.classList.remove("show-hint"), 4500);
+    }
   }
 </script>
 
@@ -236,32 +255,73 @@ const following = edition[index + 1];
       color: #f0b9a8;
       text-align: right;
     }
-    .reader-dots { grid-area: dots; display: flex; justify-content: center; gap: 0.35rem; }
-    .dot { width: 7px; height: 7px; border-radius: 99px; background: #4a463f; }
-    .dot.on { background: var(--cat, #f0b9a8); transform: scale(1.25); }
-
-    .reader-viewport { flex: 1; min-height: 0; overflow: hidden; }
-    .reader-track {
-      display: flex;
-      width: calc(var(--n) * 100%);
-      height: 100%;
-      transform: translateX(calc(var(--i) * -100% / var(--n)));
-      transition: transform 0.28s ease;
+    .reader-dots { grid-area: dots; display: flex; justify-content: center; gap: 0.15rem; }
+    .dot {
+      width: 22px;
+      height: 18px;
+      padding: 0;
+      border: 0;
+      background: none;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
     }
+    .dot::before { content: ""; width: 7px; height: 7px; border-radius: 99px; background: #4a463f; transition: width 0.2s, background 0.2s; }
+    .dot.on::before { width: 18px; background: var(--cat, #f0b9a8); }
+
+    .reader-viewport {
+      flex: 1;
+      min-height: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .reader-viewport::-webkit-scrollbar { display: none; }
+    .reader-track { display: flex; height: 100%; }
     .reader-slide {
-      flex: none;
-      width: calc(100% / var(--n));
+      flex: 0 0 100vw;
+      width: 100vw;
       height: 100%;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
       overflow-x: hidden;
       overflow-y: auto;
       overscroll-behavior-y: contain;
-      touch-action: pan-y;
       padding: 0.8rem 1.05rem calc(1.4rem + env(safe-area-inset-bottom));
       -webkit-overflow-scrolling: touch;
     }
+    .reader-slide + .reader-slide { border-left: 1px solid var(--rule); }
+
+    .swipe-hint {
+      position: fixed;
+      left: 50%;
+      bottom: calc(1.2rem + env(safe-area-inset-bottom));
+      transform: translate(-50%, 1rem);
+      opacity: 0;
+      pointer-events: none;
+      background: var(--ink);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.6rem 1rem;
+      border-radius: 99px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 10;
+      white-space: nowrap;
+    }
+    .swipe-hint span { display: inline-block; animation: nudge 1s ease-in-out infinite; }
+    .show-hint .swipe-hint { opacity: 1; transform: translate(-50%, 0); }
+    @keyframes nudge { 50% { transform: translateX(5px); } }
   }
 
   @media (min-width: 801px) {
+    .swipe-hint { display: none; }
     .reader-track { display: block; }
     .reader-slide { display: none; }
     .reader-slide.is-current { display: block; }
