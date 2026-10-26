@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-23",
+ "_last_sent": "2026-10-26",
  "_offset": 0,
  "log": [
   {
@@ -1081,6 +1081,62 @@
    "key": "Ashikaga Yoshimitsu - Kinkaku-ji",
    "title": "Padiglione d'Oro di Kyoto",
    "recap": "Il Kinkaku-ji, eretto da Ashikaga Yoshimitsu nel 1397, è un edificio in legno rivestito d'oro che fonde tre stili architettonici distinti. Dopo l'incendio del 1950, la ricostruzione del 1955 ha preservato le tecniche costruttive tradizionali giapponesi, garantendo la sopravvivenza di un simbolo mondiale dello Zen."
+  },
+  {
+   "id": "20261026-let",
+   "date": "2026-10-26",
+   "cat": "letteratura",
+   "key": "Browne - Il giardino di Ciro",
+   "title": "Il giardino di Ciro",
+   "recap": "Thomas Browne, con Il giardino di Ciro del 1658, esplora l'universalità del quinconce, una struttura geometrica che connette botanica, arte e cosmologia. Attraverso questo pattern, l'autore teorizza un ordine nascosto che governa la simmetria del mondo naturale, prefigurando approcci analitici moderni."
+  },
+  {
+   "id": "20261026-sto",
+   "date": "2026-10-26",
+   "cat": "storia",
+   "key": "Paxton - Crystal Palace 1851",
+   "title": "Il Progetto del Crystal Palace",
+   "recap": "Progettato da Joseph Paxton per l'Esposizione Universale del 1851 a Londra, il Crystal Palace fu la prima grande opera architettonica realizzata interamente mediante componenti prefabbricati in ferro e vetro. La sua struttura modulare e simmetrica segnò un punto di svolta, trasformando l'efficienza industriale in una nuova forma estetica moderna."
+  },
+  {
+   "id": "20261026-sci",
+   "date": "2026-10-26",
+   "cat": "scienze",
+   "key": "Wigner - Paradosso dell'amico",
+   "title": "Il paradosso di Wigner",
+   "recap": "Il paradosso di Wigner del 1961 evidenzia il conflitto tra l'evoluzione unitaria della meccanica quantistica e il collasso della funzione d'onda quando l'osservatore stesso è incluso nel sistema. Esso suggerisce che la descrizione quantistica potrebbe non essere universale o richiedere una revisione radicale dei concetti di oggettività e località."
+  },
+  {
+   "id": "20261026-ing",
+   "date": "2026-10-26",
+   "cat": "ingegneria",
+   "key": "Brunelleschi - Cupola del Duomo",
+   "title": "La cupola di Santa Maria del Fiore",
+   "recap": "Filippo Brunelleschi ha risolto l'impossibile copertura di Santa Maria del Fiore (1420-1436) eliminando le centine in legno. Attraverso una doppia calotta a sesto acuto, la tecnica a spina di pesce e l'inserimento di catene di trazione, ha trasformato un problema di statica in una dimostrazione di eccellenza ingegneristica."
+  },
+  {
+   "id": "20261026-par",
+   "date": "2026-10-26",
+   "cat": "parole",
+   "key": "Lessico - Bafangue Eclat Estrapolare",
+   "title": "Bafangue, Eclat, Estrapolare",
+   "recap": "Le parole esaminate sono bafangue, termine per indicare un tessuto grossolano; eclat, prestito dal francese che descrive uno splendore improvviso o una risonanza clamorosa; ed estrapolare, verbo tecnico per definire la proiezione di un dato oltre l'intervallo osservato. Il legame tra esse risiede nella tensione intellettuale verso ciò che trascende la superficie dei fenomeni immediati."
+  },
+  {
+   "id": "20261026-nat",
+   "date": "2026-10-26",
+   "cat": "natura",
+   "key": "Oikopleura dioica - Biologia",
+   "title": "La simmetria radiale di Oikopleura dioica",
+   "recap": "Oikopleura dioica è un cordato planctonico noto per il suo genoma estremamente compatto. Attraverso una sofisticata ingegneria biologica, costruisce filtri gelatinosi che giocano un ruolo vitale nel trasporto del carbonio oceanico verso i fondali."
+  },
+  {
+   "id": "20261026-art",
+   "date": "2026-10-26",
+   "cat": "arte",
+   "key": "Ashoka - Capitello di Sarnath",
+   "title": "Il Capitello di Ashoka",
+   "recap": "Il capitello di Sarnath, commissionato da Ashoka nel III secolo a.C., rappresenta l'apice dell'arte scultorea Maurya. La sua simmetria radiale e i leoni contrapposti, simboli del Dharma, uniscono influssi estetici greci e spiritualità indiana in un equilibrio formale rigoroso."
   }
  ],
  "ratings": {}
