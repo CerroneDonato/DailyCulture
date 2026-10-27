@@ -577,10 +577,15 @@ def call_model(model, prompt, system, grounded, required):
                 data["facts"] = norm_facts(data.get("facts"))
             data["_sources"] = extract_sources(cand) if grounded else []
             return data
-        except (KeyError, IndexError, ValueError, TypeError, AttributeError):
-            time.sleep(5)  # risposta malformata: riprovo
-    raise RuntimeError(f"Gemini ({model}) non ha dato una risposta valida")
+        except (KeyError, IndexError, ValueError, TypeError, AttributeError) as exc:
+                print(
+                    f"RISPOSTA GEMINI NON VALIDA: {type(exc).__name__}: {exc}; "
+                    f"HTTP={r.status_code}; risposta={r.text[:1500]}",
+                    file=sys.stderr,
+                )
+                time.sleep(5)  # risposta malformata: riprovo
 
+    raise RuntimeError(f"Gemini ({model}) non ha dato una risposta valida")
 
 def call_gemini(prompt, system=SYSTEM, grounded=GROUNDING, required=CONTENT_FIELDS,
                 require_search=False):
