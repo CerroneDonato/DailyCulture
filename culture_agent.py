@@ -578,7 +578,7 @@ def call_model(model, prompt, system, grounded, required):
             data["_sources"] = extract_sources(cand) if grounded else []
             return data
         except (KeyError, IndexError, ValueError, TypeError, AttributeError) as exc:
-                print(
+            print(
                     f"RISPOSTA GEMINI NON VALIDA: {type(exc).__name__}: {exc}; "
                     f"HTTP={r.status_code}; risposta={r.text[:1500]}",
                     file=sys.stderr,
