@@ -579,11 +579,11 @@ def call_model(model, prompt, system, grounded, required):
             return data
         except (KeyError, IndexError, ValueError, TypeError, AttributeError) as exc:
             print(
-                    f"RISPOSTA GEMINI NON VALIDA: {type(exc).__name__}: {exc}; "
-                    f"HTTP={r.status_code}; risposta={r.text[:1500]}",
-                    file=sys.stderr,
-                )
-                time.sleep(5)  # risposta malformata: riprovo
+                f"RISPOSTA GEMINI NON VALIDA: {type(exc).__name__}: {exc}; "
+                f"HTTP={r.status_code}; risposta={r.text[:1500]}",
+                file=sys.stderr,
+            )
+            time.sleep(5)  # risposta malformata: riprovo
 
     raise RuntimeError(f"Gemini ({model}) non ha dato una risposta valida")
 
