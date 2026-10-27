@@ -2,16 +2,12 @@ name: Cultura del giorno
 
 on:
   schedule:
-    # PiÃ¹ orari UTC per coprire ora legale/solare e i ritardi o le esecuzioni
-    # saltate di GitHub. Lo script invia una sola volta al giorno, solo se a
-    # Milano sono tra le 7 e le 11. Minuto :17 per evitare l'inizio ora.
-    - cron: "17 5 * * *"
-    - cron: "17 6 * * *"
-    - cron: "17 7 * * *" # riserva
-  workflow_dispatch: # esecuzione manuale per i test (ignora il controllo dell'ora)
+    - cron: "17 5 * * *"   # 07:17 CEST (estate)
+    - cron: "17 6 * * *"   # 07:17 CET (inverno)
+  workflow_dispatch:
 
 permissions:
-  contents: write # serve per salvare history.json e l'archivio
+  contents: write
 
 concurrency:
   group: cultura-del-giorno
@@ -23,6 +19,9 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -45,7 +44,5 @@ jobs:
           git add -A
           git diff --cached --quiet || (git commit -m "Aggiorna storico" && git pull --rebase && git push)
 
-      # Il sito principale su Cloudflare Pages si costruisce da astro-public-site:
-      # lo si allinea a main perché la nuova edizione vada online.
       - name: Aggiorna il ramo del sito
         run: git push origin HEAD:astro-public-site || echo "::warning::astro-public-site non è allineabile a main"
