@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-26",
+ "_last_sent": "2026-10-28",
  "_offset": 0,
  "log": [
   {
@@ -1137,6 +1137,54 @@
    "key": "Ashoka - Capitello di Sarnath",
    "title": "Il Capitello di Ashoka",
    "recap": "Il capitello di Sarnath, commissionato da Ashoka nel III secolo a.C., rappresenta l'apice dell'arte scultorea Maurya. La sua simmetria radiale e i leoni contrapposti, simboli del Dharma, uniscono influssi estetici greci e spiritualità indiana in un equilibrio formale rigoroso."
+  },
+  {
+   "id": "20261028-let",
+   "date": "2026-10-28",
+   "cat": "letteratura",
+   "key": "Gebre-Medhin - Oda-Oak Oracle",
+   "title": "La memoria delle pietre",
+   "recap": "Tsegaye Gebre-Medhin (1936-2006) ha ridefinito la letteratura etiope coniugando mito e modernità. La sua opera Oda-Oak Oracle analizza il dissidio tra tradizione e progresso, offrendo un esempio magistrale di sintesi tra la struttura drammaturgica classica e le istanze culturali dell'Africa del Novecento."
+  },
+  {
+   "id": "20261028-sto",
+   "date": "2026-10-28",
+   "cat": "storia",
+   "key": "Rasmussen - Quinta Spedizione Thule",
+   "title": "La missione di Knud Rasmussen",
+   "recap": "Tra il 1921 e il 1924, l'esploratore Knud Rasmussen completò la Quinta Spedizione di Thule, un viaggio di 18.000 km in slitta che collegò la Groenlandia all'Alaska. Il suo lavoro ha dimostrato l'unità culturale e linguistica dei popoli inuit, rivelando una struttura mitologica speculare che attraversa tutto l'Artico."
+  },
+  {
+   "id": "20261028-sci",
+   "date": "2026-10-28",
+   "cat": "scienze",
+   "key": "Pasteur - Quiralità",
+   "title": "La quiralità molecolare",
+   "recap": "La quiralità descrive molecole che, pur avendo stessa composizione, sono immagini speculari non sovrapponibili. Scoperta da Louis Pasteur nel 1848, essa è un pilastro della biochimica poiché il riconoscimento molecolare dipende strettamente dalla forma 3D. L'omochiralità del vivente resta una delle questioni aperte più affascinanti sulla comparsa della vita."
+  },
+  {
+   "id": "20261028-fil",
+   "date": "2026-10-28",
+   "cat": "filosofia",
+   "key": "Avicenna - Intenzionalità",
+   "title": "La teoria dell'intenzionalità di Avicenna",
+   "recap": "Ibn Sina, noto in Occidente come Avicenna, ha ridefinito nel XI secolo il rapporto tra mente e realtà attraverso l'astrazione. La sua teoria dell'intenzionalità permette di superare la dualità tra materia e forma, garantendo una rigorosa corrispondenza logica tra il mondo e il suo concetto mentale."
+  },
+  {
+   "id": "20261028-ant",
+   "date": "2026-10-28",
+   "cat": "archeologia",
+   "key": "Micronesia - Nan Madol",
+   "title": "Il complesso di Nan Madol",
+   "recap": "Nan Madol è un complesso monumentale in basalto costruito dai Saudeleur tra il XII e il XVII secolo a Pohnpei. La struttura, caratterizzata da un'imponente simmetria geometrica, fungeva da centro politico e cerimoniale, sollevando tuttora interrogativi sulla logistica del trasporto megalitico in ambiente lagunare."
+  },
+  {
+   "id": "20261028-arc",
+   "date": "2026-10-28",
+   "cat": "architettura",
+   "key": "Guarino Guarini - San Lorenzo",
+   "title": "La Chiesa di San Lorenzo",
+   "recap": "La Chiesa di San Lorenzo a Torino, eretta tra il 1668 e il 1687 su progetto di Guarino Guarini, rappresenta un capolavoro di ingegneria barocca. Grazie all'uso innovativo di archi intrecciati e cupole nervate, l'architetto ha risolto complessi problemi di statica, influenzando profondamente l'architettura dei secoli successivi."
   }
  ],
  "ratings": {}
