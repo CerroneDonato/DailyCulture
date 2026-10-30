@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-28",
+ "_last_sent": "2026-10-30",
  "_offset": 0,
  "log": [
   {
@@ -1185,6 +1185,62 @@
    "key": "Guarino Guarini - San Lorenzo",
    "title": "La Chiesa di San Lorenzo",
    "recap": "La Chiesa di San Lorenzo a Torino, eretta tra il 1668 e il 1687 su progetto di Guarino Guarini, rappresenta un capolavoro di ingegneria barocca. Grazie all'uso innovativo di archi intrecciati e cupole nervate, l'architetto ha risolto complessi problemi di statica, influenzando profondamente l'architettura dei secoli successivi."
+  },
+  {
+   "id": "20261030-let",
+   "date": "2026-10-30",
+   "cat": "letteratura",
+   "key": "Al-Ma'arri - Luzum ma la Yalzam",
+   "title": "Al-Ma'arri e le meditazioni sulla caducità",
+   "recap": "Abu al-'Ala' al-Ma'arri (973-1057) è stato un filosofo e poeta siriano che ha integrato un rigore metrico estremo con un pensiero razionalista e pessimista. La sua opera maggiore, Luzum ma la Yalzam, esplora la caducità umana con una precisione formale che ancora oggi sfida i canoni letterari e filosofici del suo tempo."
+  },
+  {
+   "id": "20261030-sto",
+   "date": "2026-10-30",
+   "cat": "storia",
+   "key": "Sabei - Diga di Marib",
+   "title": "La diga di Marib",
+   "recap": "La diga di Marib fu un'opera idraulica monumentale eretta dai Sabei nell'VIII secolo a.C. per irrigare l'oasi dello Yemen. Funzionò con interventi di manutenzione costante fino al VI secolo d.C., quando il suo cedimento causò una significativa migrazione di popolazioni e la fine di un'epoca agricola. Il sito rimane uno dei più importanti esempi antichi di gestione ingegneristica del territorio."
+  },
+  {
+   "id": "20261030-sci",
+   "date": "2026-10-30",
+   "cat": "scienze",
+   "key": "Gutenberg - Discontinuità nucleo",
+   "title": "La discontinuità di Gutenberg",
+   "recap": "Nel 1914, Beno Gutenberg identificò la discontinuità a 2890 km di profondità analizzando la rifrazione delle onde P e l'interruzione delle onde S. Questa scoperta ha stabilito l'esistenza di un nucleo esterno fluido, fondamentale per comprendere il campo magnetico e la geodinamica terrestre."
+  },
+  {
+   "id": "20261030-mat",
+   "date": "2026-10-30",
+   "cat": "matematica",
+   "key": "Morley - Teorema",
+   "title": "Il Teorema di Morley",
+   "recap": "Il teorema di Morley dimostra che i punti di intersezione dei trisettori angolari di un triangolo formano sempre un triangolo equilatero. Proposto nel 1899, rimane un esempio elegante di simmetria emergente in contesti geometrici arbitrari."
+  },
+  {
+   "id": "20261030-mus",
+   "date": "2026-10-30",
+   "cat": "musica",
+   "key": "Buxtehude - Praeludium BuxWV 149",
+   "title": "Dietrich Buxtehude e la Praeludium in sol minore BuxWV 149",
+   "recap": "Dietrich Buxtehude, operante a Lubecca nel tardo XVII secolo, ha definito con i suoi Praeludia lo stylus phantasticus. La BuxWV 149 in sol minore rappresenta un vertice di architettura sonora, in cui la simmetria tra sezioni improvvisative e fughe rigorose precorre le conquiste di Bach."
+  },
+  {
+   "id": "20261030-cib",
+   "date": "2026-10-30",
+   "cat": "cibo",
+   "key": "Manihot esculenta - Garri",
+   "title": "Il Garri e la fermentazione della manioca",
+   "recap": "Il Garri è un alimento derivato dalla manioca, la cui sicurezza è garantita da una fermentazione lattica controllata che elimina i glicosidi cianogenetici. Diffusosi in Africa occidentale a partire dal XVII secolo, rappresenta un esempio d'ingegneria alimentare empirica basata sulla riduzione del pH tramite batteri come il Lactobacillus plantarum."
+  },
+  {
+   "id": "20261030-cin",
+   "date": "2026-10-30",
+   "cat": "cinema",
+   "key": "Ingmar Bergman - Il settimo sigillo",
+   "title": "Il settimo sigillo",
+   "recap": "Diretto da Ingmar Bergman nel 1957, Il settimo sigillo esplora il tormento dell'uomo medievale di fronte alla morte. Attraverso la metafora della partita a scacchi, il film interroga il senso della fede in un mondo segnato dalla peste e dal declino."
   }
  ],
  "ratings": {}
