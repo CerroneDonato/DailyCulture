@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-30",
+ "_last_sent": "2026-10-31",
  "_offset": 0,
  "log": [
   {
@@ -1241,6 +1241,54 @@
    "key": "Ingmar Bergman - Il settimo sigillo",
    "title": "Il settimo sigillo",
    "recap": "Diretto da Ingmar Bergman nel 1957, Il settimo sigillo esplora il tormento dell'uomo medievale di fronte alla morte. Attraverso la metafora della partita a scacchi, il film interroga il senso della fede in un mondo segnato dalla peste e dal declino."
+  },
+  {
+   "id": "20261031-let",
+   "date": "2026-10-31",
+   "cat": "letteratura",
+   "key": "Thomas Browne - The Garden of Cyrus",
+   "title": "Il giardino di Ciro",
+   "recap": "Il giardino di Ciro (1658) di Thomas Browne è un saggio che eleva la disposizione a quinconce a simbolo dell'ordine cosmico. L'autore rintraccia questa specifica geometria in contesti naturali e artificiali, anticipando una visione olistica della scienza moderna."
+  },
+  {
+   "id": "20261031-sto",
+   "date": "2026-10-31",
+   "cat": "storia",
+   "key": "Tacoma-Narrows-1940",
+   "title": "Il crollo del ponte Tacoma Narrows",
+   "recap": "Il Tacoma Narrows Bridge, inaugurato nel 1940, crollò a causa di fenomeni di flutter aeroelastico innescati da venti moderati. L'evento rivelò l'inadeguatezza dei modelli statici per strutture esili, rendendo le prove in galleria del vento uno standard imprescindibile nell'ingegneria civile contemporanea."
+  },
+  {
+   "id": "20261031-sci",
+   "date": "2026-10-31",
+   "cat": "scienze",
+   "key": "Ramón y Cajal - Polarizzazione dinamica",
+   "title": "La congettura di Ramón y Cajal",
+   "recap": "Santiago Ramón y Cajal ha ridefinito la neuroscienza identificando la polarizzazione dinamica del neurone. Contrariamente alla simmetria elettrica, i neuroni funzionano come vettori unidirezionali (dendriti-assone). Questo principio, validato dal metodo di Golgi intorno al 1890, resta il pilastro per comprendere il flusso informativo nel sistema nervoso."
+  },
+  {
+   "id": "20261031-arc",
+   "date": "2026-10-31",
+   "cat": "architettura",
+   "key": "Jai Singh II - Jantar Mantar",
+   "title": "Jantar Mantar di Jaipur",
+   "recap": "Il Jantar Mantar di Jaipur, completato nel 1734 da Jai Singh II, è un insieme di enormi strumenti astronomici in muratura. Utilizzando la simmetria geometrica e materiali stabili, l'opera permetteva osservazioni celesti di eccezionale precisione, superando i limiti degli strumenti metallici dell'epoca."
+  },
+  {
+   "id": "20261031-ant",
+   "date": "2026-10-31",
+   "cat": "archeologia",
+   "key": "Taranaki - Okahu Stones",
+   "title": "Il complesso cerimoniale di Stonehenge di Aotearoa",
+   "recap": "Il sito di Okahu presenta monoliti in andesite risalenti al XV-XVII secolo, disposti secondo precisi orientamenti astronomici. La scoperta testimonia l'abilità ingegneristica della cultura Maori nel coniugare osservazione celeste e organizzazione sociale attraverso la simmetria architettonica."
+  },
+  {
+   "id": "20261031-fil",
+   "date": "2026-10-31",
+   "cat": "filosofia",
+   "key": "Tanizaki - In-ei",
+   "title": "Il concetto di In-ei nello spazio giapponese",
+   "recap": "Junichiro Tanizaki, nel 1933, ha codificato nell'opera Libro d'ombra l'estetica In-ei, contrapponendo la profondità dell'ombra alla luce artificiale indiscriminata. Il testo sfida la concezione occidentale del design come pura illuminazione e precisione, valorizzando la penombra come spazio ontologico fondamentale."
   }
  ],
  "ratings": {}
