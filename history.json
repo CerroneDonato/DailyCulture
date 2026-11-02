@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-10-31",
+ "_last_sent": "2026-11-02",
  "_offset": 0,
  "log": [
   {
@@ -1289,6 +1289,62 @@
    "key": "Tanizaki - In-ei",
    "title": "Il concetto di In-ei nello spazio giapponese",
    "recap": "Junichiro Tanizaki, nel 1933, ha codificato nell'opera Libro d'ombra l'estetica In-ei, contrapponendo la profondità dell'ombra alla luce artificiale indiscriminata. Il testo sfida la concezione occidentale del design come pura illuminazione e precisione, valorizzando la penombra come spazio ontologico fondamentale."
+  },
+  {
+   "id": "20261102-let",
+   "date": "2026-11-02",
+   "cat": "letteratura",
+   "key": "Yoko Ogawa - L'isola dei senza memoria",
+   "title": "La solitudine di Yoko Ogawa",
+   "recap": "L'isola dei senza memoria di Yoko Ogawa, pubblicato nel 1994, descrive una società in cui oggetti e concetti svaniscono dalla mente dei cittadini. Attraverso una scrittura asciutta e priva di sentimentalismi, l'opera esplora l'inesorabile processo di erosione dell'identità umana. È una riflessione fondamentale sulla perdita di informazioni e sulla resistenza intellettuale contro l'entropia del reale."
+  },
+  {
+   "id": "20261102-sto",
+   "date": "2026-11-02",
+   "cat": "storia",
+   "key": "Merton College - Calcolatori di Oxford",
+   "title": "La disputa di Merton College",
+   "recap": "I Calcolatori di Oxford, attivi al Merton College intorno al 1330, trasformarono la cinematica introducendo una rigorosa matematizzazione dei fenomeni fisici. Attraverso l'opera di Thomas Bradwardine, il gruppo pose le basi per la trattazione del moto accelerato, influenzando il metodo scientifico dei secoli successivi."
+  },
+  {
+   "id": "20261102-sci",
+   "date": "2026-11-02",
+   "cat": "scienze",
+   "key": "Banach-Tarski - Paradosso",
+   "title": "Il paradosso del numero di Banach-Tarski",
+   "recap": "Nel 1924, Stefan Banach e Alfred Tarski dimostrarono che una sfera può essere scomposta in un numero finito di frammenti non misurabili e riassemblata in due sfere identiche. Il paradosso, basato sull'Assioma della Scelta, evidenzia il divario tra la divisibilità infinita astratta e la realtà fisica della materia."
+  },
+  {
+   "id": "20261102-ing",
+   "date": "2026-11-02",
+   "cat": "ingegneria",
+   "key": "Ande - Diga Puracé",
+   "title": "La diga di Puracé",
+   "recap": "Il sistema di gestione idraulica nelle Ande colombiane utilizza dissipatori a gradoni e camere di decantazione per filtrare i detriti vulcanici. Attraverso il controllo del numero di Reynolds e l'uso di sensori piezoelettrici, l'infrastruttura trasforma l'energia turbolenta in sedimentazione controllata, garantendo la protezione delle turbine in contesti ambientali estremi."
+  },
+  {
+   "id": "20261102-par",
+   "date": "2026-11-02",
+   "cat": "parole",
+   "key": "Grecia - Lessico Filosofico",
+   "title": "Apeiron, Aporia, Atarassia",
+   "recap": "Apeiron indica l'illimitato di Anassimandro; l'aporia rappresenta il paradosso logico insolubile; l'atarassia è la condizione di imperturbabilità ideale. Questi concetti, nati nella Grecia antica, offrono una bussola concettuale per affrontare l'ignoto e i limiti del pensiero logico."
+  },
+  {
+   "id": "20261102-nat",
+   "date": "2026-11-02",
+   "cat": "natura",
+   "key": "Vibrio fischeri - Bioluminescenza",
+   "title": "Vibrio fischeri e la bioluminescenza",
+   "recap": "Il Vibrio fischeri è un batterio marino bioluminescente che vive in simbiosi con il calamaro Euprymna scolopes. Grazie al quorum sensing, i batteri coordinano l'attivazione dell'enzima luciferasi, permettendo all'ospite di utilizzare la luce come strumento di mimetismo."
+  },
+  {
+   "id": "20261102-art",
+   "date": "2026-11-02",
+   "cat": "arte",
+   "key": "Thomas Cole - The Oxbow",
+   "title": "Thomas Cole e il sublime americano",
+   "recap": "Thomas Cole, padre della Hudson River School, dipinse The Oxbow nel 1836. Il quadro contrasta la natura selvaggia con la valle civilizzata, utilizzando il linguaggio del Sublime per esplorare l'infinito e l'identità americana nel XIX secolo."
   }
  ],
  "ratings": {}
