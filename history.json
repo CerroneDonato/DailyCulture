@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-11-02",
+ "_last_sent": "2026-11-06",
  "_offset": 0,
  "log": [
   {
@@ -1345,6 +1345,62 @@
    "key": "Thomas Cole - The Oxbow",
    "title": "Thomas Cole e il sublime americano",
    "recap": "Thomas Cole, padre della Hudson River School, dipinse The Oxbow nel 1836. Il quadro contrasta la natura selvaggia con la valle civilizzata, utilizzando il linguaggio del Sublime per esplorare l'infinito e l'identità americana nel XIX secolo."
+  },
+  {
+   "id": "20261106-let",
+   "date": "2026-11-06",
+   "cat": "letteratura",
+   "key": "Lucrezio - De rerum natura",
+   "title": "La Fisica di Lucrezio",
+   "recap": "Lucrezio, nel I secolo a.C., espone nel De rerum natura l'atomismo epicureo, sostenendo che l'universo sia composto di atomi e vuoto infiniti. Il suo approccio meccanicistico esclude il finalismo divino, offrendo una visione del cosmo basata su leggi fisiche e costanti trasformazioni della materia."
+  },
+  {
+   "id": "20261106-sto",
+   "date": "2026-11-06",
+   "cat": "storia",
+   "key": "Teixeira - Amazzonia 1637",
+   "title": "La spedizione di Pedro de Teixeira sul Rio delle Amazzoni",
+   "recap": "Tra il 1637 e il 1639, Pedro de Teixeira compì la prima risalita completa del Rio delle Amazzoni, partendo da Belém e arrivando a Quito. L'impresa, documentata dal gesuita Cristóbal de Acuña, permise alla Corona portoghese di tracciare i confini coloniali in un bacino fluviale la cui vastità era all'epoca percepita come un limite infinito."
+  },
+  {
+   "id": "20261106-sci",
+   "date": "2026-11-06",
+   "cat": "scienze",
+   "key": "Lehmann - Discontinuità nucleo interno",
+   "title": "La discontinuità di Lehmann",
+   "recap": "Nel 1936, Inge Lehmann ipotizzò l'esistenza di un nucleo interno solido analizzando le anomalie nella propagazione delle onde P. La scoperta della discontinuità di Lehmann a 5150 km di profondità superò il modello di un nucleo interamente liquido, rivelando una dinamica interna terrestre molto più complessa e strutturata."
+  },
+  {
+   "id": "20261106-mat",
+   "date": "2026-11-06",
+   "cat": "matematica",
+   "key": "Skolem - Teorema di Lowenheim-Skolem",
+   "title": "Il paradosso di Skolem",
+   "recap": "Il paradosso di Skolem rivela che le teorie del primo ordine, come ZFC, non possono fissare univocamente il concetto di non-numerabilità. Ogni teoria che postula insiemi infiniti ammette modelli numerabili, rendendo la distinzione tra numerabile e non numerabile una proprietà relativa al modello adottato."
+  },
+  {
+   "id": "20261106-mus",
+   "date": "2026-11-06",
+   "cat": "musica",
+   "key": "Hill - String Quartet No. 2",
+   "title": "Alfred Hill: String Quartet No. 2",
+   "recap": "Alfred Hill, nel 1907, compose il suo secondo quartetto per archi integrando elementi della musica Maori con la solida tradizione accademica appresa a Lipsia. L'opera è un esempio magistrale di come il rigore formale possa accogliere espressioni culturali eterogenee, creando una sospensione sonora che riflette sull'ampiezza dell'orizzonte."
+  },
+  {
+   "id": "20261106-cib",
+   "date": "2026-11-06",
+   "cat": "cibo",
+   "key": "Cina - Doubanjiang",
+   "title": "Il Centenario dei Cent'anni",
+   "recap": "Il Doubanjiang è una pasta di fave fermentate tipica del Sichuan, la cui complessità aromatica deriva dall'azione di Aspergillus oryzae. Il processo, perfezionato nel secondo Novecento a Pixian, trasforma le proteine in amminoacidi liberi, creando un prodotto che evolve continuamente nel tempo."
+  },
+  {
+   "id": "20261106-arc",
+   "date": "2026-11-06",
+   "cat": "architettura",
+   "key": "Bhima I - Tempio di Modhera",
+   "title": "Il Tempio del Sole a Modhera",
+   "recap": "Edificato nel 1026 dal re Bhima I, il Tempio del Sole di Modhera è un capolavoro della dinastia Solanki. La struttura eccelle per l'allineamento astronomico equinoziale e per le tecniche di costruzione a secco, che hanno garantito la stabilità sismica del complesso nei secoli."
   }
  ],
  "ratings": {}
