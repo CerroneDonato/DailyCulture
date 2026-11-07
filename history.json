@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-11-06",
+ "_last_sent": "2026-11-07",
  "_offset": 0,
  "log": [
   {
@@ -1401,6 +1401,54 @@
    "key": "Bhima I - Tempio di Modhera",
    "title": "Il Tempio del Sole a Modhera",
    "recap": "Edificato nel 1026 dal re Bhima I, il Tempio del Sole di Modhera è un capolavoro della dinastia Solanki. La struttura eccelle per l'allineamento astronomico equinoziale e per le tecniche di costruzione a secco, che hanno garantito la stabilità sismica del complesso nei secoli."
+  },
+  {
+   "id": "20261107-let",
+   "date": "2026-11-07",
+   "cat": "letteratura",
+   "key": "Kržižanovskij - Narrativa metafisica",
+   "title": "Sigizmund Kržižanovskij: il labirinto logico",
+   "recap": "Sigizmund Kržižanovskij (1887-1950) è stato uno dei più brillanti scrittori russi del Novecento, rimasto ignorato per decenni. Le sue storie esplorano i paradossi dello spazio e dell'infinito attraverso una lente logica e geometrica, anticipando temi metafisici poi ripresi dalla letteratura mondiale."
+  },
+  {
+   "id": "20261107-sto",
+   "date": "2026-11-07",
+   "cat": "storia",
+   "key": "Sripati - Siddhantasekhara",
+   "title": "Il cannocchiale di Śrīpati",
+   "recap": "Śrīpati, matematico attivo in India intorno al 1039, scrisse il Siddhāntaśekhara, un trattato fondamentale che perfezionò la trigonometria sferica e il calcolo delle eclissi. La sua opera dimostra un approccio scientifico avanzato, capace di gestire l'infinito matematico per descrivere le orbite celesti con precisione, anticipando molti metodi dell'algebra moderna."
+  },
+  {
+   "id": "20261107-sci",
+   "date": "2026-11-07",
+   "cat": "scienze",
+   "key": "Levinthal - Paradosso del ripiegamento",
+   "title": "Il paradosso di Levinthal",
+   "recap": "Il paradosso di Levinthal (1968) descrive l'impossibilità matematica per una proteina di trovare la propria forma nativa mediante una ricerca casuale tra le infinite combinazioni possibili. La soluzione risiede nel folding funnel, un percorso energetico che guida la molecola verso lo stato di minima energia in tempi compatibili con la vita. Questo processo è essenziale per comprendere la stabilità biologica e le patologie da misfolding."
+  },
+  {
+   "id": "20261107-geo",
+   "date": "2026-11-07",
+   "cat": "geografia",
+   "key": "Geografia - Afar",
+   "title": "La Depressione di Afar",
+   "recap": "Il Triangolo di Afar è una depressione tettonica nel Corno d'Africa dove si incontrano tre placche continentali. Il processo di rifting in corso, attivo da 30 milioni di anni, causa una continua espansione crostale e un'intensa attività vulcanica che rende l'area un osservatorio unico per la dinamica terrestre."
+  },
+  {
+   "id": "20261107-cib",
+   "date": "2026-11-07",
+   "cat": "cibo",
+   "key": "Vestfalia - Pumpernickel",
+   "title": "Il Pumpernickel della Vestfalia",
+   "recap": "Il Pumpernickel è un pane di segale della Vestfalia cotto per oltre 16 ore a vapore. La sua peculiare colorazione scura deriva da una lentissima reazione di Maillard in ambiente sigillato, documentata fin dal 1450 come tecnica di conservazione duratura."
+  },
+  {
+   "id": "20261107-fil",
+   "date": "2026-11-07",
+   "cat": "filosofia",
+   "key": "Gregorio da Rimini - Logica e Necessità",
+   "title": "Gregory di Rimini e il limite del possibile",
+   "recap": "Gregorio da Rimini, nel XIV secolo, ha sostenuto che le verità logiche godono di un'esistenza indipendente anche ipotizzando l'assenza di Dio. Questo approccio, basato sul concetto di complessa significabile, anticipa la moderna distinzione tra necessità logica e contingenza fattuale."
   }
  ],
  "ratings": {}
