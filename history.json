@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-11-07",
+ "_last_sent": "2026-11-08",
  "_offset": 0,
  "log": [
   {
@@ -1449,6 +1449,62 @@
    "key": "Gregorio da Rimini - Logica e Necessità",
    "title": "Gregory di Rimini e il limite del possibile",
    "recap": "Gregorio da Rimini, nel XIV secolo, ha sostenuto che le verità logiche godono di un'esistenza indipendente anche ipotizzando l'assenza di Dio. Questo approccio, basato sul concetto di complessa significabile, anticipa la moderna distinzione tra necessità logica e contingenza fattuale."
+  },
+  {
+   "id": "20261108-let",
+   "date": "2026-11-08",
+   "cat": "letteratura",
+   "key": "Al-Tawhidi - Al-Muqabasat",
+   "title": "La riscoperta di Al-Tawhidi",
+   "recap": "Abu Hayyan al-Tawhidi, attivo nel X secolo, è tra le figure più originali della cultura araba classica. Con la sua opera Al-Muqabasat, egli introduce un soggettivismo critico che mette in discussione la stabilità del sapere logico, offrendo una visione lucida e inquieta del declino sociale e della solitudine intellettuale."
+  },
+  {
+   "id": "20261108-sto",
+   "date": "2026-11-08",
+   "cat": "storia",
+   "key": "Consorzio Venezia Nuova - MOSE",
+   "title": "Il Progetto MOSE e la salvaguardia di Venezia",
+   "recap": "Il MOSE è un complesso sistema di paratoie mobili inaugurato nel 2020 per proteggere Venezia dalle maree eccezionali. L'opera affronta la sfida dell'innalzamento del livello del mare combinata con la subsidenza storica del suolo veneziano. La sua attivazione segna un punto di svolta nella protezione del patrimonio storico contro i mutamenti climatici del XXI secolo."
+  },
+  {
+   "id": "20261108-sci",
+   "date": "2026-11-08",
+   "cat": "scienze",
+   "key": "Zenone - Paradosso della dicotomia",
+   "title": "Il paradosso di Zeno nel calcolo discreto",
+   "recap": "Il paradosso di Zenone illustra la tensione tra il continuo matematico e l'esperienza fisica. Risolto formalmente dal calcolo dei limiti, esso rimane un punto di riferimento critico per indagare se lo spaziotempo possegga una struttura discreta fondamentale vicina alla lunghezza di Planck."
+  },
+  {
+   "id": "20261108-sag",
+   "date": "2026-11-08",
+   "cat": "saggio",
+   "key": "Cantor - Gerarchia infiniti",
+   "title": "L'alchimia degli ordini infiniti",
+   "recap": "Georg Cantor ha dimostrato che esistono infiniti di grandezze diverse, distinguendo tra il numerabile e il continuo. La sua teoria, formalizzata tra il 1874 e il 1897, ha ridefinito i fondamenti della matematica moderna nonostante le iniziali resistenze accademiche. Il concetto di cardinalità infinita rimane oggi un pilastro fondamentale per la logica, l'informatica e la filosofia del linguaggio."
+  },
+  {
+   "id": "20261108-eco",
+   "date": "2026-11-08",
+   "cat": "economia",
+   "key": "Kautilya - Arthashastra",
+   "title": "L'Arthashastra e l'economia dello Stato",
+   "recap": "L'Arthashastra, attribuito al pensatore indiano Kautilya nel IV secolo a.C., definisce l'economia come strumento essenziale per la stabilità del potere. Il trattato promuove una gestione razionale e centralizzata dello Stato, ponendo la prosperità dei sudditi come fondamento necessario per la solidità dell'erario e della difesa militare."
+  },
+  {
+   "id": "20261108-mus",
+   "date": "2026-11-08",
+   "cat": "musica",
+   "key": "Tan Dun - Crouching Tiger",
+   "title": "Tan Dun: Crouching Tiger, Hidden Dragon",
+   "recap": "Tan Dun ha saputo unire l'avanguardia occidentale alla tradizione cinese con la colonna sonora del 2000 per Crouching Tiger, Hidden Dragon. Attraverso l'uso del violoncello di Yo-Yo Ma e dell'erhu, il compositore esplora il microtonalismo e l'infinito sonoro, vincendo l'Oscar nel 2001."
+  },
+  {
+   "id": "20261108-geo",
+   "date": "2026-11-08",
+   "cat": "geografia",
+   "key": "Svezia - Parco Sarek",
+   "title": "Il bacino di Sarek",
+   "recap": "Il Parco di Sarek, in Svezia, è una vasta riserva alpina di 1970 kmq, nota per essere l'area più selvaggia e priva di infrastrutture dell'Europa settentrionale. Geologicamente formato dall'erosione glaciale su rocce metamorfiche antiche, il sito presenta oltre cento ghiacciai e un delta fluviale unico. Rappresenta un riferimento essenziale per lo studio dell'idrologia alpina intatta."
   }
  ],
  "ratings": {}
