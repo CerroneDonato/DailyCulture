@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-11-11",
+ "_last_sent": "2026-11-12",
  "_offset": 0,
  "log": [
   {
@@ -1553,6 +1553,62 @@
    "key": "Beauvais - Saint-Pierre",
    "title": "La Cattedrale di Beauvais",
    "recap": "La Cattedrale di Beauvais, iniziata nel 1225, rappresenta il limite massimo dell'ingegneria gotica con una volta alta 48 metri. Il crollo del 1284 impose una revisione del progetto originale, dimostrando come le sfide architettoniche dell'epoca fossero condizionate dai limiti della scienza delle costruzioni del tempo."
+  },
+  {
+   "id": "20261112-let",
+   "date": "2026-11-12",
+   "cat": "letteratura",
+   "key": "Mansfield - Preludio",
+   "title": "Katherine Mansfield, Preludio",
+   "recap": "Katherine Mansfield pubblica Preludio nel 1918, ridefinendo il racconto moderno attraverso il flusso di coscienza. Ambientato nella Nuova Zelanda rurale, il testo esplora il caso quotidiano e la soggettività, offrendo una prosa ellittica e precisa che anticipa le avanguardie letterarie del primo Novecento."
+  },
+  {
+   "id": "20261112-sto",
+   "date": "2026-11-12",
+   "cat": "storia",
+   "key": "Ramelli - Ruota dei libri",
+   "title": "L'impresa di Agostino Ramelli",
+   "recap": "Agostino Ramelli, ingegnere al servizio della Francia, descrisse nel 1588 la ruota dei libri, un dispositivo meccanico basato su ingranaggi epicicloidali per la consultazione simultanea di più volumi. Tale invenzione rappresenta un momento chiave nell'evoluzione tecnologica applicata alla gestione della conoscenza."
+  },
+  {
+   "id": "20261112-sci",
+   "date": "2026-11-12",
+   "cat": "scienze",
+   "key": "Fermi - Paradosso di Fermi",
+   "title": "Il paradosso di Fermi e l'equazione di Drake",
+   "recap": "Il paradosso di Fermi mette a confronto l'alta probabilità statistica di civiltà aliene con l'assenza totale di prove osservative. L'equazione di Drake, del 1961, quantifica tale incertezza introducendo variabili stocastiche sulla durata e lo sviluppo delle civiltà. Il silenzio del cosmo rimane una sfida aperta alla nostra comprensione dell'evoluzione tecnologica e della rarità biologica."
+  },
+  {
+   "id": "20261112-ing",
+   "date": "2026-11-12",
+   "cat": "ingegneria",
+   "key": "Willow Island - 1978",
+   "title": "Il crollo della torre di raffreddamento di Willow Island",
+   "recap": "Il 27 aprile 1978, il crollo di una torre di raffreddamento a Willow Island causò 51 vittime a causa del sollevamento di carichi su calcestruzzo non ancora maturo. Le indagini del NIST dimostrarono che l'assenza di test sulla resistenza effettiva del materiale, unita alla fretta, annullò i fattori di sicurezza previsti."
+  },
+  {
+   "id": "20261112-par",
+   "date": "2026-11-12",
+   "cat": "parole",
+   "key": "Lessico - Artigianato",
+   "title": "Ammantare, Gualdrappa, Serramanico",
+   "recap": "Ammantare descrive la copertura protettiva di una superficie, la gualdrappa è il cuscinetto tessile per il dorso equino, mentre il serramanico definisce un meccanismo di rotazione e bloccaggio. Questi termini evocano il controllo tecnico esercitato dall'artigiano per mitigare l'imprevedibilità del caso tramite la precisione costruttiva."
+  },
+  {
+   "id": "20261112-nat",
+   "date": "2026-11-12",
+   "cat": "natura",
+   "key": "Tardigrada - Biologia",
+   "title": "La resilienza di Tardigrada",
+   "recap": "I Tardigrada sono invertebrati microscopici capaci di entrare in criptobiosi, uno stato di sospensione vitale mediato da proteine TDP che proteggono l'integrità cellulare. Scoperti nel 1773 da Goeze, questi organismi resistono a condizioni fisiche estreme, offrendo dati fondamentali per l'astrobiologia."
+  },
+  {
+   "id": "20261112-geo",
+   "date": "2026-11-12",
+   "cat": "geografia",
+   "key": "Geografia - Lake Eyre",
+   "title": "Il bacino di Lake Eyre",
+   "recap": "Il Lake Eyre è il centro di un bacino endoreico di oltre un milione di km² in Australia. Il suo riempimento è un evento stocastico, dipendente da cicli climatici come La Niña. È caratterizzato da una crosta di sale che si forma in un ambiente con tassi di evaporazione tra i più elevati al mondo."
   }
  ],
  "ratings": {}
