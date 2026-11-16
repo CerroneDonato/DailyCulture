@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-11-12",
+ "_last_sent": "2026-11-16",
  "_offset": 0,
  "log": [
   {
@@ -1609,6 +1609,62 @@
    "key": "Geografia - Lake Eyre",
    "title": "Il bacino di Lake Eyre",
    "recap": "Il Lake Eyre è il centro di un bacino endoreico di oltre un milione di km² in Australia. Il suo riempimento è un evento stocastico, dipendente da cicli climatici come La Niña. È caratterizzato da una crosta di sale che si forma in un ambiente con tassi di evaporazione tra i più elevati al mondo."
+  },
+  {
+   "id": "20261116-let",
+   "date": "2026-11-16",
+   "cat": "letteratura",
+   "key": "Montesquieu - Lettere persiane",
+   "title": "Le Lettere persiane di Montesquieu",
+   "recap": "Pubblicate nel 1721, le Lettere persiane di Montesquieu utilizzano il filtro dell'esotismo per analizzare criticamente la società francese del Settecento. Attraverso l'epistolario tra Usbek e Rica, l'autore isola le logiche irrazionali del sistema politico e sociale, ponendo le basi per il futuro pensiero sociologico moderno."
+  },
+  {
+   "id": "20261116-sto",
+   "date": "2026-11-16",
+   "cat": "storia",
+   "key": "Tabula Peutingeriana - Mappa",
+   "title": "La Tabula Peutingeriana",
+   "recap": "La Tabula Peutingeriana è un antico documento cartografico che raffigura il mondo romano come una serie di nodi e percorsi lineari. Risalente alla tarda antichità e conservata a Vienna, essa privilegia l'efficienza informativa rispetto alla rappresentazione spaziale, facilitando la gestione del Cursus Publicus."
+  },
+  {
+   "id": "20261116-sci",
+   "date": "2026-11-16",
+   "cat": "scienze",
+   "key": "Braess - Paradosso del traffico",
+   "title": "Il paradosso di Braess",
+   "recap": "Il paradosso di Braess (1968) dimostra che l'aggiunta di una nuova strada a una rete può peggiorare il tempo di percorrenza medio. Ciò accade perché l'equilibrio di Nash delle scelte individuali non coincide con l'ottimo sociale, rendendo le infrastrutture aggiuntive controproducenti."
+  },
+  {
+   "id": "20261116-ing",
+   "date": "2026-11-16",
+   "cat": "ingegneria",
+   "key": "Huygens - Orologio a pendolo",
+   "title": "La misura del tempo di Huygens",
+   "recap": "Christiaan Huygens rivoluzionò la cronometria nel 1656 introducendo il pendolo come regolatore armonico. Grazie alle guance cicloidali, riuscì a mantenere l'isocronismo, riducendo l'errore meccanico e definendo le basi matematiche per la moderna misura del tempo."
+  },
+  {
+   "id": "20261116-par",
+   "date": "2026-11-16",
+   "cat": "parole",
+   "key": "Lessico - Ghiribizzo Sgangherato Sberleffo",
+   "title": "Ghiribizzo, Sgangherato, Sberleffo",
+   "recap": "I termini analizzati - ghiribizzo, sgangherato, sberleffo - rappresentano concetti legati all'imprevisto e al disordine. Mentre il primo identifica un capriccio mentale, il secondo descrive una carenza strutturale meccanica, e il terzo un gesto di derisione. Tutti e tre introducono un elemento di disturbo che rompe la regolarità del segnale atteso in contesti sia logici che sociali."
+  },
+  {
+   "id": "20261116-nat",
+   "date": "2026-11-16",
+   "cat": "natura",
+   "key": "Magnetospirillum magnetotacticum - Microbiologia",
+   "title": "Il comportamento di Magnetospirillum magnetotacticum",
+   "recap": "Il Magnetospirillum magnetotacticum, scoperto da Richard P. Blakemore nel 1975, utilizza catene di magnetosomi di magnetite per orientarsi nel campo magnetico terrestre. Questo meccanismo di precisione permette al batterio di minimizzare il rumore ambientale e ottimizzare la propria posizione in gradienti chimici vitali."
+  },
+  {
+   "id": "20261116-art",
+   "date": "2026-11-16",
+   "cat": "arte",
+   "key": "Hatoum - Present Tense",
+   "title": "Mona Hatoum - Present Tense",
+   "recap": "Present Tense di Mona Hatoum (1996) utilizza sapone di Nablus e perline di vetro per mappare le terre palestinesi frammentate dagli Accordi di Oslo. L'opera è una riflessione sulla precarietà dei confini e sulla memoria culturale, in cui il materiale organico deperibile agisce come metafora dell'instabilità politica regionale."
   }
  ],
  "ratings": {}
