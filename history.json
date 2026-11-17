@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-11-16",
+ "_last_sent": "2026-11-17",
  "_offset": 0,
  "log": [
   {
@@ -1665,6 +1665,62 @@
    "key": "Hatoum - Present Tense",
    "title": "Mona Hatoum - Present Tense",
    "recap": "Present Tense di Mona Hatoum (1996) utilizza sapone di Nablus e perline di vetro per mappare le terre palestinesi frammentate dagli Accordi di Oslo. L'opera è una riflessione sulla precarietà dei confini e sulla memoria culturale, in cui il materiale organico deperibile agisce come metafora dell'instabilità politica regionale."
+  },
+  {
+   "id": "20261117-let",
+   "date": "2026-11-17",
+   "cat": "letteratura",
+   "key": "Clavijero - Storia antica del Messico",
+   "title": "Francisco Xaverio Clavijero e la Storia antica del Messico",
+   "recap": "Francisco Xaverio Clavijero, gesuita messicano in esilio, pubblica nel 1780 la Storia antica del Messico a Cesena. L'opera riscatta la cultura indigena attraverso un rigoroso metodo critico, distinguendo le testimonianze autentiche dalle distorsioni coloniali."
+  },
+  {
+   "id": "20261117-sto",
+   "date": "2026-11-17",
+   "cat": "storia",
+   "key": "Sher Shah Suri - Riforma agraria XVI secolo",
+   "title": "Il catasto di Sher Shah Suri",
+   "recap": "Tra il 1540 e il 1545, Sher Shah Suri riformò la tassazione agraria in India introducendo il sistema Zabt, basato sulla misurazione geometrica dei terreni. L'introduzione dei registri Patwari permise di eliminare gli intermediari locali e di stabilire un gettito fiscale prevedibile, gettando le basi per l'amministrazione dell'Impero Moghul."
+  },
+  {
+   "id": "20261117-sci",
+   "date": "2026-11-17",
+   "cat": "scienze",
+   "key": "Haldane - Dilemma della selezione",
+   "title": "Il paradosso di Haldane",
+   "recap": "Il dilemma di Haldane (1957) dimostra che la selezione naturale ha un costo biologico che limita la velocità con cui una specie può sostituire i geni. Con una sostituzione massima di circa una mutazione ogni 300 generazioni nei mammiferi, il paradosso suggerisce che gran parte dell'evoluzione molecolare non possa essere guidata esclusivamente dalla selezione positiva."
+  },
+  {
+   "id": "20261117-mat",
+   "date": "2026-11-17",
+   "cat": "matematica",
+   "key": "Borel-Kolmogorov - Paradosso",
+   "title": "Il paradosso di Borel-Kolmogorov",
+   "recap": "Il paradosso di Borel-Kolmogorov dimostra che la probabilità condizionata su insiemi di misura nulla non è ben definita senza specificare il limite di approssimazione. È un tema centrale per comprendere i bias nei filtri statistici su varietà, dove la scelta della parametrizzazione altera la distribuzione a posteriori."
+  },
+  {
+   "id": "20261117-art",
+   "date": "2026-11-17",
+   "cat": "arte",
+   "key": "Salcedo - Shibboleth",
+   "title": "Doris Salcedo, Shibboleth",
+   "recap": "Nel 2007, Doris Salcedo ha creato Shibboleth alla Tate Modern, una fenditura nel pavimento lunga 167 metri. L'opera indaga i temi della marginalizzazione, dell'esclusione razziale e della violenza, trasformando il vuoto in una testimonianza indelebile delle divisioni sociali."
+  },
+  {
+   "id": "20261117-geo",
+   "date": "2026-11-17",
+   "cat": "geografia",
+   "key": "Kara-Bogaz-Gol - Turkmenistan",
+   "title": "La Depressione di Kara-Bogaz-Gol",
+   "recap": "Il Kara-Bogaz-Gol è una laguna del Mar Caspio in Turkmenistan, celebre per la sua estrema salinità e per le miniere di solfato di sodio. La sua storia recente, segnata dalla costruzione e demolizione di una diga tra il 1980 e il 1984, evidenzia la fragilità degli equilibri idrologici in bacini chiusi."
+  },
+  {
+   "id": "20261117-mus",
+   "date": "2026-11-17",
+   "cat": "musica",
+   "key": "Gottschalk - Le Bananier",
+   "title": "Louis Moreau Gottschalk: Le Bananier",
+   "recap": "Louis Moreau Gottschalk, compositore statunitense attivo a metà dell'Ottocento, integra in Le Bananier (1845) le strutture classiche europee con i ritmi sincopati della musica creola. Il brano, che anticipa sensibilità protoritmiche moderne, richiede un virtuosismo pianistico notevole per mantenere nitida la melodia in una trama ritmica complessa."
   }
  ],
  "ratings": {}
