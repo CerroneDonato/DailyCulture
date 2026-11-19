@@ -1,5 +1,5 @@
 {
- "_last_sent": "2026-11-17",
+ "_last_sent": "2026-11-19",
  "_offset": 0,
  "log": [
   {
@@ -1721,6 +1721,62 @@
    "key": "Gottschalk - Le Bananier",
    "title": "Louis Moreau Gottschalk: Le Bananier",
    "recap": "Louis Moreau Gottschalk, compositore statunitense attivo a metà dell'Ottocento, integra in Le Bananier (1845) le strutture classiche europee con i ritmi sincopati della musica creola. Il brano, che anticipa sensibilità protoritmiche moderne, richiede un virtuosismo pianistico notevole per mantenere nitida la melodia in una trama ritmica complessa."
+  },
+  {
+   "id": "20261119-let",
+   "date": "2026-11-19",
+   "cat": "letteratura",
+   "key": "Pallavicino - Opere satiriche",
+   "title": "L'arte poetica di Ferrante Pallavicino",
+   "recap": "Ferrante Pallavicino (1615-1644) fu un autore italiano che sfidò il dogma controriformista attraverso la satira libertina. La sua opera, caratterizzata da uno stile tagliente e coraggioso, lo portò alla condanna a morte, rendendolo un simbolo della libertà di pensiero nel Seicento."
+  },
+  {
+   "id": "20261119-sto",
+   "date": "2026-11-19",
+   "cat": "storia",
+   "key": "Roma - Tabula Peutingeriana",
+   "title": "La Tabula Peutingeriana",
+   "recap": "La Tabula Peutingeriana è una mappa del IV secolo, sopravvissuta in una copia medievale, che schematizza l'Impero romano come una rete lineare di vie di comunicazione. Eliminando la fedeltà geografica per favorire la leggibilità dei percorsi e delle distanze, costituisce un esempio unico di gestione logistica dell'informazione nell'Antichità."
+  },
+  {
+   "id": "20261119-sci",
+   "date": "2026-11-19",
+   "cat": "scienze",
+   "key": "Allais - Paradosso",
+   "title": "Il paradosso di Allais",
+   "recap": "Il paradosso di Allais, formulato nel 1953, confuta l'assioma di indipendenza della teoria dell'utilità attesa di von Neumann. Dimostra che, di fronte all'incertezza, gli esseri umani preferiscono irrazionalmente la certezza anche quando ciò comporta un valore atteso inferiore."
+  },
+  {
+   "id": "20261119-ing",
+   "date": "2026-11-19",
+   "cat": "ingegneria",
+   "key": "Siemens - Cavo Guttaperca",
+   "title": "La sfida dei telegrafi sotterranei di Werner von Siemens",
+   "recap": "Werner von Siemens applicò la guttaperca nel 1847 per isolare i telegrafi nel sottosuolo, affrontando il problema del rumore ambientale che affliggeva le linee aeree. Nonostante il fallimento operativo dei primi cavi per degradazione chimica, l'intuizione resta il pilastro fondamentale della protezione dei segnali nel sistema di trasmissione moderno."
+  },
+  {
+   "id": "20261119-par",
+   "date": "2026-11-19",
+   "cat": "parole",
+   "key": "Navigazione - Lessico tecnico",
+   "title": "Brivido, Deriva, Gherlino",
+   "recap": "I termini brivido, deriva e gherlino descrivono la navigazione come un sistema di controllo dinamico. Il brivido è la vibrazione che segnala l'instabilità, la deriva rappresenta lo scostamento causato da fattori esterni, mentre il gherlino è il componente meccanico che assorbe le tensioni per mantenere la stabilità."
+  },
+  {
+   "id": "20261119-nat",
+   "date": "2026-11-19",
+   "cat": "natura",
+   "key": "Ornithorhynchus anatinus - Elettrocezione",
+   "title": "L'elettrocezione nei monotremi",
+   "recap": "L'ornitorinco utilizza 40.000 elettrorecettori nel becco per individuare le prede tramite la rilevazione di deboli campi elettrici. Questa capacità, confermata scientificamente nel 1986, rappresenta un esempio di integrazione sensoriale avanzata in ambienti acquatici torbidi."
+  },
+  {
+   "id": "20261119-geo",
+   "date": "2026-11-19",
+   "cat": "geografia",
+   "key": "Geografia - Paludi di Pinsk",
+   "title": "Il bacino di Pripjat",
+   "recap": "Le Paludi di Pinsk occupano un'area di 47.000 km² nel bacino del Pripjat, formatesi dopo la glaciazione Vistoliana. La loro conformazione piatta e l'idrologia lentica hanno creato una barriera geografica naturale tra Bielorussia e Ucraina, distinguendosi come una delle più grandi aree umide incontaminate d'Europa."
   }
  ],
  "ratings": {}
